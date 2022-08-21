@@ -23,7 +23,7 @@ OBJS := $(subst $(SOURCEDIR),$(BUILDDIR),$(SOURCES:.c=.o))
 
 # Compiler
 CC = gcc
-CF = -Wall -Wextra -Werror
+CF = -Wall -Wextra -Werror -lreadline
 GDB = -ggdb
 VAL = valgrind --trace-children=yes --leak-check=full --track-origins=yes ./$(NAME)
 FSF = -fsanitize=address
