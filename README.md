@@ -22,11 +22,17 @@ utilizar `-lreadline` como em `gcc -Wall -Wextra -Werror nomearquivo.c -lreadlin
 `/` :
 
 ## pior caso
-```< ./infile.txt cmd1 'arg"' "arg'"| cmd2 "arg||" "$var" '$notvar' > ~/dir/outfile```
+```<./infile.txt cmd1 'arg"' "arg'" 'apenas'"1"'arg'|cmd2 "arg||" "$var" '$notvar'>~/dir/outfile```
 
 
 ## testes para regras de parsing
 ```
->diff "tfile1"'tfile2'
-<diff: missing operand after 'tfile1tfile2'
+> diff "tfile1"'tfile2'
+< diff: missing operand after 'tfile1tfile2'
+```
+```
+> MEUECHO="cat tfile1 > outfile"
+> MEUECHO
+< 111111111111111111
+< cat: '>': No such file or directory
 ```
