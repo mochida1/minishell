@@ -6,7 +6,7 @@
 /*   By: viferrei <viferrei@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 20:56:31 by viferrei          #+#    #+#             */
-/*   Updated: 2022/08/22 20:59:15 by viferrei         ###   ########.fr       */
+/*   Updated: 2022/08/22 21:42:01 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int	ft_isspace(int c)
 {
-	if (c == '\t' || c == '\n' || c == '\v' || c == '\f' || c == '\r'
-		|| c == ' ')
+	if (c == 32 || (c > 8 && c < 14))
 		return (1);
-	return (0);
+	else
+		return (0);
 }

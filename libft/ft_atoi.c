@@ -3,16 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: viferrei <viferrei@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/25 18:26:40 by viferrei          #+#    #+#             */
-/*   Updated: 2021/08/25 19:13:27 by viferrei         ###   ########.fr       */
+/*   Updated: 2022/08/22 21:40:57 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-static int	ft_isspace(char c);
 
 int	ft_atoi(const char *str)
 {
@@ -39,10 +37,3 @@ int	ft_atoi(const char *str)
 	return (num * minus);
 }
 
-static int	ft_isspace(char c)
-{
-	if (c == 32 || (c > 8 && c < 14))
-		return (1);
-	else
-		return (0);
-}
