@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: viferrei <viferrei@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/28 16:49:02 by viferrei          #+#    #+#             */
-/*   Updated: 2022/02/21 21:09:09 by viferrei         ###   ########.fr       */
+/*   Updated: 2022/08/22 02:43:17 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ int			ft_isdigit(int c);
 int			ft_isalnum(int c);
 int			ft_isascii(int c);
 int			ft_isprint(int c);
+int			ft_isquote(int c);
 int			ft_tolower(int c);
 int			ft_toupper(int c);
 
