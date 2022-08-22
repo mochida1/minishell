@@ -14,7 +14,6 @@ INCLUDES = -I /headers
 # Lists sources. Manually because of norm...
 SRC_LIST = minishell.c \
 
-
 # Names sources
 SOURCES = $(addprefix $(SOURCEDIR)/,$(SRC_LIST))
 
