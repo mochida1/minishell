@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   add_spaces.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: viferrei <viferrei@student.42sp.org.br     +#+  +:+       +#+        */
+/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 00:30:49 by coder             #+#    #+#             */
-/*   Updated: 2022/08/24 00:37:46 by viferrei         ###   ########.fr       */
+/*   Updated: 2022/08/24 01:17:31 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,9 @@
 #include <unistd.h>
 #include <stdlib.h>
 
-// teste teste teste
+#include "safe_free.c"
+#include "add_spaces_utils.c"
+
 /*
 ** checa se o caracetere antes do índice indicado deveria ser um espaço;
 */
@@ -85,7 +87,7 @@ char	*add_space_before_index(char *buffer, int index)
 
 	i = 0;
 	j = 0;
-	ret = malloc (sizeof (char) * (ft_strlen(buffer) + 2));
+	ret = malloc (sizeof (char) * (strlen(buffer) + 2)); //ft no strlen!!!
 	while (buffer[i])
 	{
 		if (i == index)
@@ -125,18 +127,31 @@ char	*recursively_does_some_black_magic(char *buffer, int i)
 }
 
 /*
-** cria string allocada, adicionando espaços se antes ou depois de '<', '>',
-** '<<', '>>' ou '|', não houverem espaços. Não trata ||;
+** creates an allocated string, inserting spaces if before or after '<', '>',
+** '<<', '>>' ou '|', there are no spaces; Does not deals with ||. It spaces it;
 */
 char	*add_spaces(char *buffer)
 {
 	int		i;
 	char	*temp;
+	int		sin_quote;
+	int		dou_quote;
 
 	i = 0;
 	temp = NULL;
+	sin_quote = 0;
+	dou_quote = 0;
 	while (buffer[i])
 	{
+		if (buffer[i] == '\'')
+			sin_quote++;
+		if (buffer[i] == '\"')
+			dou_quote++;
+		if ((dou_quote % 2) || (sin_quote % 2))
+		{
+			i++;
+			continue ;
+		}
 		if (is_operator(buffer[i]))
 			buffer = recursively_does_some_black_magic(buffer, i);
 		i++;
