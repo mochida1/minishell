@@ -1,39 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   split_cmds_teste.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: viferrei <viferrei@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/25 18:26:40 by viferrei          #+#    #+#             */
-/*   Updated: 2022/08/22 21:40:57 by viferrei         ###   ########.fr       */
+/*   Created: 2022/08/23 23:31:47 by viferrei          #+#    #+#             */
+/*   Updated: 2022/08/23 23:49:06 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../headers/minishell.h"
 
-int	ft_atoi(const char *str)
+char	**split_cmds(char *str);
+
+int	main(void)
 {
-	int	i;
-	int	num;
-	int	minus;
+	char	*str;
+	char	**cmds;
 
-	i = 0;
-	num = 0;
-	minus = 1;
-	while (ft_isspace(str[i]))
-		i++;
-	if (str[i] == '-' || str[i] == '+')
+	str = "hey there \"this is a \'test test\' string\"";
+	cmds = split_cmds(str);
+
+	while (*cmds)
 	{
-		if (str[i] == '-')
-			minus = -1;
-		i++;
+		printf("%s", *cmds);
+		cmds++;
 	}
-	while (ft_isdigit(str[i]))
-	{
-		num = (num * 10) + (str[i] - '0');
-		i++;
-	}
-	return (num * minus);
 }
-
