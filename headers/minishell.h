@@ -5,4 +5,7 @@
 #include <stdio.h> // readline,
 
 
+int	is_operator(char c);
+char	*add_spaces(char *buffer);
+
 #endif
