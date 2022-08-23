@@ -36,3 +36,7 @@ utilizar `-lreadline` como em `gcc -Wall -Wextra -Werror nomearquivo.c -lreadlin
 < 111111111111111111
 < cat: '>': No such file or directory
 ```
+```
+> echo teste | cat readline.c >>> teste
+< syntax error near unexpected token `>'
+```
