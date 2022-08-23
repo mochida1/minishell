@@ -6,11 +6,21 @@
 /*   By: viferrei <viferrei@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 02:38:15 by viferrei          #+#    #+#             */
-/*   Updated: 2022/08/22 21:34:45 by viferrei         ###   ########.fr       */
+/*   Updated: 2022/08/24 00:04:23 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/minishell.h"
+
+int	contains_quotes(char *str)
+{
+	while(*str)
+	{
+		if (*str == '\"' || *str == '\'')
+			return (1);
+	}
+	return (0);
+}
 
 //	Replaces the DELIMITER in-between quotes to the non-printable character -1
 void	replace_between_quotes(char	*str, char delimiter)
@@ -20,7 +30,7 @@ void	replace_between_quotes(char	*str, char delimiter)
 	quote_type = 0;
 	while (*str)
 	{
-		if (*str == "\"" || *str == "\'")
+		if (*str == '\"' || *str == '\'')
 		{
 			quote_type = *str;
 			str++;
@@ -45,8 +55,8 @@ void	restore_delimiter(char **cmds, char delimiter)
 		str = *cmds;
 		while (*str)
 		{
-			if (*cmds == -1)
-				*cmds == delimiter;
+			if (*str == -1)
+				*str = delimiter;
 			str++;
 		}
 		cmds++;
@@ -59,9 +69,9 @@ char	**split_cmds(char *str)
 {
 	char	**cmds;
 	if (!contains_quotes(str))
-		return(ft_split(str, " "));
-	replace_between_quotes(str, " ");
-	cmds = ft_split(str, " ");
-	restore_delimiter(cmds, " ");
+		return(ft_split(str, ' '));
+	replace_between_quotes(str, ' ');
+	cmds = ft_split(str, ' ');
+	restore_delimiter(cmds, ' ');
 	return (cmds);
 }
