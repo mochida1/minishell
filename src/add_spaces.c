@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   add_spaces.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
+/*   By: viferrei <viferrei@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 00:30:49 by coder             #+#    #+#             */
-/*   Updated: 2022/08/23 02:20:35 by coder            ###   ########.fr       */
+/*   Updated: 2022/08/24 00:37:46 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include <unistd.h>
 #include <stdlib.h>
 
+// teste teste teste
 /*
 ** checa se o caracetere antes do índice indicado deveria ser um espaço;
 */
