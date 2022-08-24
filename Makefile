@@ -1,9 +1,10 @@
 NAME = minishell
 NAME_FS = minishell_fs
+MAKEFLAGS = --no-print-directory
 SOURCEDIR = src
 BUILDDIR = objs
-LIBS = libs
-
+LIBFT_DIR = libft
+LIBFT = $(LIBFT_DIR)/libft.a
 
 # Makes make look for source in this dir
 #VPATH = $(SOURCEDIR)
@@ -12,7 +13,7 @@ LIBS = libs
 INCLUDES = -I /headers
 
 # Lists sources. Manually because of norm...
-SRC_LIST = minishell.c \
+SRC_LIST = add_spaces_utils.c add_spaces.c minishell.c safe_free.c split_cmds.c 
 
 # Names sources
 SOURCES = $(addprefix $(SOURCEDIR)/,$(SRC_LIST))
@@ -24,17 +25,24 @@ OBJS := $(subst $(SOURCEDIR),$(BUILDDIR),$(SOURCES:.c=.o))
 CC = gcc
 CF = -Wall -Wextra -Werror -lreadline
 GDB = -ggdb
-VAL = valgrind --trace-children=yes --leak-check=full --track-origins=yes ./$(NAME)
+VAL = valgrind --trace-children=yes --leak-check=full --track-origins=yes \
+		./$(NAME)
 FSF = -fsanitize=address
 
 # Arguments to test the program with
 RUN_ARGS = ""
 
-$(NAME): $(OBJS)
+$(NAME): $(LIBFT) $(OBJS)
+	@printf "Compiling minishell..."
 	@$(CC) $(CF) $(OBJS) $(INCLUDES) -o $(NAME)
+	@printf "Done!"
 
 $(NAME_FS): $(OBJS)
 	@$(CC) $(CF) $(FSF) $(OBJS) $(INCLUDES) -o $(NAME_FS)
+
+$(LIBFT):
+	@printf "Compiling libft...\n"
+	@make -C $(LIBFT_DIR)
 
 objs/%.o: src/%.c
 	@mkdir -p objs
@@ -46,10 +54,12 @@ fs: $(NAME_FS)
 
 clean:
 	@rm -rf objs
+	@make clean -C $(LIBFT_DIR)
 
 fclean: clean
 	@rm -f $(NAME)
 	@rm -f $(NAME_FS)
+	@make fclean -C $(LIBFT_DIR)
 
 re: fclean all
 
