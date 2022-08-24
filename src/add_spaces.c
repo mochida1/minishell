@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 00:30:49 by coder             #+#    #+#             */
-/*   Updated: 2022/08/24 01:17:31 by coder            ###   ########.fr       */
+/*   Updated: 2022/08/24 02:21:32 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 #include "add_spaces_utils.c"
 
 /*
-** checa se o caracetere antes do índice indicado deveria ser um espaço;
+** Checks if the characater BEFORE op_index should be a [space];
 */
 int	need_space_before(char *buffer, int op_index, char operator)
 {
@@ -49,7 +49,7 @@ int	need_space_before(char *buffer, int op_index, char operator)
 }
 
 /*
-** checa se o caracetere antes do índice indicado deveria ser um espaço;
+** Checks if the characater AFTER op_index should be a [space];
 */
 int	need_space_after(char *buffer, int op_index, char operator)
 {
@@ -77,7 +77,7 @@ int	need_space_after(char *buffer, int op_index, char operator)
 }
 
 /*
-** Cria uma string nova, adicionando [espaço] depois do índice indicado;
+** Creates a new string, adding [space] after given index;
 */
 char	*add_space_before_index(char *buffer, int index)
 {
@@ -87,7 +87,7 @@ char	*add_space_before_index(char *buffer, int index)
 
 	i = 0;
 	j = 0;
-	ret = malloc (sizeof (char) * (strlen(buffer) + 2)); //ft no strlen!!!
+	ret = malloc (sizeof (char) * (ft_strlen(buffer) + 2));
 	while (buffer[i])
 	{
 		if (i == index)
@@ -127,7 +127,7 @@ char	*recursively_does_some_black_magic(char *buffer, int i)
 }
 
 /*
-** creates an allocated string, inserting spaces if before or after '<', '>',
+** Creates an allocated string, inserting spaces if before or after '<', '>',
 ** '<<', '>>' ou '|', there are no spaces; Does not deals with ||. It spaces it;
 */
 char	*add_spaces(char *buffer)
