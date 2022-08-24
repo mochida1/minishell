@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   split_cmds_teste.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: viferrei <viferrei@student.42sp.org.br     +#+  +:+       +#+        */
+/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/23 23:31:47 by viferrei          #+#    #+#             */
-/*   Updated: 2022/08/24 00:37:14 by viferrei         ###   ########.fr       */
+/*   Updated: 2022/08/24 02:28:06 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,12 @@ char	**split_cmds(char *str);
 int	main(void)
 {
 	char	*str;
+	char	*temp;
 	char	**cmds;
 
-	str = "hey there \"this is a \'test test\' string\"";
-	cmds = split_cmds(str);
+	str = "<< hi this is \" a test<<to>>test\" >><< >>>> \'>>\'<<>>";
+	temp = add_spaces(str);
+	cmds = split_cmds(temp);
 
 	while (*cmds)
 	{

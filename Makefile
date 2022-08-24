@@ -13,7 +13,7 @@ LIBFT = $(LIBFT_DIR)/libft.a
 INCLUDES = -I /headers
 
 # Lists sources. Manually because of norm...
-SRC_LIST = add_spaces_utils.c add_spaces.c minishell.c safe_free.c split_cmds.c 
+SRC_LIST = add_spaces_utils.c add_spaces.c minishell.c safe_free.c split_cmds.c
 
 # Names sources
 SOURCES = $(addprefix $(SOURCEDIR)/,$(SRC_LIST))
@@ -23,7 +23,7 @@ OBJS := $(subst $(SOURCEDIR),$(BUILDDIR),$(SOURCES:.c=.o))
 
 # Compiler
 CC = gcc
-CF = -Wall -Wextra -Werror -lreadline
+CF = -Wall -Wextra -Werror
 GDB = -ggdb
 VAL = valgrind --trace-children=yes --leak-check=full --track-origins=yes \
 		./$(NAME)
@@ -34,7 +34,7 @@ RUN_ARGS = ""
 
 $(NAME): $(LIBFT) $(OBJS)
 	@printf "Compiling minishell..."
-	@$(CC) $(CF) $(OBJS) $(INCLUDES) -o $(NAME)
+	@$(CC) $(CF) $(OBJS) $(INCLUDES) $(LIBFT) -lreadline -o $(NAME)
 	@printf "Done!"
 
 $(NAME_FS): $(OBJS)

@@ -6,17 +6,11 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 00:30:49 by coder             #+#    #+#             */
-/*   Updated: 2022/08/24 02:21:32 by coder            ###   ########.fr       */
+/*   Updated: 2022/08/24 02:55:23 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/minishell.h"
-#include <string.h>
-#include <unistd.h>
-#include <stdlib.h>
-
-#include "safe_free.c"
-#include "add_spaces_utils.c"
 
 /*
 ** Checks if the characater BEFORE op_index should be a [space];
