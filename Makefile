@@ -33,9 +33,9 @@ FSF = -fsanitize=address
 RUN_ARGS = ""
 
 $(NAME): $(LIBFT) $(OBJS)
-	@printf "Compiling minishell..."
+	@printf "Compiling minishell...\n"
 	@$(CC) $(CF) $(OBJS) $(INCLUDES) $(LIBFT) -lreadline -o $(NAME)
-	@printf "Done!"
+	@printf "Done!\n"
 
 $(NAME_FS): $(OBJS)
 	@$(CC) $(CF) $(FSF) $(OBJS) $(INCLUDES) -o $(NAME_FS)
