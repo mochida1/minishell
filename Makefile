@@ -1,13 +1,10 @@
 NAME = minishell
 NAME_FS = minishell_fs
 MAKEFLAGS = --no-print-directory
-SOURCEDIR = src
 BUILDDIR = objs
 LIBFT_DIR = libft
 LIBFT = $(LIBFT_DIR)/libft.a
-
-# Makes make look for source in this dir
-#VPATH = $(SOURCEDIR)
+VPATH = src tests
 
 # headers
 INCLUDES = -I /headers
@@ -16,10 +13,10 @@ INCLUDES = -I /headers
 SRC_LIST = add_spaces_utils.c add_spaces.c minishell.c safe_free.c split_cmds.c
 
 # Names sources
-SOURCES = $(addprefix $(SOURCEDIR)/,$(SRC_LIST))
+SOURCES = $(SRC_LIST)
 
 # Names objects
-OBJS := $(subst $(SOURCEDIR),$(BUILDDIR),$(SOURCES:.c=.o))
+OBJS = $(SOURCES:%.c=$(BUILDDIR)/%.o)
 
 # Compiler
 CC = gcc
@@ -29,31 +26,34 @@ VAL = valgrind --trace-children=yes --leak-check=full --track-origins=yes \
 		./$(NAME)
 FSF = -fsanitize=address
 
-# Arguments to test the program with
-RUN_ARGS = ""
-
 $(NAME): $(LIBFT) $(OBJS)
 	@printf "Compiling minishell...\n"
 	@$(CC) $(CF) $(OBJS) $(INCLUDES) $(LIBFT) -lreadline -o $(NAME)
 	@printf "Done!\n"
 
-$(NAME_FS): $(OBJS)
-	@$(CC) $(CF) $(FSF) $(OBJS) $(INCLUDES) -o $(NAME_FS)
+$(NAME_FS): $(LIBFT) $(OBJS)
+	@$(CC) $(CF) $(FSF) $(OBJS) $(INCLUDES) $(LIBFT) -lreadline -o $(NAME_FS)
+
+$(NAME_TEST): $(LIBFT) $(TEST_OBJS)
+	@printf "Compiling test files...\n"
+	@$(CC) $(CF) $(TEST_OBJS) $(INCLUDES) $(LIBFT) -o $(NAME_TEST)
 
 $(LIBFT):
 	@printf "Compiling libft...\n"
 	@make -C $(LIBFT_DIR)
 
-objs/%.o: src/%.c
-	@mkdir -p objs
+$(BUILDDIR)/%.o: %.c
+	@mkdir -p $(BUILDDIR)
 	@$(CC) $(CF) $(GDB) $(INCLUDES) -c $< -o $@
 
 all: $(NAME)
 
 fs: $(NAME_FS)
 
+test: $(NAME_TEST)
+
 clean:
-	@rm -rf objs
+	@rm -rf $(BUILDDIR)
 	@make clean -C $(LIBFT_DIR)
 
 fclean: clean
@@ -70,8 +70,8 @@ bonus:
 run: all
 	$(VAL) $(RUN_ARGS)
 
-make teste: $(NAME_FS)
-	./$(NAME_FS) $(RUN_ARGS)
+fs: $(NAME_FS)
+	./$(NAME_FS)
 
 git: fclean
 	git add -A
