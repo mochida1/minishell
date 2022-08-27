@@ -1,22 +1,27 @@
-NAME = minishell
-NAME_FS = minishell_fs
+NAME = tester
+NAME_FS = tester_fs
 MAKEFLAGS = --no-print-directory
-BUILDDIR = objs
-LIBFT_DIR = libft
+SRCDIR = ../src
+BUILDDIR = test_objs
+TESTDIR = ./
+LIBFT_DIR = ../libft
 LIBFT = $(LIBFT_DIR)/libft.a
-VPATH = src tests
+VPATH = ../ src tests
+INCLUDE = -I ../
 
 # headers
 INCLUDES = -I /headers
 
-# Lists sources. Manually because of norm...
-SRC_LIST = add_spaces_utils.c add_spaces.c minishell.c safe_free.c split_cmds.c
+# WITHOUT MINISHELL.C BECAUSE OF MAIN
+SRC_LIST = add_spaces_utils.c add_spaces.c safe_free.c split_cmds.c
+TEST_LIST = main_tests.c
 
 # Names sources
 SOURCES = $(SRC_LIST)
 
 # Names objects
 OBJS = $(SOURCES:%.c=$(BUILDDIR)/%.o)
+TEST_OBJS = $(TEST_LIST:%.c=$(BUILDDIR)/%.o) 
 
 # Compiler
 CC = gcc
@@ -26,17 +31,13 @@ VAL = valgrind --trace-children=yes --leak-check=full --track-origins=yes \
 		./$(NAME)
 FSF = -fsanitize=address
 
-$(NAME): $(LIBFT) $(BUILDDIR) $(OBJS) 
-	@printf "Compiling minishell...\n"
-	@$(CC) $(CF) $(OBJS) $(INCLUDES) $(LIBFT) -lreadline -o $(NAME)
+$(NAME): $(LIBFT) $(BUILDDIR) $(OBJS) $(TEST_OBJS)
+	@printf "Compiling tester...\n"
+	$(CC) $(CF) $(OBJS) $(TEST_OBJS) $(INCLUDES) $(LIBFT) -o $(NAME)
 	@printf "Done!\n"
 
 $(NAME_FS): $(LIBFT) $(OBJS)
-	@$(CC) $(CF) $(FSF) $(OBJS) $(INCLUDES) $(LIBFT) -lreadline -o $(NAME_FS)
-
-$(NAME_TEST): $(LIBFT) $(TEST_OBJS)
-	@printf "Compiling test files...\n"
-	@$(CC) $(CF) $(TEST_OBJS) $(INCLUDES) $(LIBFT) -o $(NAME_TEST)
+	@$(CC) $(CF) $(FSF) $(OBJS) $(INCLUDES) $(LIBFT) -o $(NAME_FS)
 
 $(LIBFT):
 	@printf "Compiling libft...\n"
@@ -45,8 +46,13 @@ $(LIBFT):
 $(BUILDDIR):
 	@mkdir -p $(BUILDDIR)
 
-$(BUILDDIR)/%.o: %.c $(BUILDDIR)
+$(BUILDDIR)/%.o: $(SRCDIR)/%.c
 	@$(CC) $(CF) $(GDB) $(INCLUDES) -c $< -o $@
+
+# Creates object files in present directory
+%.o: %.c
+	@$(CC) $(CF) $(GDB) $(INCLUDES) -c $< -o $@
+	@mv *.o $(BUILDDIR)/
 
 all: $(NAME)
 
@@ -67,7 +73,7 @@ re: fclean all
 
 # from here on shit ain't mandatory or bonus
 run: all
-	$(VAL)
+	$(VAL) $(RUN_ARGS)
 
 fs: $(NAME_FS)
 	./$(NAME_FS)
