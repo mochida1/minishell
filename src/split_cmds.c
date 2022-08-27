@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   split_cmds.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: viferrei <viferrei@student.42sp.org.br     +#+  +:+       +#+        */
+/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 02:38:15 by viferrei          #+#    #+#             */
-/*   Updated: 2022/08/24 00:04:23 by viferrei         ###   ########.fr       */
+/*   Updated: 2022/08/27 23:04:04 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	contains_quotes(char *str)
 {
-	while(*str)
+	while (*str)
 	{
 		if (*str == '\"' || *str == '\'')
 			return (1);
@@ -26,7 +26,7 @@ int	contains_quotes(char *str)
 void	replace_between_quotes(char	*str, char delimiter)
 {
 	int	quote_type;
-	
+
 	quote_type = 0;
 	while (*str)
 	{
@@ -35,9 +35,9 @@ void	replace_between_quotes(char	*str, char delimiter)
 			quote_type = *str;
 			str++;
 		}
-		while(*str && quote_type)
+		while (*str && quote_type)
 		{
-			if(*str == delimiter)
+			if (*str == delimiter)
 				*str = -1;
 			if (*str == quote_type)
 				quote_type = 0;
@@ -50,6 +50,7 @@ void	replace_between_quotes(char	*str, char delimiter)
 void	restore_delimiter(char **cmds, char delimiter)
 {
 	char	*str;
+
 	while (*cmds)
 	{
 		str = *cmds;
@@ -68,8 +69,9 @@ void	restore_delimiter(char **cmds, char delimiter)
 char	**split_cmds(char *str)
 {
 	char	**cmds;
+
 	if (!contains_quotes(str))
-		return(ft_split(str, ' '));
+		return (ft_split(str, ' '));
 	replace_between_quotes(str, ' ');
 	cmds = ft_split(str, ' ');
 	restore_delimiter(cmds, ' ');

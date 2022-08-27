@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 21:38:27 by coder             #+#    #+#             */
-/*   Updated: 2022/08/27 22:17:50 by coder            ###   ########.fr       */
+/*   Updated: 2022/08/27 22:59:47 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@
 */
 t_env_list	*get_env(char **envp)
 {
-	int	index;
-	t_env_list *self;
+	int			index;
+	t_env_list	*self;
 	t_env_list	*temp;
 
 	index = 0;
@@ -43,8 +43,8 @@ t_env_list	*get_env(char **envp)
 */
 void	destroy_env_list(t_env_list *envs)
 {
-	t_env_list *temp;
-	t_env_list *freeme;
+	t_env_list	*temp;
+	t_env_list	*freeme;
 
 	temp = envs;
 	while (temp)
