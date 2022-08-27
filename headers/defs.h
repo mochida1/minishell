@@ -1,5 +1,5 @@
-#ifndef DEF_H
-# define DEF_H
+#ifndef DEFS_H
+# define DEFS_H
 
 typedef struct	s_env_list
 {
