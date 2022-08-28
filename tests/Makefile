@@ -21,7 +21,7 @@ SOURCES = $(SRC_LIST)
 
 # Names objects
 OBJS = $(SOURCES:%.c=$(BUILDDIR)/%.o)
-TEST_OBJS = $(TEST_LIST:%.c=$(BUILDDIR)/%.o) 
+TEST_OBJS = $(TEST_LIST:%.c=%.o) 
 
 # Compiler
 CC = gcc
@@ -33,7 +33,7 @@ FSF = -fsanitize=address
 
 $(NAME): $(LIBFT) $(BUILDDIR) $(OBJS) $(TEST_OBJS)
 	@printf "Compiling tester...\n"
-	$(CC) $(CF) $(OBJS) $(TEST_OBJS) $(INCLUDES) $(LIBFT) -o $(NAME)
+	$(CC) $(CF) $(OBJS) $(BUILDDIR)/$(TEST_OBJS) $(INCLUDES) $(LIBFT) -o $(NAME)
 	@printf "Done!\n"
 
 $(NAME_FS): $(LIBFT) $(OBJS)
