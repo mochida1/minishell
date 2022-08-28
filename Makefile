@@ -4,15 +4,28 @@ MAKEFLAGS = --no-print-directory
 BUILDDIR = objs
 LIBFT_DIR = libft
 LIBFT = $(LIBFT_DIR)/libft.a
+<<<<<<< HEAD
 VPATH = src src/builtin tests
+=======
+VPATH = src tests src/builtin src/states src/prompt src/utils
+>>>>>>> origin/hm-mvp
 
 # headers
 INCLUDES = -I /headers
 
 # Lists sources. Manually because of norm...
+<<<<<<< HEAD
 BUILTIN = builtin_env.c
 SRC_LIST = add_spaces_utils.c add_spaces.c get_env.c safe_free.c split_cmds.c \
 			minishell.c
+=======
+SRC_LIST = minishell.c \
+builtin_env.c echo.c \
+add_spaces.c add_spaces_utils.c prompt_utils.c ft_split_shell.c \
+error_state.c exec_state.c init_state.c parse_state.c prompt_state.c clean_state.c\
+get_env.c safe_free.c \
+
+>>>>>>> origin/hm-mvp
 
 # Names sources
 SOURCES = $(BUILTIN) $(SRC_LIST)
@@ -28,7 +41,7 @@ VAL = valgrind --trace-children=yes --leak-check=full --track-origins=yes \
 		./$(NAME)
 FSF = -fsanitize=address
 
-$(NAME): $(LIBFT) $(BUILDDIR) $(OBJS) 
+$(NAME): $(LIBFT) $(BUILDDIR) $(OBJS)
 	@printf "Compiling minishell...\n"
 	@$(CC) $(CF) $(OBJS) $(INCLUDES) $(LIBFT) -lreadline -o $(NAME)
 	@printf "Done!\n"
