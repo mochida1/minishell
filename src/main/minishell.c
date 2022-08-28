@@ -6,15 +6,11 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 01:58:25 by viferrei          #+#    #+#             */
-<<<<<<< HEAD:src/main/minishell.c
-/*   Updated: 2022/08/28 03:00:15 by viferrei         ###   ########.fr       */
-=======
-/*   Updated: 2022/08/28 23:27:31 by coder            ###   ########.fr       */
->>>>>>> origin/hm-mvp:src/minishell.c
+/*   Updated: 2022/08/29 00:29:05 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../headers/minishell.h"
+#include "../../headers/minishell.h"
 
 int	main(int argc, char *argv[], char **envp)
 {
@@ -26,9 +22,6 @@ int	main(int argc, char *argv[], char **envp)
 	ms->state = 1;
 	while (1)
 	{
-<<<<<<< HEAD:src/main/minishell.c
-		buffer = readline("🦄 $> ");
-=======
 		if (ms->state <= ERRSTATE)
 			error_state(ms);
 		if (ms->state == INITSTATE)
@@ -41,7 +34,6 @@ int	main(int argc, char *argv[], char **envp)
 			exec_state(ms);
 		if (ms->state == CLEANSTATE)
 			clean_state(ms);
->>>>>>> origin/hm-mvp:src/minishell.c
 	}
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 23:09:16 by coder             #+#    #+#             */
-/*   Updated: 2022/08/28 23:27:52 by coder            ###   ########.fr       */
+/*   Updated: 2022/08/29 00:27:12 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,29 +28,18 @@ int			exec_state(t_ms_data *ms);
 int			clean_state(t_ms_data *ms);
 
 // safe_free.c
-<<<<<<< HEAD
-int			safe_free (void *content);
-=======
 void		*safe_free(void *content);
 void		*free_rl_split(t_ms_data *ms);
 void		*destroy_token_list(t_ms_data *ms);
->>>>>>> origin/hm-mvp
 
 // add_spaces.c
 char		*add_spaces(char *buffer);
 
-<<<<<<< HEAD
-//add_spaces_utils.c
-=======
 // add_spaces_utils.c
->>>>>>> origin/hm-mvp
 int			is_operator(char c);
 
 // get_envs.c
 t_env_list	*get_env(char **envp);
-<<<<<<< HEAD
-void		destroy_env_list(t_env_list *envs);
-=======
 void		*destroy_env_list(t_env_list *envs);
 
 // prompt_utils.c
@@ -59,6 +48,5 @@ int			get_data_from_readline(t_ms_data *ms);
 
 // ft_split_shell.c
 char	**ft_split_shell(char *str, char delimiter);
->>>>>>> origin/hm-mvp
 
 #endif
