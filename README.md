@@ -10,19 +10,22 @@ utilizar `-lreadline` como em `gcc -Wall -Wextra -Werror nomearquivo.c -lreadlin
 
 ## metacharacters
 
-`|`	: pipe
-`$`	: dolla sign
-`>`	:
-`<`	:
-`'`	:
-`"`	:
-`>>`:
-`<<`:
-`.` :
-`/` :
+- `|`	: pipe
+- `$`	: dolla sign
+- `>`	:
+- `<`	:
+- `'`	:
+- `"`	:
+- `>>`:
+- `<<`:
+- `.` :
+- `/` :
 
 ## pior caso
 ```<./infile.txt cmd1 'arg"' "arg'" 'apenas'"1"'arg'|cmd2 "arg||" "$var" '$notvar'>~/dir/outfile```
+
+## pontos de atenção
+- usuário dá unset na env PATH e roda comando: deve retornar No such file or directory.
 
 
 ## testes para regras de parsing
