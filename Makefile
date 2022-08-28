@@ -54,7 +54,10 @@ all: $(NAME)
 
 fs: $(NAME_FS)
 
-test: $(NAME_TEST)
+test:
+	@make -C tests/
+	@printf "\n"
+	@./tests/tester
 
 clean:
 	@rm -rf $(BUILDDIR)
