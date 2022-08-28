@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 17:38:58 by coder             #+#    #+#             */
-/*   Updated: 2022/08/28 23:58:14 by coder            ###   ########.fr       */
+/*   Updated: 2022/08/29 00:36:54 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,8 @@ int	expand_variables(t_ms_data *ms)
 */
 void	categorize_tokens(t_tokens *tokens)
 {
-	assert (tokens != 0);
+	if (token)
+		assert (tokens != 0);
 }
 
 /*
