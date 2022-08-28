@@ -4,16 +4,18 @@ MAKEFLAGS = --no-print-directory
 BUILDDIR = objs
 LIBFT_DIR = libft
 LIBFT = $(LIBFT_DIR)/libft.a
-VPATH = src tests
+VPATH = src src/builtin tests
 
 # headers
 INCLUDES = -I /headers
 
 # Lists sources. Manually because of norm...
-SRC_LIST = add_spaces_utils.c add_spaces.c minishell.c safe_free.c split_cmds.c
+BUILTIN = builtin_env.c
+SRC_LIST = add_spaces_utils.c add_spaces.c get_env.c safe_free.c split_cmds.c \
+			minishell.c
 
 # Names sources
-SOURCES = $(SRC_LIST)
+SOURCES = $(BUILTIN) $(SRC_LIST)
 
 # Names objects
 OBJS = $(SOURCES:%.c=$(BUILDDIR)/%.o)
