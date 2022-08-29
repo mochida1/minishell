@@ -6,14 +6,20 @@ BUILDDIR = test_objs
 TESTDIR = ./
 LIBFT_DIR = ../libft
 LIBFT = $(LIBFT_DIR)/libft.a
-VPATH = ../ src tests
+VPATH = ../src ../src/builtin ../src/states ../src/prompt ../src/utils
 INCLUDE = -I ../
 
 # headers
 INCLUDES = -I /headers
 
 # WITHOUT MINISHELL.C BECAUSE OF MAIN
-SRC_LIST = add_spaces_utils.c add_spaces.c safe_free.c split_cmds.c
+SRC_LIST = \
+builtin_env.c echo.c \
+add_spaces.c add_spaces_utils.c prompt_utils.c ft_split_shell.c \
+error_state.c exec_state.c init_state.c parse_state.c prompt_state.c \
+clean_state.c get_env.c safe_free.c \
+expand_vars.c
+
 TEST_LIST = main_tests.c
 
 # Names sources
@@ -31,10 +37,10 @@ VAL = valgrind --trace-children=yes --leak-check=full --track-origins=yes \
 		./$(NAME)
 FSF = -fsanitize=address
 
-$(NAME): $(LIBFT) $(BUILDDIR) $(OBJS) $(TEST_OBJS)
-	@printf "Compiling tester...\n"
-	@$(CC) $(CF) $(OBJS) $(BUILDDIR)/$(TEST_OBJS) $(INCLUDES) $(LIBFT) -o $(NAME)
-	@printf "Done!\n"
+$(NAME): $(LIBFT) $(BUILDDIR) $(TEST_OBJS) $(OBJS) 
+	printf "Compiling tester...\n"
+	$(CC) $(CF) $(OBJS) $(BUILDDIR)/$(TEST_OBJS) $(INCLUDES) $(LIBFT) -o $(NAME)
+	printf "Done!\n"
 
 $(NAME_FS): $(LIBFT) $(OBJS)
 	@$(CC) $(CF) $(FSF) $(OBJS) $(INCLUDES) $(LIBFT) -o $(NAME_FS)
@@ -46,13 +52,13 @@ $(LIBFT):
 $(BUILDDIR):
 	@mkdir -p $(BUILDDIR)
 
-$(BUILDDIR)/%.o: $(SRCDIR)/%.c
-	@$(CC) $(CF) $(GDB) $(INCLUDES) -c $< -o $@
+$(BUILDDIR)/%.o: $(SRCDIR)/*/%.c
+	$(CC) $(CF) $(GDB) $(INCLUDES) -c $< -o $@
 
 # Creates object files in present directory
 %.o: %.c
-	@$(CC) $(CF) $(GDB) $(INCLUDES) -c $< -o $@
-	@mv *.o $(BUILDDIR)/
+	$(CC) $(CF) $(GDB) $(INCLUDES) -c $< -o $@
+	mv *.o $(BUILDDIR)/
 
 all: $(NAME)
 
