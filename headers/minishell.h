@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
+/*   By: viferrei <viferrei@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 23:09:16 by coder             #+#    #+#             */
-/*   Updated: 2022/08/29 00:27:12 by coder            ###   ########.fr       */
+/*   Updated: 2022/08/29 18:12:29 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,5 +48,9 @@ int			get_data_from_readline(t_ms_data *ms);
 
 // ft_split_shell.c
 char	**ft_split_shell(char *str, char delimiter);
+
+// expand_vars.c
+size_t	get_names_size(char *str);
+int	expand_variables(t_ms_data *ms);
 
 #endif

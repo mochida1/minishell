@@ -18,7 +18,7 @@ clean_state.c get_env.c safe_free.c \
 expand_vars.c
 
 # Names sources
-SOURCES = $(BUILTIN) $(SRC_LIST)
+SOURCES = $(SRC_LIST)
 
 # Names objects
 OBJS = $(SOURCES:%.c=$(BUILDDIR)/%.o)
