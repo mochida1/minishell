@@ -13,9 +13,9 @@ INCLUDES = -I /headers
 SRC_LIST = minishell.c \
 builtin_env.c echo.c \
 add_spaces.c add_spaces_utils.c prompt_utils.c ft_split_shell.c \
-error_state.c exec_state.c init_state.c parse_state.c prompt_state.c clean_state.c\
-get_env.c safe_free.c \
-
+error_state.c exec_state.c init_state.c parse_state.c prompt_state.c \
+clean_state.c get_env.c safe_free.c \
+expand_vars.c
 
 # Names sources
 SOURCES = $(BUILTIN) $(SRC_LIST)

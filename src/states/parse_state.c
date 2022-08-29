@@ -38,6 +38,11 @@ t_tokens	*tokenize_splits(t_ms_data *ms)
 	return (self);
 }
 
+size_t	get_names_size(char *str)
+{
+
+}
+
 /*
 ** Expand variables;
 ** NOTE: try recursion for variables inside variables.
@@ -51,6 +56,8 @@ int	expand_variables(t_ms_data *ms)
 	char	*final_str;
 
 	buffer_size = ft_strlen(ms->rl_buffer);
+	names_size = get_names_size();
+
 	return (ms->state);
 }
 

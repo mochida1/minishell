@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_state.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
+/*   By: viferrei <viferrei@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 20:59:48 by coder             #+#    #+#             */
-/*   Updated: 2022/08/28 23:26:42 by coder            ###   ########.fr       */
+/*   Updated: 2022/08/29 17:54:33 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@
 */
 int	print_token_list(t_ms_data *ms)
 {
-	int	ret;
-	t_tokens *temp;
+	int			ret;
+	t_tokens	*temp;
 
 	ret = 0;
 	temp = ms->tokens;
