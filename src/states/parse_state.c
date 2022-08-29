@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_state.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
+/*   By: viferrei <viferrei@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 17:38:58 by coder             #+#    #+#             */
-/*   Updated: 2022/08/29 00:36:54 by coder            ###   ########.fr       */
+/*   Updated: 2022/08/29 02:43:17 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,17 @@ t_tokens	*tokenize_splits(t_ms_data *ms)
 }
 
 /*
-** Expande as variáveis dentro das splits;
+** Expand variables;
 */
 int	expand_variables(t_ms_data *ms)
 {
+	size_t	buffer_size;
+	size_t	final_size;
+	size_t	names_size;
+	size_t	values_size;
+	char	*final_str;
+
+	buffer_size = ft_strlen(ms->rl_buffer);
 	return (ms->state);
 }
 
@@ -51,7 +58,7 @@ int	expand_variables(t_ms_data *ms)
 */
 void	categorize_tokens(t_tokens *tokens)
 {
-	if (token)
+	if (tokens)
 		assert (tokens != 0);
 }
 
