@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 00:44:38 by coder             #+#    #+#             */
-/*   Updated: 2022/08/29 00:00:45 by coder            ###   ########.fr       */
+/*   Updated: 2022/08/29 02:49:39 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,9 +50,9 @@ void	*destroy_token_list(t_ms_data *ms)
 		freeme = ms->tokens;
 		safe_free(freeme->value);
 		freeme->value = NULL;
+		ms->tokens = ms->tokens->next;
 		safe_free(freeme);
 		freeme = NULL;
-		ms->tokens = ms->tokens->next;
 	}
 	return (NULL);
 }

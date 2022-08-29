@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 00:30:49 by coder             #+#    #+#             */
-/*   Updated: 2022/08/28 22:51:15 by coder            ###   ########.fr       */
+/*   Updated: 2022/08/29 03:00:11 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ static char	*add_space_before_index(char *buffer, int index)
 
 	i = 0;
 	j = 0;
-	ret = malloc (sizeof (char) * (ft_strlen(buffer) + 2));
+	ret = malloc (sizeof (char) * (ft_strlen(buffer) + 1));
 	while (buffer[i])
 	{
 		if (i == index)
