@@ -1,5 +1,6 @@
 NAME = tester
 MAKEFLAGS = --no-print-directory
+VFLAGS = --trace-children=yes --leak-check=full --track-origins=yes
 
 # DIRECTORIES
 SRCDIR = ../
@@ -10,7 +11,11 @@ LIBFT = $(LIBFT_DIR)/libft.a
 VPATH = ../src ../src/builtin ../src/states ../src/prompt ../src/utils
 INCLUDE = -I ../
 
-SOURCES = expand_vars.c main_tests.c
+SOURCES = add_spaces_utils.c \
+			add_spaces.c \
+			expand_vars.c \
+			safe_free.c \
+			main_tests.c 
 OBJS = $(SOURCES:%.c=$(BUILDDIR)/%.o)
 
 # COMPILER
@@ -38,6 +43,7 @@ $(BUILDDIR):
 $(BUILDDIR)/%.o: $(SRCDIR)/*/*/%.c	# looks for all .c files in root directory
 	$(CC) $(CF) $(GDB) $(INCLUDES) -c $< -o $@
 
+# LIBFT
 $(LIBFT):
 	@printf "$(GREEN)Compiling libft...$(NC)\n"
 	@make -C $(LIBFT_DIR)
@@ -56,6 +62,9 @@ fclean: clean
 re: fclean all
 
 # from here on shit ain't mandatory or bonus
+val:
+	valgrind $(VFLAGS) ./$(NAME)
+
 git: fclean
 	git add -A
 	git commit -m "make git"
