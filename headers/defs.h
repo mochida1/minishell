@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 23:09:13 by coder             #+#    #+#             */
-/*   Updated: 2022/08/29 02:26:51 by coder            ###   ########.fr       */
+/*   Updated: 2022/08/31 01:55:10 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ typedef struct s_env_list
 
 typedef struct s_ms_data
 {
+	int					set_buffer_to_null;
 	int					state;
 	int					issue_exit;
 	char				*rl_buffer;

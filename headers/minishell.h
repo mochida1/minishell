@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 23:09:16 by coder             #+#    #+#             */
-/*   Updated: 2022/08/29 00:27:12 by coder            ###   ########.fr       */
+/*   Updated: 2022/08/31 01:58:16 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,8 @@ void		*free_rl_split(t_ms_data *ms);
 void		*destroy_token_list(t_ms_data *ms);
 
 // add_spaces.c
-char		*add_spaces(char *buffer);
+char		*add_spaces(char *buffer, t_ms_data *ms);
+
 
 // add_spaces_utils.c
 int			is_operator(char c);
