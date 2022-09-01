@@ -11,10 +11,7 @@ LIBFT = $(LIBFT_DIR)/libft.a
 VPATH = ../src ../src/builtin ../src/states ../src/prompt ../src/utils
 INCLUDE = -I ../
 
-SOURCES = add_spaces_utils.c \
-			add_spaces.c \
-			expand_vars.c \
-			safe_free.c \
+SOURCES = expand_vars.c \
 			main_tests.c 
 OBJS = $(SOURCES:%.c=$(BUILDDIR)/%.o)
 
@@ -71,3 +68,36 @@ git: fclean
 	git push
 
 PHONY: all clean fclean re run
+
+meme:
+	@printf "                             ▄██▄\n"
+	@printf "                             ▀███\n"
+	@printf "                                █\n"
+	@printf "               \e[0;93m▄▄▄▄▄\e[0m            █\n"
+	@printf "              \e[0;93m▀▄    ▀▄\e[0m          █\n"
+	@printf "          ▄▀▀▀▄ \e[0;93m█\e[0m▄▄▄▄\e[0;93m█\e[0m▄▄ ▄▀▀▀▄  █      \e[1;95;7mCOMPILE\e[0m\n"
+	@printf "         █  ▄  █        █   ▄ █ █      \e[1;92;7m  ALL  \e[0m\n"
+	@printf "         ▀▄   ▄▀        ▀▄   ▄▀ █      \e[1;95;7m  THE  \e[0m\n"
+	@printf "          █▀▀▀            ▀▀▀ █ █      \e[1;95;7mTHINGS!\e[0m\n"
+	@printf "          █                   █ █\n"
+	@printf "▄▀▄▄▀▄    █  ▄█▀█▀█▀█▀█▀█▄    █ █\n"
+	@printf "█▒▒▒▒█    █  █████████████▄   █ █\n"
+	@printf "█▒▒▒▒█    █  ██████████████▄  █ █\n"
+	@printf "█▒▒▒▒█    █   ██████████████▄ █ █\n"
+	@printf "█▒▒▒▒█    █    ██████████████ █ █\n"
+	@printf "█▒▒▒▒█    █   ██████████████▀ █ █\n"
+	@printf "█▒▒▒▒█   ██   ██████████████  █ █\n"
+	@printf "▀████▀  ██▀█  █████████████▀  █▄█\n"
+	@printf "  ██   ██  ▀█  █▄█▄█▄█▄█▄█▀  ▄█▀\n"
+	@printf "  ██  ██    ▀█             ▄▀\e[0;95m▓\e[0m█\n"
+	@printf "  ██ ██      ▀█▀▄▄▄▄▄▄▄▄▄▀▀\e[0;95m▓▓▓\e[0m█\n"
+	@printf "  ████        █\e[0;95m▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓\e[0m█\n"
+	@printf "  ███         █\e[0;95m▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓\e[0m█\n"
+	@printf "  ██          █\e[0;95m▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓\e[0m█\n"
+	@printf "  ██          █\e[0;95m▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓\e[0m█\n"
+	@printf "  ██         ▐█\e[0;95m▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓\e[0m█\n"
+	@printf "  ██        ▐█\e[0;95m▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓\e[0m█\n"
+	@printf "  ██       ▐█\e[0;95m▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓\e[0m█▌\n"
+	@printf "  ██      ▐█\e[0;95m▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓\e[0m█▌\n"
+	@printf "  ██     ▐█\e[0;95m▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓\e[0m█▌\n"
+	@printf "  ██    ▐█\e[0;95m▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓\e[0m█▌\n"
