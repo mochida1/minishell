@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: viferrei <viferrei@student.42sp.org.br     +#+  +:+       +#+        */
+/*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 23:09:16 by coder             #+#    #+#             */
-/*   Updated: 2022/08/29 18:12:29 by viferrei         ###   ########.fr       */
+/*   Updated: 2022/09/01 19:33:01 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,8 @@ void		*free_rl_split(t_ms_data *ms);
 void		*destroy_token_list(t_ms_data *ms);
 
 // add_spaces.c
-char		*add_spaces(char *buffer);
+char		*add_spaces(char *buffer, t_ms_data *ms);
+
 
 // add_spaces_utils.c
 int			is_operator(char c);

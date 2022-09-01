@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 23:09:13 by coder             #+#    #+#             */
-/*   Updated: 2022/08/28 23:17:36 by coder            ###   ########.fr       */
+/*   Updated: 2022/08/31 01:55:10 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # define PROMPTSTATE	2
 # define PARSESTATE		3
 # define EXECSTATE		4
+# define CLEANSTATE		5
 
 /*
 ** TOKEN TYPE definitions
@@ -37,7 +38,6 @@
 # define WORDTOKEN		2
 # define OPTOKEN		3
 # define REDTOKEN		4
-# define CLEANSTATE		5
 
 typedef struct s_tokens
 {
@@ -54,6 +54,7 @@ typedef struct s_env_list
 
 typedef struct s_ms_data
 {
+	int					set_buffer_to_null;
 	int					state;
 	int					issue_exit;
 	char				*rl_buffer;

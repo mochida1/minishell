@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_state.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: viferrei <viferrei@student.42sp.org.br     +#+  +:+       +#+        */
+/*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 17:38:58 by coder             #+#    #+#             */
-/*   Updated: 2022/08/29 18:08:43 by viferrei         ###   ########.fr       */
+/*   Updated: 2022/09/01 19:33:16 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,11 @@ void	categorize_tokens(t_tokens *tokens)
 */
 int	parse_state(t_ms_data *ms)
 {
-	ms->rl_spaced_buffer = add_spaces(ms->rl_buffer);
+	ms->rl_spaced_buffer = add_spaces(ms->rl_buffer, ms);
+	if (ms->set_buffer_to_null)
+	{
+		ms->rl_buffer = NULL;
+	}
 	ms->rl_split = ft_split_shell(ms->rl_spaced_buffer, ' ');
 	assert (ms->rl_split);
 	expand_variables(ms);

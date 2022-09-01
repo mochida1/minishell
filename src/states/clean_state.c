@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 23:06:20 by coder             #+#    #+#             */
-/*   Updated: 2022/08/28 23:56:26 by coder            ###   ########.fr       */
+/*   Updated: 2022/08/31 02:39:31 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,13 @@
 
 int	clean_state(t_ms_data *ms)
 {
+	printf ("%p\n", ms->rl_buffer);
+	printf ("%p\n", ms->rl_spaced_buffer);
+	printf ("%s\n", ms->rl_buffer);
+	printf ("%s\n", ms->rl_spaced_buffer);
+	if (ms->rl_buffer != ms->rl_spaced_buffer)
+		ms->rl_spaced_buffer = safe_free(ms->rl_spaced_buffer);
 	ms->rl_buffer = safe_free(ms->rl_buffer);
-	ms->rl_spaced_buffer = safe_free(ms->rl_spaced_buffer);
 	ms->rl_split = free_rl_split(ms);
 	ms->tokens = destroy_token_list(ms);
 	if (ms->issue_exit)

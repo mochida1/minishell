@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 00:30:49 by coder             #+#    #+#             */
-/*   Updated: 2022/08/28 22:51:15 by coder            ###   ########.fr       */
+/*   Updated: 2022/08/31 02:15:47 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ static char	*add_space_before_index(char *buffer, int index)
 	return (ret);
 }
 
-static char	*recursively_does_some_black_magic(char *buffer, int i)
+static char	*recursively_does_black_magic(char *buffer, int i, t_ms_data *ms)
 {
 	char	*temp;
 
@@ -107,7 +107,8 @@ static char	*recursively_does_some_black_magic(char *buffer, int i)
 		buffer = safe_free(buffer);
 		buffer = temp;
 		temp = NULL;
-		return (add_spaces(buffer));
+		ms->set_buffer_to_null = 1;
+		return (add_spaces(buffer, ms));
 	}
 	if (need_space_after(buffer, i, buffer[i]))
 	{
@@ -115,7 +116,8 @@ static char	*recursively_does_some_black_magic(char *buffer, int i)
 		buffer = safe_free(buffer);
 		buffer = temp;
 		temp = NULL;
-		return (add_spaces(buffer));
+		ms->set_buffer_to_null = 1;
+		return (add_spaces(buffer, ms));
 	}
 	return (buffer);
 }
@@ -124,7 +126,7 @@ static char	*recursively_does_some_black_magic(char *buffer, int i)
 ** Creates an allocated string, inserting spaces if before or after '<', '>',
 ** '<<', '>>' ou '|', there are no spaces; Does not deals with ||. It spaces it;
 */
-char	*add_spaces(char *buffer)
+char	*add_spaces(char *buffer, t_ms_data *ms)
 {
 	int		i;
 	char	*temp;
@@ -147,7 +149,7 @@ char	*add_spaces(char *buffer)
 			continue ;
 		}
 		if (is_operator(buffer[i]))
-			buffer = recursively_does_some_black_magic(buffer, i);
+			buffer = recursively_does_black_magic(buffer, i, ms);
 		i++;
 	}
 	return (buffer);
