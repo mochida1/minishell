@@ -6,11 +6,11 @@
 /*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/01 19:22:40 by viferrei          #+#    #+#             */
-/*   Updated: 2022/09/01 19:23:44 by viferrei         ###   ########.fr       */
+/*   Updated: 2022/09/01 19:42:48 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int			ft_isquote(int c)
+int	ft_isquote(int c)
 {
 	if (c == '\'' || c == '\"')
 		return (1);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   safe_free.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
+/*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 00:44:38 by coder             #+#    #+#             */
-/*   Updated: 2022/08/29 02:49:39 by coder            ###   ########.fr       */
+/*   Updated: 2022/09/01 19:43:06 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	*free_rl_split(t_ms_data *ms)
 
 void	*destroy_token_list(t_ms_data *ms)
 {
-	t_tokens *freeme;
+	t_tokens	*freeme;
 
 	if (!ms->tokens)
 		return (NULL);

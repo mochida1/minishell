@@ -6,7 +6,7 @@
 /*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 17:40:14 by viferrei          #+#    #+#             */
-/*   Updated: 2022/09/01 19:29:00 by viferrei         ###   ########.fr       */
+/*   Updated: 2022/09/01 19:50:33 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ size_t	get_names_size(char *str)
 	size = 0;
 	while (*str)
 	{
+		if (*str == '\'')
+			break ;
 		if (*str == '$')
 		{
 			size++;
@@ -39,7 +41,7 @@ size_t	get_names_size(char *str)
 ** Expand variables;
 ** NOTE: try recursion for variables inside variables.
 */
-int	expand_variables(t_ms_data *ms)
+int	expand_variables(t_tokens *tokens)
 {
 	size_t	buffer_size;
 	size_t	names_size;
