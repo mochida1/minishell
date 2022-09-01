@@ -1,26 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main_tests.c                                       :+:      :+:    :+:   */
+/*   ft_isquote.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/23 23:31:47 by viferrei          #+#    #+#             */
-/*   Updated: 2022/09/01 19:30:03 by viferrei         ###   ########.fr       */
+/*   Created: 2022/09/01 19:22:40 by viferrei          #+#    #+#             */
+/*   Updated: 2022/09/01 19:23:44 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../headers/minishell.h"
-
-void	test_get_names_size()
+int			ft_isquote(int c)
 {
-	char	*str = "Hey $2345 there $789\"\n";
-
-	printf("str: %s\n", str);
-	printf("var names size sum: %zu\n", get_names_size(str));
-}
-
-int	main(void)
-{
-	test_get_names_size();
+	if (c == '\'' || c == '\"')
+		return (1);
+	return (0);
 }
