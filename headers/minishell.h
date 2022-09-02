@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 23:09:16 by coder             #+#    #+#             */
-/*   Updated: 2022/09/02 01:46:38 by coder            ###   ########.fr       */
+/*   Updated: 2022/09/02 02:49:22 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int			error_state(t_ms_data *ms);
 int			init_state(t_ms_data *ms, int argc, char *argv[], char **envp);
 int			prompt_state(t_ms_data *ms);
 int			parse_state(t_ms_data *ms);
-int			exec_state(t_ms_data *ms);
+int			exec_state(t_ms_data *ms, char **envp);
 int			clean_state(t_ms_data *ms);
 
 // safe_free.c

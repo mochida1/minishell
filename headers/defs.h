@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 23:09:13 by coder             #+#    #+#             */
-/*   Updated: 2022/08/31 01:55:10 by coder            ###   ########.fr       */
+/*   Updated: 2022/09/02 02:48:59 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ typedef struct s_ms_data
 	char				*rl_spaced_buffer;
 	char				*rl_prompt;
 	char				**rl_split;
+	int					exit_code;
 	struct s_env_list	*env_head;
 	struct s_tokens		*tokens;
 

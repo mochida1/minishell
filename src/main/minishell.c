@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 01:58:25 by viferrei          #+#    #+#             */
-/*   Updated: 2022/08/29 02:34:19 by coder            ###   ########.fr       */
+/*   Updated: 2022/09/02 02:48:52 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	main(int argc, char *argv[], char **envp)
 		if (ms->state == PARSESTATE)
 			parse_state(ms);
 		if (ms->state == EXECSTATE)
-			exec_state(ms);
+			exec_state(ms, envp);
 		if (ms->state == CLEANSTATE)
 			clean_state(ms);
 	}
