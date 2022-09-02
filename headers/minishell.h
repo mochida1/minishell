@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 23:09:16 by coder             #+#    #+#             */
-/*   Updated: 2022/08/31 01:58:16 by coder            ###   ########.fr       */
+/*   Updated: 2022/09/02 01:46:38 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include "defs.h"
 # include "../libft/libft.h"
 # include <readline/readline.h>
+#include<readline/history.h>
 # include <stdio.h> // readline
 # include <assert.h> /* assert serve como um 'if (false){quebra o programa}'*/
 
