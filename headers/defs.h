@@ -6,7 +6,7 @@
 /*   By: viferrei <viferrei@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 23:09:13 by coder             #+#    #+#             */
-/*   Updated: 2022/09/03 21:41:10 by viferrei         ###   ########.fr       */
+/*   Updated: 2022/09/03 23:06:05 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,13 @@ typedef struct s_env_list
 	struct s_env_list	*next;
 }				t_env_list;
 
+typedef struct s_vars_list
+{
+	char				*name;
+	char				*value;
+	struct s_vars_list	*next;
+}				t_vars_list;
+
 typedef struct s_ms_data
 {
 	int					set_buffer_to_null;
@@ -63,6 +70,7 @@ typedef struct s_ms_data
 	char				**rl_split;
 	struct s_env_list	*env_head;
 	struct s_tokens		*tokens;
+	struct s_var_list	*vars;
 }				t_ms_data;
 
 typedef struct s_split_shell

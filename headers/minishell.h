@@ -6,7 +6,7 @@
 /*   By: viferrei <viferrei@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 23:09:16 by coder             #+#    #+#             */
-/*   Updated: 2022/09/03 22:21:10 by viferrei         ###   ########.fr       */
+/*   Updated: 2022/09/03 23:06:53 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int			get_data_from_readline(t_ms_data *ms);
 char		**ft_split_shell(char *str, char delimiter);
 
 // expand_vars.c
-size_t		get_names_size(char *str);
+size_t		get_names_size(char *str, t_ms_data *ms);
 int			expand_variables(t_ms_data *ms);
 
 #endif
