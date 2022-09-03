@@ -151,7 +151,7 @@ int	exec_MVP_TESTE(t_ms_data *ms, char **envp)
 			execve(path, ms->rl_split, envp);
 		else
 		{
-			printf("command not foun!\n");
+			printf("command not found!\n");
 		}
 		safe_free(path);
 		path = NULL;
@@ -159,4 +159,4 @@ int	exec_MVP_TESTE(t_ms_data *ms, char **envp)
 	}
 		printf ("\n\nexit status: %d\n\n", e_status);
 		return (0);
-}
+}	
