@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 23:09:16 by coder             #+#    #+#             */
-/*   Updated: 2022/09/02 02:49:22 by coder            ###   ########.fr       */
+/*   Updated: 2022/09/03 01:17:55 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <readline/readline.h>
 #include<readline/history.h>
 # include <stdio.h> // readline
+#include <sys/wait.h> // wait
 # include <assert.h> /* assert serve como um 'if (false){quebra o programa}'*/
 
 // STATES
@@ -51,4 +52,7 @@ int			get_data_from_readline(t_ms_data *ms);
 // ft_split_shell.c
 char	**ft_split_shell(char *str, char delimiter);
 
+
+// execve_TESTE.c
+int			exec_MVP_TESTE(t_ms_data *ms, char **envp);
 #endif
