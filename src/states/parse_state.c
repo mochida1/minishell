@@ -6,7 +6,7 @@
 /*   By: viferrei <viferrei@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 17:38:58 by coder             #+#    #+#             */
-/*   Updated: 2022/09/03 20:17:56 by viferrei         ###   ########.fr       */
+/*   Updated: 2022/09/03 22:11:33 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ int	parse_state(t_ms_data *ms)
 	ms->rl_split = ft_split_shell(ms->rl_spaced_buffer, ' ');
 	assert (ms->rl_split);
 	ms->tokens = tokenize_splits(ms);
-	// expand_variables(ms->tokens);
+	expand_variables(ms);
 	categorize_tokens(ms->tokens);
 	ms->state = EXECSTATE;
 	return (0);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: viferrei <viferrei@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 23:09:16 by coder             #+#    #+#             */
-/*   Updated: 2022/09/01 19:50:55 by viferrei         ###   ########.fr       */
+/*   Updated: 2022/09/03 22:21:10 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,6 @@ char		**ft_split_shell(char *str, char delimiter);
 
 // expand_vars.c
 size_t		get_names_size(char *str);
-int			expand_variables(t_tokens *tokens);
+int			expand_variables(t_ms_data *ms);
 
 #endif
