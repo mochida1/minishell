@@ -6,7 +6,7 @@
 /*   By: viferrei <viferrei@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 17:40:14 by viferrei          #+#    #+#             */
-/*   Updated: 2022/09/04 00:02:03 by viferrei         ###   ########.fr       */
+/*   Updated: 2022/09/03 23:11:55 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,86 +93,28 @@ size_t	get_values_size(char *str, t_env_list *env)
 	return (1);
 }
 
-// Add variable and its value to the m->vars struct.
-void var_lstadd_back(t_vars_list **lst, t_vars_list *new)
-{
-	if (!new)
-		return ;
-	if (!*lst)
-	{
-		*(lst)->name = new->name;
-		*(lst)->value = new->value;
-		return ;
-	}
-	while (*(lst)->next)
-		*lst = *(lst)->next;
-	*(lst)->next = new;
-}
-
-t_vars_list *var_lstnew()
-{
-
-}
-
-add_var(t_ms_data *ms, char *str, size_t single_quote, size_t var_len)
-{
-	t_vars_list *new;
-	
-	new = (t_vars_list *) malloc(sizeof(t_vars_list));
-	if (!ms->vars->name)
-	{
-		ms->vars->name = ft_substr(str, 0, var_len);
-		if (single_quote)
-			ms->vars->value = ms->vars->name;
-		else
-			ms->vars->value = 
-		ms->vars->next = NULL;
-	}
-}
-
-// Searches each variable started by "$" and adds it to the m->vars struct.
-void	get_vars_values(t_ms_data *ms, char *str)
-{
-	size_t	single_quote;
-	char	*begin;
-	size_t	var_len;
-
-	single_quote = 0;
-	while (*str)
-	{
-		if (*str == '\'')
-			single_quote = 1;
-		if (*str == '$' && *(str + 1))
-		{
-			str++;
-			begin = str;
-			while (!ft_isspace(*str) && !ft_isquote(*str) && *str)
-			{
-				var_len++;
-				str++;
-			}
-			add_var(ms, str, begin, var_len);
-		}
-		if (*str)
-			str++;
-	}
-}
-
 /*
 ** Expand variables;
 ** NOTE: try recursion for variables inside variables.
 */
 int	expand_variables(t_ms_data *ms)
 {
-	// size_t	str_size;
-	// size_t	names_size;
-	// size_t	values_size;
+	size_t	str_size;
+	size_t	names_size;
+	size_t	values_size;
 	// size_t	final_size;
 	// char	*final_str;
 
 	while (ms->tokens)
 	{
-		get_vars_values(ms, ms->tokens->content)
+		str_size = ft_strlen(ms->tokens->value);
+		names_size = get_names_size(ms->tokens->value, ms);
+		if (!names_size)
+		{
+			ms->tokens = ms->tokens->next;
+			continue ;
+		}
+		values_size = get_values_size(ms->tokens->value, ms->env_head);
 		ms->tokens = ms->tokens->next;
 	}
 	return (ms->state);
