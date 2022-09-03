@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
+/*   By: viferrei <viferrei@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 23:09:16 by coder             #+#    #+#             */
-/*   Updated: 2022/09/03 01:17:55 by coder            ###   ########.fr       */
+/*   Updated: 2022/09/03 15:14:48 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@
 # include "defs.h"
 # include "../libft/libft.h"
 # include <readline/readline.h>
-#include<readline/history.h>
+# include <readline/history.h>
 # include <stdio.h> // readline
-#include <sys/wait.h> // wait
+# include <sys/wait.h> // wait
 # include <assert.h> /* assert serve como um 'if (false){quebra o programa}'*/
 
 // STATES
