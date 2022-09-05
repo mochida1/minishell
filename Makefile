@@ -17,8 +17,9 @@ error_state.c exec_state.c init_state.c parse_state.c prompt_state.c \
 clean_state.c get_env.c safe_free.c \
 expand_vars.c
 
+TEST_LIST = test_expand_vars.c
 # Names sources
-SOURCES = $(SRC_LIST)
+SOURCES = $(SRC_LIST) $(TEST_LIST)
 
 # Names objects
 OBJS = $(SOURCES:%.c=$(BUILDDIR)/%.o)

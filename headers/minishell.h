@@ -6,7 +6,7 @@
 /*   By: viferrei <viferrei@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 23:09:16 by coder             #+#    #+#             */
-/*   Updated: 2022/09/03 23:06:53 by viferrei         ###   ########.fr       */
+/*   Updated: 2022/09/05 22:12:18 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,13 @@ int			get_data_from_readline(t_ms_data *ms);
 char		**ft_split_shell(char *str, char delimiter);
 
 // expand_vars.c
-size_t		get_names_size(char *str, t_ms_data *ms);
+size_t		get_names_size(char *str);
+size_t		match_var_value(char *var_name, t_env_list *env);
+size_t		get_values_size(char *str, t_env_list *env);
 int			expand_variables(t_ms_data *ms);
+
+// TESTS
+void	test_expand_vars(char *token, size_t	str_size, size_t names_size, \
+							size_t	values_size);
 
 #endif
