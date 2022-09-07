@@ -6,7 +6,7 @@
 /*   By: viferrei <viferrei@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 17:40:14 by viferrei          #+#    #+#             */
-/*   Updated: 2022/09/06 23:54:04 by viferrei         ###   ########.fr       */
+/*   Updated: 2022/09/07 22:18:11 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,15 +68,16 @@ size_t	get_value_length(char *var_name, t_env_list *env)
 char	*get_var_name(char *str)
 {
 	char	*begin;
+	int		i;
 	size_t	len;
 
-	str++;
-	begin = str;
+	i = 1;
+	begin = &str[i];
 	len = 0;
-	while (!ft_isspace(*str) && !ft_isquote(*str) && *str)
+	while (!ft_isspace(str[i]) && !ft_isquote(str[i]) && str[i])
 	{
 		len++;
-		str++;
+		i++;
 	}
 	return(ft_substr(begin, 0, len));
 }
@@ -110,6 +111,7 @@ char	*get_var_value(char *var_name, t_env_list *env)
 	char	*var_value;
 
 	var_size = ft_strlen(var_name);
+	var_value = NULL;
 	len = 0;
 	while (env->content)
 	{
@@ -127,22 +129,34 @@ char	*get_var_value(char *var_name, t_env_list *env)
 	return (var_value);
 }
 
-void	copy_value(char *str, const char *value_name)
+size_t	copy_value(char *str, const char *value_name)
 {
 	int	i;
 
 	i = 0;
 	while (value_name[i])
+	{
 		str[i] = value_name[i];
+		i++;
+	}
+	return (i);
 }
+
+// void	init_expand_var(t_ms_data *ms, size_t final_size)
+// {
+// 	t_expand_var	expv;
+	
+// 	expv.old_value = ms->tokens->value;
+// 	token->value = (char *) malloc(sizeof(char) * final_size);
+// }
 
 void	update_tokens(t_tokens *token, size_t final_size, t_env_list *env)
 {
 	char	*old_value;
 	char	*var_name;
 	char	*value_name;
-	int		t;
-	int		o;
+	size_t	t;
+	size_t	o;
 
 	old_value = token->value;
 	token->value = (char *) malloc(sizeof(char) * final_size);
@@ -154,18 +168,19 @@ void	update_tokens(t_tokens *token, size_t final_size, t_env_list *env)
 			token->value[t++] = old_value[o++];
 		if (old_value[o] == '$')
 		{
-			var_name = get_var_name(old_value);
+			var_name = get_var_name(&old_value[o]);
 			value_name = get_var_value(var_name, env);
-
-			copy_value(&token->value[t], value_name);
-			free(var_name);
-			free(value_name);
-			// while (!ft_isspace(old_value[o]) && !ft_isquote(old_value[o])
-			// 		&& old_value[o])
-			// 	o++;
+			if (value_name != NULL)
+				t += copy_value(&token->value[t], value_name);
+			safe_free(var_name);
+			safe_free(value_name);
+			while (!ft_isspace(old_value[o]) && old_value[o])
+			{
+				if (ft_isquote(old_value[o]))
+					break ;
+				o++;
+			}
 		}
-		if (old_value[o])
-			o++;
 	}
 	free(old_value);
 }
