@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 20:59:48 by coder             #+#    #+#             */
-/*   Updated: 2022/09/03 01:20:57 by coder            ###   ########.fr       */
+/*   Updated: 2022/09/07 22:31:59 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,18 +59,6 @@ int	check_for_some_shady_shit(t_ms_data *ms)
 		shaddy_shit_has_happened++;
 	}
 	return (shaddy_shit_has_happened);
-}
-
-int	ft_strcmp (char *str, char *str2)
-{
-	while (*str && *str2)
-	{
-		if (*str != *str2)
-			break ;
-		str++;
-		str2++;
-	}
-	return (*str - *str2);
 }
 
 /*

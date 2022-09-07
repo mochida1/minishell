@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: viferrei <viferrei@student.42sp.org.br     +#+  +:+       +#+        */
+/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 23:09:16 by coder             #+#    #+#             */
-/*   Updated: 2022/09/03 15:14:48 by viferrei         ###   ########.fr       */
+/*   Updated: 2022/09/07 22:27:54 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,13 @@ void		*safe_free(void *content);
 void		*free_rl_split(t_ms_data *ms);
 void		*destroy_token_list(t_ms_data *ms);
 
+// ft_strcmp.c
+int			ft_strcmp (char *str, char *str2);
+
+// get_envs.c
+t_env_list	*get_env(char **envp);
+void		*destroy_env_list(t_env_list *envs);
+
 // add_spaces.c
 char		*add_spaces(char *buffer, t_ms_data *ms);
 
@@ -41,9 +48,6 @@ char		*add_spaces(char *buffer, t_ms_data *ms);
 // add_spaces_utils.c
 int			is_operator(char c);
 
-// get_envs.c
-t_env_list	*get_env(char **envp);
-void		*destroy_env_list(t_env_list *envs);
 
 // prompt_utils.c
 int			set_prompt(t_ms_data *ms);
