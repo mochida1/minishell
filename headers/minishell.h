@@ -6,7 +6,7 @@
 /*   By: viferrei <viferrei@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 23:09:16 by coder             #+#    #+#             */
-/*   Updated: 2022/09/08 00:16:31 by viferrei         ###   ########.fr       */
+/*   Updated: 2022/09/09 01:49:28 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,6 @@ size_t		get_values_size(char *str, t_env_list *env);
 int			expand_variables(t_ms_data *ms);
 
 // TESTS
-void	test_expand_vars(char *token, size_t	str_size, size_t names_size, \
-							size_t	values_size);
+void	test_expand_vars(t_ms_data *ms);
 
 #endif

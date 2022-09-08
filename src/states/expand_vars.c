@@ -6,7 +6,7 @@
 /*   By: viferrei <viferrei@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 17:40:14 by viferrei          #+#    #+#             */
-/*   Updated: 2022/09/08 00:59:36 by viferrei         ###   ########.fr       */
+/*   Updated: 2022/09/09 01:57:56 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,25 +32,72 @@ char	*find_variable(char	*str)
 	return (NULL);
 }
 
-char *update_token(char *str, char *var_head)
+// Returns the name of the variable.
+char	*get_var_name(char	*var_head)
 {
-	// char	*value;
-	char	*part1;
-	size_t	part1_len;
+	size_t	len;
 
-	part1_len = 0;
-	while (str[part1_len] != *var_head)
-		part1_len++;
-	part1 = ft_substr(str, 0, part1_len);
-	return();
+	len = 0;
+	while(var_head[len] && is_variable(var_head[len + 1]))
+		len++;	
+	return(ft_substr(var_head, 1, len));
+}
+
+// Finds the variable and returns its value.
+char	*get_var_value(char *name, t_env_list *env)
+{
+	size_t	var_size;
+	size_t	len;
+	char	*str;
+	char	*var_value;
+
+	var_size = ft_strlen(name);
+	var_value = NULL;
+	len = 0;
+	while (env->content)
+	{
+		str = env->content;
+		if(ft_strnstr(str, name, var_size) && *(str + var_size) == '=')
+		{
+			while (*(str - 1) != '=')
+				str++;
+			while(str[len])
+				len++;
+			var_value = ft_substr(str, 0, len);
+		}
+		env = env->next;
+	}
+	return (var_value);
+}
+
+// Returns 
+char *update_token(t_ms_data *ms, char *var_name, char *var_head)
+{
+	char	*value;
+	char	*part1;
+	char	*final_str;
+
+	value = get_var_value(var_name, ms->env_head);
+	if (!value)
+		part1 = ft_strdup(ms->tokens->value);
+	else
+		part1 = ft_strjoin(ms->tokens->value, value);
+	final_str = ft_strjoin(part1, var_head + 1 + ft_strlen(var_name));
+	free(value);
+	free(part1);
+	return(final_str);
 }
 
 // Iterates through tokens and expands their variables.
 int	expand_variables(t_ms_data *ms)
 {
-	char	*var_head;
-	int i = 1;
+	char		*var_head;
+	char		*var_name;
+	t_tokens	*head;
+	size_t		var_len;
 
+	var_len = 0;
+	head = ms->tokens;
 	while (ms->tokens)
 	{
 		if (ms->tokens->value[0] == '\'')
@@ -59,12 +106,17 @@ int	expand_variables(t_ms_data *ms)
 			continue ;
 		}
 		var_head = find_variable(ms->tokens->value);
-		if (i--)
+		if (var_head)
 		{
-			ms->tokens->value = update_token(ms->tokens->value, var_head);
+			var_name = get_var_name(var_head);
+			*var_head = '\0';
+			ms->tokens->value = update_token(ms, var_name, var_head);
+			free(var_name);
 		}
 		else
 			ms->tokens = ms->tokens->next;
 	}
+	ms->tokens = head;
+	test_expand_vars(ms);
 	return (ms->state);
 }
