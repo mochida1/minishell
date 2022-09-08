@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 02:19:46 by coder             #+#    #+#             */
-/*   Updated: 2022/09/08 00:02:20 by coder            ###   ########.fr       */
+/*   Updated: 2022/09/08 02:38:12 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,12 +99,31 @@ int	token_is_redirect(char *value)
 	return (0);
 }
 
+int	check_for_non_print(char *value)
+{
+	int	count;
+
+	count = 0;
+	while (value[count])
+	{
+		if(!ft_isprint(value[count]) && (value[count] != 0))
+			return (0);
+			count++;
+	}
+	return (1);
+}
+
 /*
 ** This detects if the
 */
 int	token_is_word(char *value)
 {
-
+	if (*value == '\'' || *value == '\"')
+		return (1);
+	if (*value == '-')
+		return (1);
+	if (check_for_non_print)
+		return (1);
 }
 
 /*
@@ -120,9 +139,25 @@ int	get_token_type(char *value)
 		return (REDTOKEN);
 	if (token_is_word(value))
 		return (WORDTOKEN);
-	if (token_is_command(value))
-		return (COMTOKEN);
 	return (ERRTOKEN);
+}
+
+/*
+** If the word is actaully a command, based on token order, returns 0(COMTOKEN)
+** Else returns 2;
+*/
+int	check_if_command(t_tokens *temp, t_tokens *tokens)
+{
+	t_tokens	*retemp;
+	int			i;
+
+	i = 0;
+	retemp = tokens;
+	while (retemp != temp)
+	{
+		if (retemp->type )
+	}
+
 }
 
 /*
@@ -137,9 +172,7 @@ void	categorize_tokens(t_tokens *tokens)
 	{
 		temp->type = get_token_type(temp->value);
 		if (temp->type == 2)
-		{
 			temp->type = check_if_command(temp, tokens);
-		}
 		temp = temp->next;
 	}
 }
