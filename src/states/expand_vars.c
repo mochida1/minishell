@@ -6,7 +6,7 @@
 /*   By: viferrei <viferrei@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 17:40:14 by viferrei          #+#    #+#             */
-/*   Updated: 2022/09/09 01:57:56 by viferrei         ###   ########.fr       */
+/*   Updated: 2022/09/09 02:08:53 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,9 @@ char	*get_var_name(char	*var_head)
 	size_t	len;
 
 	len = 0;
-	while(var_head[len] && is_variable(var_head[len + 1]))
-		len++;	
-	return(ft_substr(var_head, 1, len));
+	while (var_head[len] && is_variable(var_head[len + 1]))
+		len++;
+	return (ft_substr(var_head, 1, len));
 }
 
 // Finds the variable and returns its value.
@@ -57,11 +57,11 @@ char	*get_var_value(char *name, t_env_list *env)
 	while (env->content)
 	{
 		str = env->content;
-		if(ft_strnstr(str, name, var_size) && *(str + var_size) == '=')
+		if (ft_strnstr(str, name, var_size) && *(str + var_size) == '=')
 		{
 			while (*(str - 1) != '=')
 				str++;
-			while(str[len])
+			while (str[len])
 				len++;
 			var_value = ft_substr(str, 0, len);
 		}
@@ -71,7 +71,7 @@ char	*get_var_value(char *name, t_env_list *env)
 }
 
 // Returns 
-char *update_token(t_ms_data *ms, char *var_name, char *var_head)
+char	*update_token(t_ms_data *ms, char *var_name, char *var_head)
 {
 	char	*value;
 	char	*part1;
@@ -85,7 +85,7 @@ char *update_token(t_ms_data *ms, char *var_name, char *var_head)
 	final_str = ft_strjoin(part1, var_head + 1 + ft_strlen(var_name));
 	free(value);
 	free(part1);
-	return(final_str);
+	return (final_str);
 }
 
 // Iterates through tokens and expands their variables.
