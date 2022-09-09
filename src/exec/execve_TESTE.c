@@ -159,4 +159,4 @@ int	exec_MVP_TESTE(t_ms_data *ms, char **envp)
 	}
 		printf ("\n\nexit status: %d\n\n", e_status);
 		return (0);
-}	
+}

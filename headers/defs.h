@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 23:09:13 by coder             #+#    #+#             */
-/*   Updated: 2022/09/02 02:48:59 by coder            ###   ########.fr       */
+/*   Updated: 2022/09/09 01:16:47 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ typedef struct s_tokens
 	char			*value;
 	int				type;
 	struct s_tokens	*next;
+	struct s_tokens	*prev;
 }				t_tokens;
 
 typedef struct s_env_list

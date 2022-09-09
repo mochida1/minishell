@@ -4,7 +4,8 @@ MAKEFLAGS = --no-print-directory
 BUILDDIR = objs
 LIBFT_DIR = libft
 LIBFT = $(LIBFT_DIR)/libft.a
-VPATH = src tests src/builtin src/states src/prompt src/utils src/main src/exec
+VPATH = src tests src/builtin src/states src/prompt src/utils src/main \
+src/exec src/parse
 
 # headers
 INCLUDES = -I /headers
@@ -15,6 +16,7 @@ builtin_env.c echo.c \
 add_spaces.c add_spaces_utils.c prompt_utils.c ft_split_shell.c \
 error_state.c exec_state.c init_state.c parse_state.c prompt_state.c clean_state.c\
 get_env.c safe_free.c ft_strcmp.c\
+tokens.c \
 execve_TESTE.c
 
 

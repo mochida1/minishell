@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 23:09:16 by coder             #+#    #+#             */
-/*   Updated: 2022/09/08 01:36:08 by coder            ###   ########.fr       */
+/*   Updated: 2022/09/09 01:51:46 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ int			exec_MVP_TESTE(t_ms_data *ms, char **envp);
 ** PARSE
 */
 // tokens.c
+t_tokens	*tokenize_splits(t_ms_data *ms);
 void		categorize_tokens(t_tokens *tokens);
 
 #endif
