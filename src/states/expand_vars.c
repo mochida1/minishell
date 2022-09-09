@@ -6,7 +6,7 @@
 /*   By: viferrei <viferrei@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 17:40:14 by viferrei          #+#    #+#             */
-/*   Updated: 2022/09/09 02:08:53 by viferrei         ###   ########.fr       */
+/*   Updated: 2022/09/09 02:20:06 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ char	*get_var_value(char *name, t_env_list *env)
 	return (var_value);
 }
 
-// Returns 
+// Returns the string up to 
 char	*update_token(t_ms_data *ms, char *var_name, char *var_head)
 {
 	char	*value;
@@ -86,6 +86,17 @@ char	*update_token(t_ms_data *ms, char *var_name, char *var_head)
 	free(value);
 	free(part1);
 	return (final_str);
+}
+
+// Updates the token if a variable is found.
+void	if_variable(char *var_head, t_ms_data *ms)
+{
+	char	*var_name;
+
+	var_name = get_var_name(var_head);
+	*var_head = '\0';
+	ms->tokens->value = update_token(ms, var_name, var_head);
+	free(var_name);
 }
 
 // Iterates through tokens and expands their variables.
@@ -107,12 +118,7 @@ int	expand_variables(t_ms_data *ms)
 		}
 		var_head = find_variable(ms->tokens->value);
 		if (var_head)
-		{
-			var_name = get_var_name(var_head);
-			*var_head = '\0';
-			ms->tokens->value = update_token(ms, var_name, var_head);
-			free(var_name);
-		}
+			if_variable(var_head, ms);
 		else
 			ms->tokens = ms->tokens->next;
 	}
