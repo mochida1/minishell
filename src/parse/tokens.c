@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 02:19:46 by coder             #+#    #+#             */
-/*   Updated: 2022/09/10 16:48:51 by coder            ###   ########.fr       */
+/*   Updated: 2022/09/10 18:49:41 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,9 @@ void	categorize_tokens(t_tokens *tokens)
 	while (temp)
 	{
 		temp->type = get_token_type(temp);
+		if (temp->type == REDTOKEN || temp->type == OPTOKEN)
+			if (token_is_error(temp))
+				temp->type = ERRTOKEN;
 		temp = temp->next;
 	}
 }
