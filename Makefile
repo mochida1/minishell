@@ -11,20 +11,20 @@ src/exec src/parse
 INCLUDES = -I /headers
 
 # Lists sources. Manually because of norm...
-SRC_LIST = minishell.c \
-builtin_env.c echo.c \
-add_spaces.c add_spaces_utils.c prompt_utils.c ft_split_shell.c \
-error_state.c exec_state.c init_state.c parse_state.c prompt_state.c \
-clean_state.c get_env.c safe_free.c \
-expand_vars_utils.c expand_vars.c \
-ft_strcmp.c \
-tokens.c token_types.c token_types2.c \
-execve_TESTE.c test_utils.c \
+BUILTIN = builtin_env.c echo.c
+EXEC = execve_TESTE.c
+MAIN = minishell.c
+PARSE = expand_vars_utils.c expand_vars.c token_types.c token_types2.c tokens.c 
+PROMPT = add_spaces_utils.c add_spaces.c ft_split_shell.c prompt_utils.c
+STATES = clean_state.c error_state.c exec_state.c init_state.c parse_state.c \
+			prompt_state.c
+UTILS = ft_strcmp.c get_env.c safe_free.c test_utils.c
 
 TEST_LIST = test_expand_vars.c
 
 # Names sources
-SOURCES = $(SRC_LIST) $(TEST_LIST)
+SOURCES = $(BUILTIN) $(EXEC) $(MAIN) $(PARSE) $(PROMPT) $(STATES) $(UTILS) \
+			$(TEST_LIST)
 
 # Names objects
 OBJS = $(SOURCES:%.c=$(BUILDDIR)/%.o)
