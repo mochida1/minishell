@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 23:09:16 by coder             #+#    #+#             */
-/*   Updated: 2022/09/10 16:47:38 by coder            ###   ########.fr       */
+/*   Updated: 2022/09/10 18:51:30 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,8 @@ int			exec_MVP_TESTE(t_ms_data *ms, char **envp);
 // tokens.c
 t_tokens	*tokenize_splits(t_ms_data *ms);
 void		categorize_tokens(t_tokens *tokens);
+int			token_is_error(t_tokens *temp);
+int			check_for_non_print(char *value);
 // token_types.c
 int			token_is_builtin(char *value);
 int			token_is_operator(char *value);
