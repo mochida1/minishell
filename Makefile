@@ -17,7 +17,7 @@ add_spaces.c add_spaces_utils.c prompt_utils.c ft_split_shell.c \
 error_state.c exec_state.c init_state.c parse_state.c prompt_state.c clean_state.c \
 get_env.c safe_free.c ft_strcmp.c \
 tokens.c token_types.c token_types2.c \
-execve_TESTE.c
+execve_TESTE.c test_utils.c \
 
 
 # Names sources
