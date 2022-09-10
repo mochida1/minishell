@@ -6,31 +6,11 @@
 /*   By: viferrei <viferrei@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 17:40:14 by viferrei          #+#    #+#             */
-/*   Updated: 2022/09/09 02:20:06 by viferrei         ###   ########.fr       */
+/*   Updated: 2022/09/10 22:12:59 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../headers/minishell.h"
-
-// Checks if the char is acceptable in a variable name.
-int	is_variable(char c)
-{
-	if (ft_isalnum(c) || c == '_')
-		return (1);
-	return (0);
-}
-
-// Returns a pointer to the first occurence of a variable in the string.
-char	*find_variable(char	*str)
-{
-	while (*str)
-	{
-		if (*str == '$' && is_variable(str[1]))
-			return (str);
-		str++;
-	}
-	return (NULL);
-}
 
 // Returns the name of the variable.
 char	*get_var_name(char	*var_head)
@@ -103,7 +83,6 @@ void	if_variable(char *var_head, t_ms_data *ms)
 int	expand_variables(t_ms_data *ms)
 {
 	char		*var_head;
-	char		*var_name;
 	t_tokens	*head;
 	size_t		var_len;
 

@@ -6,7 +6,7 @@
 /*   By: viferrei <viferrei@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 23:09:16 by coder             #+#    #+#             */
-/*   Updated: 2022/09/09 01:49:28 by viferrei         ###   ########.fr       */
+/*   Updated: 2022/09/10 22:14:57 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ void		*destroy_token_list(t_ms_data *ms);
 // add_spaces.c
 char		*add_spaces(char *buffer, t_ms_data *ms);
 
-
 // add_spaces_utils.c
 int			is_operator(char c);
 
@@ -50,13 +49,14 @@ int			get_data_from_readline(t_ms_data *ms);
 // ft_split_shell.c
 char		**ft_split_shell(char *str, char delimiter);
 
+// expand_vars_utils.c
+int			is_variable(char c);
+char		*find_variable(char	*str);
+
 // expand_vars.c
-size_t		get_names_size(char *str);
-size_t		get_value_length(char *var_name, t_env_list *env);
-size_t		get_values_size(char *str, t_env_list *env);
 int			expand_variables(t_ms_data *ms);
 
 // TESTS
-void	test_expand_vars(t_ms_data *ms);
+void		test_expand_vars(t_ms_data *ms);
 
 #endif
