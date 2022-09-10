@@ -6,9 +6,11 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/10 17:12:58 by coder             #+#    #+#             */
-/*   Updated: 2022/09/10 17:14:34 by coder            ###   ########.fr       */
+/*   Updated: 2022/09/10 17:17:58 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "../../headers/minishell.h"
 
 /*
 ** THIS IS A DEBUGGING FUNCTION
