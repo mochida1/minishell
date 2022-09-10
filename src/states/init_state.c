@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 17:13:30 by coder             #+#    #+#             */
-/*   Updated: 2022/08/28 20:59:09 by coder            ###   ########.fr       */
+/*   Updated: 2022/09/10 22:48:27 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,14 @@
 static int	shutup_unused_args(int delete, char me)
 {
 	return (delete + me);
+}
+
+/*
+**
+*/
+int	init_signal_handlers(void)
+{
+	signal(SIGINT,sig_handler);
 }
 
 /*
@@ -41,6 +49,7 @@ int	init_state(t_ms_data *ms, int argc, char *argv[], char **envp)
 	int	rc;
 
 	rc = shutup_unused_args(argc, argv[0][0]);
+	rc = init_signal_handlers();
 	rc = init_data(ms, envp);
 	ms->state = PROMPTSTATE;
 	if (rc)

@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 23:09:16 by coder             #+#    #+#             */
-/*   Updated: 2022/09/10 20:24:19 by coder            ###   ########.fr       */
+/*   Updated: 2022/09/10 21:52:00 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include "../libft/libft.h"
 # include <readline/readline.h>
 # include <readline/history.h>
+# include <signal.h> // sigaction
 # include <stdio.h> // readline
 # include <sys/wait.h> // wait
 # include <assert.h> /* assert serve como um 'if (false){quebra o programa}'*/
@@ -81,5 +82,11 @@ int			token_is_operator(char *value);
 int			token_is_redirect(char *value);
 int			token_is_word(t_tokens *temp);
 int			token_is_command(t_tokens *temp);
+
+/*
+** SIGNALS
+*/
+// signals.c
+void		signal_handler(int signo);
 
 #endif
