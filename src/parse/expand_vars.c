@@ -6,7 +6,7 @@
 /*   By: viferrei <viferrei@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 17:40:14 by viferrei          #+#    #+#             */
-/*   Updated: 2022/09/10 22:12:59 by viferrei         ###   ########.fr       */
+/*   Updated: 2022/09/11 01:39:12 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,5 @@ int	expand_variables(t_ms_data *ms)
 			ms->tokens = ms->tokens->next;
 	}
 	ms->tokens = head;
-	test_expand_vars(ms);
 	return (ms->state);
 }
