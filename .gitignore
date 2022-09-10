@@ -4,3 +4,4 @@ minishell
 tester
 .vscode
 vgcore*
+*.dSYM

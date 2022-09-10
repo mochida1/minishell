@@ -6,7 +6,7 @@
 /*   By: viferrei <viferrei@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 23:09:13 by coder             #+#    #+#             */
-/*   Updated: 2022/09/08 00:45:27 by viferrei         ###   ########.fr       */
+/*   Updated: 2022/09/10 22:51:03 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ typedef struct s_tokens
 	char			*value;
 	int				type;
 	struct s_tokens	*next;
+	struct s_tokens	*prev;
 }				t_tokens;
 
 typedef struct s_env_list
@@ -61,6 +62,7 @@ typedef struct s_ms_data
 	char				*rl_spaced_buffer;
 	char				*rl_prompt;
 	char				**rl_split;
+	int					exit_code;
 	struct s_env_list	*env_head;
 	struct s_tokens		*tokens;
 }				t_ms_data;

@@ -1,25 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error_state.c                                      :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/28 17:18:04 by coder             #+#    #+#             */
-/*   Updated: 2022/09/02 02:15:09 by coder            ###   ########.fr       */
+/*   Created: 2022/09/07 21:44:45 by coder             #+#    #+#             */
+/*   Updated: 2022/09/07 21:44:53 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../headers/minishell.h"
-
-
-/*
-** wrapper for the given state
-*/
-int	error_state(t_ms_data *ms)
+int	ft_strcmp (char *str, char *str2)
 {
-
-	rl_clear_history ();
-	destroy_env_list(ms->env_head);
-	exit(ms->state * -1);
+	while (*str && *str2)
+	{
+		if (*str != *str2)
+			break ;
+		str++;
+		str2++;
+	}
+	return (*str - *str2);
 }

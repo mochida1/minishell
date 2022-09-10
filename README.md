@@ -43,3 +43,13 @@ utilizar `-lreadline` como em `gcc -Wall -Wextra -Werror nomearquivo.c -lreadlin
 > echo teste | cat readline.c >>> teste
 < syntax error near unexpected token `>'
 ```
+
+## regras para categorização de tokens
+- \[exit status\] ```exemplo do comando``` Descrição da regra;
+- \[0\]```<< EOF cat > out``` Toda token que venha DEPOIS de um redirecionador de IO (REDTOKEN) que não seja uma REDTOKEN é uma palavra;
+- \[0\]```<< EOF cat > out``` Se depois de uma WORDTOKEN quem venha depois de uma REDTOKEN, existir uma token, ela sera uma COMTOKEN;
+- \[0\]```ls``` Toda token que não é um builtin(BITOKEN) OU REDIRTOKEN OU OPTOKEN que aparece sozinha é COMTOKEN;
+- \[0\]```valgrind --trace-children=yes --leak-check=full --track-origins=yes ./a.out``` Não havendo uma REDTOKEN, a primeira token deverá ser considerada COMTOKEN;
+- \[0\]```cat out > wc``` Toda token depois de uma REDTOKEN é uma WORDTOKEN;
+- \[2\]```cat out >``` Caso não exista token depois de uma REDTOKEN, retorna erro: ```syntax error near unexpected token `newline'```
+- \[2\]```cat << > out``` Duas REDTOKENS seguidas dá bosta: ```syntax error near unexpected token ` ```

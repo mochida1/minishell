@@ -4,7 +4,8 @@ MAKEFLAGS = --no-print-directory
 BUILDDIR = objs
 LIBFT_DIR = libft
 LIBFT = $(LIBFT_DIR)/libft.a
-VPATH = src tests src/builtin src/states src/prompt src/utils src/main
+VPATH = src tests src/builtin src/states src/prompt src/utils src/main \
+src/exec src/parse
 
 # headers
 INCLUDES = -I /headers
@@ -15,7 +16,10 @@ builtin_env.c echo.c \
 add_spaces.c add_spaces_utils.c prompt_utils.c ft_split_shell.c \
 error_state.c exec_state.c init_state.c parse_state.c prompt_state.c \
 clean_state.c get_env.c safe_free.c \
-expand_vars_utils.c expand_vars.c
+expand_vars_utils.c expand_vars.c \
+ft_strcmp.c \
+tokens.c token_types.c token_types2.c \
+execve_TESTE.c test_utils.c \
 
 TEST_LIST = test_expand_vars.c
 
@@ -47,7 +51,7 @@ $(NAME_TEST): $(LIBFT) $(TEST_OBJS)
 
 $(LIBFT):
 	@printf "Compiling libft...\n"
-	@make -C $(LIBFT_DIR)
+	@+make -C $(LIBFT_DIR)
 
 $(BUILDDIR):
 	@mkdir -p $(BUILDDIR)
