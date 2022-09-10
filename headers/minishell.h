@@ -77,10 +77,7 @@ int			exec_MVP_TESTE(t_ms_data *ms, char **envp);
 // tokens.c
 t_tokens	*tokenize_splits(t_ms_data *ms);
 void		categorize_tokens(t_tokens *tokens);
-<<<<<<< HEAD
-=======
 int			token_is_error(t_tokens *temp);
->>>>>>> hm-grammar
 int			check_for_non_print(char *value);
 // token_types.c
 int			token_is_builtin(char *value);
