@@ -5,7 +5,7 @@ BUILDDIR = objs
 LIBFT_DIR = libft
 LIBFT = $(LIBFT_DIR)/libft.a
 VPATH = src tests src/builtin src/states src/prompt src/utils src/main \
-src/exec src/parse
+src/exec src/parse src/signals
 
 # headers
 INCLUDES = -I /headers
@@ -18,6 +18,7 @@ error_state.c exec_state.c init_state.c parse_state.c prompt_state.c clean_state
 get_env.c safe_free.c ft_strcmp.c \
 tokens.c token_types.c token_types2.c \
 execve_TESTE.c test_utils.c \
+signals.c
 
 
 # Names sources
