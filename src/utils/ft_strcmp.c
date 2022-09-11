@@ -6,11 +6,11 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 21:44:45 by coder             #+#    #+#             */
-/*   Updated: 2022/09/07 21:44:53 by coder            ###   ########.fr       */
+/*   Updated: 2022/09/11 21:09:38 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strcmp (char *str, char *str2)
+int	ft_strcmp(char *str, char *str2)
 {
 	while (*str && *str2)
 	{

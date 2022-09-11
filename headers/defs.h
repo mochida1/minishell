@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   defs.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: viferrei <viferrei@student.42sp.org.br     +#+  +:+       +#+        */
+/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 23:09:13 by coder             #+#    #+#             */
-/*   Updated: 2022/09/10 22:51:03 by viferrei         ###   ########.fr       */
+/*   Updated: 2022/09/11 21:12:25 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,5 +76,14 @@ typedef struct s_split_shell
 	int		split_number;
 	char	delimiter;
 }	t_split_shell;
+
+typedef struct s_global
+{
+	volatile int	exit_code;
+}				t_global;
+
+// GLOBAL VARIABLE
+// t_global	g_global;
+
 
 #endif

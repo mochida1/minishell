@@ -5,7 +5,7 @@ BUILDDIR = objs
 LIBFT_DIR = libft
 LIBFT = $(LIBFT_DIR)/libft.a
 VPATH = src tests src/builtin src/states src/prompt src/utils src/main \
-src/exec src/parse
+src/exec src/parse src/signals
 
 # headers
 INCLUDES = -I /headers
@@ -14,17 +14,17 @@ INCLUDES = -I /headers
 BUILTIN = builtin_env.c echo.c
 EXEC = execve_TESTE.c
 MAIN = minishell.c
-PARSE = expand_vars_utils.c expand_vars.c token_types.c token_types2.c tokens.c 
+PARSE = expand_vars_utils.c expand_vars.c token_types.c token_types2.c tokens.c
 PROMPT = add_spaces_utils.c add_spaces.c ft_split_shell.c prompt_utils.c
 STATES = clean_state.c error_state.c exec_state.c init_state.c parse_state.c \
 			prompt_state.c
 UTILS = ft_strcmp.c get_env.c safe_free.c test_utils.c
-
+SIGNALS = signals.c
 TEST_LIST = test_expand_vars.c
 
 # Names sources
 SOURCES = $(BUILTIN) $(EXEC) $(MAIN) $(PARSE) $(PROMPT) $(STATES) $(UTILS) \
-			$(TEST_LIST)
+			$(SIGNALS) $(TEST_LIST)
 
 # Names objects
 OBJS = $(SOURCES:%.c=$(BUILDDIR)/%.o)
