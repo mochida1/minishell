@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/10 20:29:26 by coder             #+#    #+#             */
-/*   Updated: 2022/09/11 18:11:05 by coder            ###   ########.fr       */
+/*   Updated: 2022/09/11 18:13:58 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ void	sigint_handler(int signo)
 	rl_replace_line("", 0);
 	rl_on_new_line();
 	rl_redisplay();
-	// printf ("%d MANDEI CTRL+C!\n", signo);
 }
 
 /*
@@ -40,5 +39,5 @@ void	sigterm_handler(int signo)
 */
 void	sigquit_handler(int signo)
 {
-	printf ("%d MANDEI CTRL+RABA!\n", signo);
+	(void) signo;
 }
