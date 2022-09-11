@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 23:09:16 by coder             #+#    #+#             */
-/*   Updated: 2022/09/10 23:08:50 by coder            ###   ########.fr       */
+/*   Updated: 2022/09/11 20:59:46 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ int			prompt_state(t_ms_data *ms);
 int			parse_state(t_ms_data *ms);
 int			exec_state(t_ms_data *ms, char **envp);
 int			clean_state(t_ms_data *ms);
-
 
 /*
 ** UTILS

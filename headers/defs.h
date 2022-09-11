@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 23:09:13 by coder             #+#    #+#             */
-/*   Updated: 2022/09/10 21:21:38 by coder            ###   ########.fr       */
+/*   Updated: 2022/09/11 21:06:32 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,14 +76,14 @@ typedef struct s_split_shell
 	int		split_number;
 	char	delimiter;
 }	t_split_shell;
-/*
-typedef struct s_sigaction
+
+typedef struct s_global
 {
-	void		(*sa_handler)(int);
-	void		(*sa_sigaction)(int, siginfo_t *, void *);
-	sigset_t	sa_mask;
-	int			sa_flags;
-	void		(*sa_restorer)(void);
-}	t_sigaction;
-*/
+	volatile int	exit_code;
+}				t_global;
+
+// GLOBAL VARIABLE
+// t_global	g_global;
+
+
 #endif

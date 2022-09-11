@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 00:44:38 by coder             #+#    #+#             */
-/*   Updated: 2022/08/29 02:49:39 by coder            ###   ########.fr       */
+/*   Updated: 2022/09/11 21:10:05 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	*free_rl_split(t_ms_data *ms)
 
 void	*destroy_token_list(t_ms_data *ms)
 {
-	t_tokens *freeme;
+	t_tokens	*freeme;
 
 	if (!ms->tokens)
 		return (NULL);
