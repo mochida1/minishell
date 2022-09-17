@@ -6,12 +6,18 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 23:09:13 by coder             #+#    #+#             */
-/*   Updated: 2022/09/17 17:54:15 by coder            ###   ########.fr       */
+/*   Updated: 2022/09/17 20:47:59 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef DEFS_H
 # define DEFS_H
+
+# ifndef _LINUX_LIMITS_H
+#  define _LINUX_LIMITS_H
+#  define PATH_MAX		4096
+#  define PIPE_BUF		4096
+# endif
 
 /*
 ** STATE definitions

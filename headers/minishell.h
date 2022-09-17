@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 23:09:16 by coder             #+#    #+#             */
-/*   Updated: 2022/09/17 17:55:12 by coder            ###   ########.fr       */
+/*   Updated: 2022/09/17 20:49:25 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,12 @@ int			token_is_command(t_tokens *temp);
 */
 // signals.c
 void		sigint_handler(int signo);
+
+/*
+**
+*/
+// builtin_pwd.c
+int			builtin_pwd(void);
 
 /*
 ** TESTS
