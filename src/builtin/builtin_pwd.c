@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/17 19:45:04 by coder             #+#    #+#             */
-/*   Updated: 2022/09/17 20:50:48 by coder            ###   ########.fr       */
+/*   Updated: 2022/09/17 20:55:16 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 */
 int	builtin_pwd(void)
 {
-	char path_name[PATH_MAX];
+	char	path_name[PATH_MAX];
 
 	if (!getcwd(path_name, PATH_MAX))
 	{
