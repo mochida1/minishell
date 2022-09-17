@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 23:09:16 by coder             #+#    #+#             */
-/*   Updated: 2022/09/17 17:51:18 by coder            ###   ########.fr       */
+/*   Updated: 2022/09/17 17:55:12 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void		*free_rl_split(t_ms_data *ms);
 void		*destroy_token_list(t_ms_data *ms);
 
 // ft_strcmp.c
-int			ft_strcmp (char *str, char *str2);
+int			ft_strcmp(char *str, char *str2);
 
 // get_envs.c
 t_env_list	*get_env(char **envp);

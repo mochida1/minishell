@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 23:09:13 by coder             #+#    #+#             */
-/*   Updated: 2022/09/11 21:12:25 by coder            ###   ########.fr       */
+/*   Updated: 2022/09/17 17:54:15 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,5 @@ typedef struct s_global
 
 // GLOBAL VARIABLE
 // t_global	g_global;
-
 
 #endif
