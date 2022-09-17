@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/10 20:29:26 by coder             #+#    #+#             */
-/*   Updated: 2022/09/11 21:09:17 by coder            ###   ########.fr       */
+/*   Updated: 2022/09/17 17:46:44 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,4 @@ void	sigint_handler(int signo)
 	rl_replace_line("", 0);
 	rl_on_new_line();
 	rl_redisplay();
-}
-
-/*
-** CTRL + raba
-*/
-void	sigquit_handler(int signo)
-{
-	(void) signo;
-	// g_global.exit_code = 127;
 }

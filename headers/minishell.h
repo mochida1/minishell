@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 23:09:16 by coder             #+#    #+#             */
-/*   Updated: 2022/09/11 21:13:46 by coder            ###   ########.fr       */
+/*   Updated: 2022/09/17 17:51:18 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,8 +96,6 @@ int			token_is_command(t_tokens *temp);
 */
 // signals.c
 void		sigint_handler(int signo);
-void		sigterm_handler(int signo);
-void		sigquit_handler(int signo);
 
 /*
 ** TESTS
