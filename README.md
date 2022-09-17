@@ -26,6 +26,8 @@ utilizar `-lreadline` como em `gcc -Wall -Wextra -Werror nomearquivo.c -lreadlin
 
 ## pontos de atenção
 - usuário dá unset na env PATH e roda comando: deve retornar No such file or directory.
+- exit não é executado em um fork caso seja chamado como comando unico.
+- exit é executado em um fork caso hajam pipes
 
 
 ## testes para regras de parsing
