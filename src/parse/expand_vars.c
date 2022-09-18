@@ -6,51 +6,13 @@
 /*   By: viferrei <viferrei@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 17:40:14 by viferrei          #+#    #+#             */
-/*   Updated: 2022/09/16 01:08:31 by viferrei         ###   ########.fr       */
+/*   Updated: 2022/09/19 01:07:49 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../headers/minishell.h"
 
-// Returns the name of the variable.
-char	*get_var_name(char	*var_head)
-{
-	size_t	len;
-
-	len = 0;
-	while (var_head[len] && is_variable(var_head[len + 1]))
-		len++;
-	return (ft_substr(var_head, 1, len));
-}
-
-// Finds the variable and returns its value.
-char	*get_var_value(char *name, t_env_list *env)
-{
-	size_t	var_size;
-	size_t	len;
-	char	*str;
-	char	*var_value;
-
-	var_size = ft_strlen(name);
-	var_value = NULL;
-	len = 0;
-	while (env->content)
-	{
-		str = env->content;
-		if (ft_strnstr(str, name, var_size) && *(str + var_size) == '=')
-		{
-			while (*(str - 1) != '=')
-				str++;
-			while (str[len])
-				len++;
-			var_value = ft_substr(str, 0, len);
-		}
-		env = env->next;
-	}
-	return (var_value);
-}
-
-// Returns the string up to 
+// Returns a string with the expanded variable.
 char	*update_token(t_ms_data *ms, char *var_name, char *var_head)
 {
 	char	*value;
@@ -80,7 +42,7 @@ void	if_variable(char *var_head, t_ms_data *ms)
 }
 
 // Iterates through tokens and expands their variables.
-int	expand_variables(t_ms_data *ms)
+void	expand_variables(t_ms_data *ms)
 {
 	char		*var_head;
 	t_tokens	*head;
@@ -103,4 +65,10 @@ int	expand_variables(t_ms_data *ms)
 	}
 	ms->tokens = head;
 	return (ms->state);
+}
+
+void	handle_variable_expansions(t_ms_data *ms)
+{
+	expand_exit_code(ms);	
+	expand_variables(ms);
 }

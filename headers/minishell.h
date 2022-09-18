@@ -6,7 +6,7 @@
 /*   By: viferrei <viferrei@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 23:09:16 by coder             #+#    #+#             */
-/*   Updated: 2022/09/18 21:26:59 by viferrei         ###   ########.fr       */
+/*   Updated: 2022/09/19 01:03:45 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,11 +88,14 @@ int			exec_MVP_TESTE(t_ms_data *ms, char **envp);
 ** PARSE
 */
 // expand_vars_utils.c
+char		*get_var_name(char	*var_head);
+char		*get_var_value(char *name, t_env_list *env);
 int			is_variable(char c);
 char		*find_variable(char	*str);
 
 // expand_vars.c
-int			expand_variables(t_ms_data *ms);
+void		expand_exit_code(t_ms_data *ms);
+void		expand_variables(t_ms_data *ms);
 
 // tokens.c
 t_tokens	*tokenize_splits(t_ms_data *ms);
