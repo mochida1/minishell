@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/17 23:24:07 by coder             #+#    #+#             */
-/*   Updated: 2022/09/17 23:34:28 by coder            ###   ########.fr       */
+/*   Updated: 2022/09/18 02:23:47 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ char	*get_home_dir_from_envs(t_ms_data *ms)
 	{
 		if (!ft_strncmp (temp->content, "HOME=", 5))
 		{
-			if (ft_strlen(temp->content > PATH_MAX))
+			if (ft_strlen(temp->content) > PATH_MAX)
 			{
 				write (2, "cd: HOME too big to fit in here\n", 17);
 				ms->exit_code = 1;
@@ -50,7 +50,6 @@ char	*get_home_dir_from_envs(t_ms_data *ms)
 		}
 		temp = temp->next;
 	}
-	write (2, "cd: HOME not set\n", 17);
 	ms->exit_code = 1;
 	return (NULL);
 }

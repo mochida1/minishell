@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_env.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: viferrei <viferrei@student.42sp.org.br     +#+  +:+       +#+        */
+/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 21:38:27 by coder             #+#    #+#             */
-/*   Updated: 2022/09/03 21:21:24 by viferrei         ###   ########.fr       */
+/*   Updated: 2022/09/18 01:18:26 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,10 @@ t_env_list	*get_env(char **envp)
 	while (envp[index])
 	{
 		temp->content = ft_strdup(envp[index]);
-		temp->next = ft_calloc(1, sizeof(*self));
+		if (envp[index + 1])
+			temp->next = ft_calloc(1, sizeof(*self));
+		else
+			temp->next = NULL;
 		temp = temp->next;
 		index++;
 	}
