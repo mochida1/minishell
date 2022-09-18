@@ -6,7 +6,7 @@
 /*   By: viferrei <viferrei@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 23:09:16 by coder             #+#    #+#             */
-/*   Updated: 2022/09/18 21:19:34 by viferrei         ###   ########.fr       */
+/*   Updated: 2022/09/18 21:57:31 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,9 @@ int			env(t_env_list	*env_list);
 // exec_one_cmd.c
 int			has_pipe(t_tokens *tokens);
 void		exec_one_cmd(t_ms_data *ms);
+
+// handle_redirects.c
+void		handle_redirects(t_ms_data *ms);
 
 // STATES
 int			error_state(t_ms_data *ms);
