@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 23:09:16 by coder             #+#    #+#             */
-/*   Updated: 2022/09/17 23:40:15 by coder            ###   ########.fr       */
+/*   Updated: 2022/09/18 18:14:08 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,6 +109,10 @@ int			builtin_pwd(char **args, t_ms_data *ms);
 
 // builtin_cd.c
 int			builtin_cd(char **args, t_ms_data *ms);
+// builtin_cd_utils.c
+char		*expand_home(char *path, t_ms_data *ms);
+int			count_args(char **args);
+char		*get_home_dir_from_envs(t_ms_data *ms);
 
 /*
 ** TESTS

@@ -6,11 +6,27 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/17 23:24:07 by coder             #+#    #+#             */
-/*   Updated: 2022/09/18 02:23:47 by coder            ###   ########.fr       */
+/*   Updated: 2022/09/18 18:11:35 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../headers/minishell.h"
+
+/*
+** returns a copy of the path, expanding ~'s
+** returns NULL on failure;
+*/
+char	*expand_home(char *path, t_ms_data *ms)
+{
+	char	*home;
+
+	if (path[0] != '~')
+		return (ft_strdup(path));
+	home = get_home_dir_from_envs(ms);
+	if (!home)
+		home = ms->home_original;
+	return (ft_strjoin(home, path + 1));
+}
 
 /*
 ** Counts the number of args in args and returns it. Really.

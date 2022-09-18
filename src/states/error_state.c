@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 17:18:04 by coder             #+#    #+#             */
-/*   Updated: 2022/09/18 01:39:28 by coder            ###   ########.fr       */
+/*   Updated: 2022/09/18 18:14:42 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	error_state(t_ms_data *ms)
 	rl_clear_history ();
 	free (ms->home_original);
 	ms->rl_buffer = safe_free(ms->rl_buffer);
-	ms->rl_split = free_rl_split(ms->rl_split);
+	ms->rl_split = free_rl_split(ms);
 	ms->rl_spaced_buffer = safe_free(ms->rl_spaced_buffer);
 	ms->home_original = safe_free(ms->home_original);
 	ms->tokens = destroy_token_list(ms);

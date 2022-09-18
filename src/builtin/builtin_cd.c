@@ -6,11 +6,39 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/17 21:13:35 by coder             #+#    #+#             */
-/*   Updated: 2022/09/18 02:24:48 by coder            ###   ########.fr       */
+/*   Updated: 2022/09/18 18:11:38 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../headers/minishell.h"
+
+/*
+** If there's an OLDPWD node inside the environmentals, updates it.
+** return 0 on success and 1 on failure;
+*/
+static int	update_oldpwd(t_ms_data *ms)
+{
+	t_env_list	*oldpwd;
+	t_env_list	*pwd;
+
+	pwd = ms->env_head;
+	oldpwd = ms->env_head;
+	while (pwd)
+	{
+		if (ft_strncmp (pwd->content, "PWD=", 4))
+			break ;
+		pwd = pwd->next;
+	}
+	while (oldpwd)
+	{
+		if (ft_strncmp (oldpwd->content, "OLDPWD=", 7))
+			break ;
+		oldpwd = oldpwd->next;
+	}
+	oldpwd->content = safe_free(oldpwd->content);
+	oldpwd->content = ft_strjoin("OLD", pwd->content);
+	return (1);
+}
 
 /*
 ** If there's a PWD node inside the environmentals, updates it.
@@ -50,6 +78,7 @@ static int	cd_to_home(t_ms_data *ms)
 			write(2, "cd: something went terribly wrong\n", 34);
 			return (2);
 		}
+		update_oldpwd(ms);
 		update_pwd(ms, &home_path[5]);
 		return (0);
 	}
@@ -80,23 +109,8 @@ static int	cd_to_path(char *path, t_ms_data *ms)
 }
 
 /*
-** returns a copy of the path, expanding ~'s
-** returns NULL on failure;
-*/
-char	*expand_home(char *path, t_ms_data *ms)
-{
-	char	*home;
-
-	if (path[0] != '~')
-		return (ft_strdup(path));
-	home = get_home_dir_from_envs(ms);
-	if (!home)
-		home = ms->home_original;
-	return (ft_strjoin(home, path + 1));
-}
-
-/*
 ** Changes current PWD, if there's an env called PWD, updates it.
+** If there's an OLDPWD env, updates it accordingly;
 ** On failure, prints the error and gets exit status > 0;
 */
 int	builtin_cd(char **args, t_ms_data *ms)
