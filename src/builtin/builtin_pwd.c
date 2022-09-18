@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtin_pwd.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
+/*   By: viferrei <viferrei@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/17 19:45:04 by coder             #+#    #+#             */
-/*   Updated: 2022/09/18 18:24:07 by coder            ###   ########.fr       */
+/*   Updated: 2022/09/18 21:19:25 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 ** Uses getcwd to check for current working directory even is the env PWD is
 ** unset. Just like bash' pwd command.
 */
-int	builtin_pwd(char **args, t_ms_data *ms)
+int	builtin_pwd(/*char **args,*/ t_ms_data *ms)
 {
 	char	path_name[PATH_MAX];
 

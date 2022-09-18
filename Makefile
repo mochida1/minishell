@@ -52,7 +52,7 @@ $(NAME_TEST): $(LIBFT) $(TEST_OBJS)
 
 $(LIBFT):
 	@printf "Compiling libft...\n"
-	@+make -C $(LIBFT_DIR)
+	@make -C $(LIBFT_DIR)
 
 $(BUILDDIR):
 	@mkdir -p $(BUILDDIR)
