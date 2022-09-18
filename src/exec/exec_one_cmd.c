@@ -6,7 +6,7 @@
 /*   By: viferrei <viferrei@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 21:40:45 by viferrei          #+#    #+#             */
-/*   Updated: 2022/09/17 00:40:29 by viferrei         ###   ########.fr       */
+/*   Updated: 2022/09/18 20:01:06 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,10 +64,10 @@ int	exec_builtin(t_ms_data *ms)
 		{
 			// if (!ft_strcmp(head->value, "echo"))
 			// 	return(echo(ms));
-			// if (!ft_strcmp(head->value, "cd"))
-			// 	return(cd(ms));
-			// if (!ft_strcmp(head->value, "pwd"))
-			// 	return(pwd(ms));
+			if (!ft_strcmp(head->value, "cd"))
+				return(builtin_cd(ms));
+			if (!ft_strcmp(head->value, "pwd"))
+				return(builtin_pwd(ms));
 			if (!ft_strcmp(head->value, "export"))
 				;
 				// return(export(head->next->value, ms->env_head));
