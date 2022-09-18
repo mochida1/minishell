@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 23:09:16 by coder             #+#    #+#             */
-/*   Updated: 2022/09/17 21:16:27 by coder            ###   ########.fr       */
+/*   Updated: 2022/09/18 18:18:31 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,10 @@ int			clean_state(t_ms_data *ms);
 void		*safe_free(void *content);
 void		*free_rl_split(t_ms_data *ms);
 void		*destroy_token_list(t_ms_data *ms);
+
+// builtin_cd_utils.c
+int			count_args(char **args);
+char		*get_home_dir_from_envs(t_ms_data *ms);
 
 // ft_strcmp.c
 int			ft_strcmp(char *str, char *str2);
@@ -98,10 +102,17 @@ int			token_is_command(t_tokens *temp);
 void		sigint_handler(int signo);
 
 /*
-**
+** BUILTINS
 */
 // builtin_pwd.c
-int			builtin_pwd(t_ms_data *ms);
+int			builtin_pwd(char **args, t_ms_data *ms);
+
+// builtin_cd.c
+int			builtin_cd(char **args, t_ms_data *ms);
+// builtin_cd_utils.c
+char		*expand_home(char *path, t_ms_data *ms);
+int			count_args(char **args);
+char		*get_home_dir_from_envs(t_ms_data *ms);
 
 /*
 ** TESTS

@@ -11,7 +11,7 @@ src/exec src/parse src/signals
 INCLUDES = -I /headers
 
 # Lists sources. Manually because of norm...
-BUILTIN = builtin_env.c echo.c
+BUILTIN = builtin_env.c echo.c builtin_cd_utils.c builtin_cd.c
 EXEC = execve_TESTE.c
 MAIN = minishell.c
 PARSE = expand_vars_utils.c expand_vars.c token_types.c token_types2.c tokens.c

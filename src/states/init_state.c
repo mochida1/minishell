@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 17:13:30 by coder             #+#    #+#             */
-/*   Updated: 2022/09/17 17:51:20 by coder            ###   ########.fr       */
+/*   Updated: 2022/09/18 18:16:37 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ int	init_state(t_ms_data *ms, int argc, char *argv[], char **envp)
 	rc = shutup_unused_args(argc, argv[0][0]);
 	rc = init_signal_handlers();
 	rc = init_data(ms, envp);
+	ms->home_original = ft_strdup(get_home_dir_from_envs(ms) + 5);
 	ms->state = PROMPTSTATE;
 	if (rc)
 		ms->state = ERRSTATE;
