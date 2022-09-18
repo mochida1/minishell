@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/17 19:45:04 by coder             #+#    #+#             */
-/*   Updated: 2022/09/18 18:18:03 by coder            ###   ########.fr       */
+/*   Updated: 2022/09/18 18:24:07 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,6 @@ int	builtin_pwd(char **args, t_ms_data *ms)
 {
 	char	path_name[PATH_MAX];
 
-	if (count_args)
-	{
-		write (2, "cd: too many arguments\n", 23);
-		ms->exit_code = 1;
-		return (1);
-	}
 	if (!getcwd(path_name, PATH_MAX))
 	{
 		write (2, "Error: user is trying to fuck shit up!\n", 40);
