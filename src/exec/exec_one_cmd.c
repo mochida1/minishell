@@ -6,7 +6,7 @@
 /*   By: viferrei <viferrei@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 21:40:45 by viferrei          #+#    #+#             */
-/*   Updated: 2022/09/18 21:27:32 by viferrei         ###   ########.fr       */
+/*   Updated: 2022/09/19 01:28:44 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,6 @@ int	is_builtin(t_tokens *tokens)
 	}
 	return(0);
 }
-
 
 // Returns the function of the first builtin found.
 int	exec_builtin(t_ms_data *ms)
