@@ -6,12 +6,13 @@
 /*   By: viferrei <viferrei@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/18 21:48:16 by viferrei          #+#    #+#             */
-/*   Updated: 2022/09/18 22:21:40 by viferrei         ###   ########.fr       */
+/*   Updated: 2022/09/18 22:40:41 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../headers/minishell.h"
 
+// Handle redirects for one command only.
 void	handle_redirects(t_ms_data *ms)
 {
 	t_tokens	*tokens;
