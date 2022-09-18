@@ -1,28 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   exec_state.c                                       :+:      :+:    :+:   */
+/*   builtin_export.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: viferrei <viferrei@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/28 20:59:48 by coder             #+#    #+#             */
-/*   Updated: 2022/09/16 23:43:36 by viferrei         ###   ########.fr       */
+/*   Created: 2022/09/17 00:12:17 by viferrei          #+#    #+#             */
+/*   Updated: 2022/09/18 20:12:36 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../headers/minishell.h"
 
-/*
-** executes the parsed and categorized commands
-*/
-int	exec_state(t_ms_data *ms, char **envp)
+int	export(char	**args, t_ms_data *ms)
 {
-	if (check_for_some_shady_shit(ms))
-		return (-1);
-	if (!has_pipe(ms->tokens))
-		exec_one_cmd(ms);
-	ms->exit_code = exec_MVP_TESTE(ms, envp);
-	print_token_list(ms);
-	ms->state = CLEANSTATE;
-	return (0);
+	t_env_list	*head;
+
+	head = ms->env_head;
+	while (head->next)
+		head = head->next;
+	head->next = ft_calloc(1, sizeof(t_env_list));
+	head = head->next;
+	// head->content = 
+	return(0);
 }

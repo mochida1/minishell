@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
+/*   By: viferrei <viferrei@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 23:09:16 by coder             #+#    #+#             */
-/*   Updated: 2022/09/18 18:18:31 by coder            ###   ########.fr       */
+/*   Updated: 2022/09/18 20:16:11 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,18 @@
 # include <stdio.h> // readline
 # include <sys/wait.h> // wait
 # include <assert.h> /* assert serve como um 'if (false){quebra o programa}'*/
+
+/*
+** BUILTIN 
+*/
+int			env(t_env_list	*env_list);
+
+/*
+** EXEC
+*/
+// exec_one_cmd.c
+int			has_pipe(t_tokens *tokens);
+void		exec_one_cmd(t_ms_data *ms);
 
 // STATES
 int			error_state(t_ms_data *ms);

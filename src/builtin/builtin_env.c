@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   builtin_env.c                                      :+:      :+:    :+:   */
+/*   env.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
+/*   By: viferrei <viferrei@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 22:50:18 by coder             #+#    #+#             */
-/*   Updated: 2022/08/27 22:56:23 by coder            ###   ########.fr       */
+/*   Updated: 2022/09/17 00:40:02 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../headers/minishell.h"
 
-int	builtin_env(t_env_list	*env_list)
+int	env(t_env_list	*env_list)
 {
 	t_env_list	*temp;
 
@@ -21,7 +21,7 @@ int	builtin_env(t_env_list	*env_list)
 	temp = env_list;
 	while (temp)
 	{
-		ft_printf("%s\n", temp->content);
+		printf("%s\n", temp->content);
 		temp = temp->next;
 	}
 	return (0);
