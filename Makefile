@@ -28,7 +28,7 @@ SOURCES = $(BUILTIN) $(EXEC) $(MAIN) $(PARSE) $(PROMPT) $(STATES) $(UTILS) \
 			$(SIGNALS) $(TEST_LIST)
 
 # Names objects
-OBJS = $(SOURCES:%.c=$(BUILDDIR)/%.o)
+OBJS = $(addprefix $(BUILDDIR)/, $(SOURCES:%.c=%.o))
 
 # Compiler
 CC = gcc
@@ -52,12 +52,12 @@ $(NAME_TEST): $(LIBFT) $(TEST_OBJS)
 
 $(LIBFT):
 	@printf "Compiling libft...\n"
-	@+make -C $(LIBFT_DIR)
+	@make -C $(LIBFT_DIR)
 
 $(BUILDDIR):
 	@mkdir -p $(BUILDDIR)
 
-$(BUILDDIR)/%.o: %.c $(BUILDDIR)
+$(BUILDDIR)/%.o: %.c
 	@$(CC) $(CF) $(GDB) $(INCLUDES) -c $< -o $@
 
 all: $(NAME)
