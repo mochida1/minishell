@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 00:44:38 by coder             #+#    #+#             */
-/*   Updated: 2022/09/11 21:12:34 by coder            ###   ########.fr       */
+/*   Updated: 2022/09/19 00:39:21 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,5 +54,22 @@ void	*destroy_token_list(t_ms_data *ms)
 		safe_free(freeme);
 		freeme = NULL;
 	}
+	return (NULL);
+}
+
+/*
+** Frees and sets to NULL an array of strings;
+*/
+void	*free_pp_char(char **pp)
+{
+	int	i;
+
+	i = 0;
+	while (pp[i])
+	{
+		pp[i] = safe_free (pp[i]);
+		i++;
+	}
+	pp = safe_free(pp);
 	return (NULL);
 }

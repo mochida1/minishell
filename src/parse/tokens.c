@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tokens.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: viferrei <viferrei@student.42sp.org.br     +#+  +:+       +#+        */
+/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 02:19:46 by coder             #+#    #+#             */
-/*   Updated: 2022/09/11 01:17:42 by viferrei         ###   ########.fr       */
+/*   Updated: 2022/09/19 01:57:51 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,8 @@ int	get_token_type(t_tokens *temp)
 		return (OPTOKEN);
 	if (token_is_redirect(temp->value))
 		return (REDTOKEN);
+	if (token_is_fd(temp))
+		return (FDTOKEN);
 	if (token_is_word(temp))
 		type_is = WORDTOKEN;
 	if (token_is_command(temp) && type_is == WORDTOKEN)
@@ -79,6 +81,25 @@ int	get_token_type(t_tokens *temp)
 }
 
 /*
+** Sets indexes to the corresponding tokens, as to be used by tok_to_com() and
+** ms->token_index data structure.
+*/
+static int	set_token_indexes(t_tokens *tokens)
+{
+	t_tokens *temp;
+	int i;
+
+	temp = tokens;
+	i = 0;
+	while (temp)
+	{
+		temp->index = i;
+		temp = temp->next;
+	}
+	return (i);
+}
+
+/*
 ** Categorizes token according to their types.
 */
 void	categorize_tokens(t_tokens *tokens)
@@ -86,6 +107,7 @@ void	categorize_tokens(t_tokens *tokens)
 	t_tokens	*temp;
 
 	temp = tokens;
+	set_token_indexes(tokens);
 	while (temp)
 	{
 		temp->type = get_token_type(temp);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: viferrei <viferrei@student.42sp.org.br     +#+  +:+       +#+        */
+/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 23:09:16 by coder             #+#    #+#             */
-/*   Updated: 2022/09/18 20:16:11 by viferrei         ###   ########.fr       */
+/*   Updated: 2022/09/19 02:01:29 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 # include <assert.h> /* assert serve como um 'if (false){quebra o programa}'*/
 
 /*
-** BUILTIN 
+** BUILTIN
 */
 int			env(t_env_list	*env_list);
 
@@ -33,6 +33,15 @@ int			env(t_env_list	*env_list);
 // exec_one_cmd.c
 int			has_pipe(t_tokens *tokens);
 void		exec_one_cmd(t_ms_data *ms);
+
+// tok_command.c
+char		*tok_command(t_ms_data *ms, t_com *self);
+
+// tok_args.c
+char		**tok_args(t_ms_data *ms);
+
+// get_exec_info.c
+t_com		*get_exec_info(t_ms_data *ms);
 
 // STATES
 int			error_state(t_ms_data *ms);
@@ -49,6 +58,7 @@ int			clean_state(t_ms_data *ms);
 void		*safe_free(void *content);
 void		*free_rl_split(t_ms_data *ms);
 void		*destroy_token_list(t_ms_data *ms);
+void		*free_pp_char(char **pp);
 
 // builtin_cd_utils.c
 int			count_args(char **args);

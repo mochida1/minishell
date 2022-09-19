@@ -1,32 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_state.c                                      :+:      :+:    :+:   */
+/*   destroy_exec_info.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/28 17:38:58 by coder             #+#    #+#             */
-/*   Updated: 2022/09/18 21:29:20 by coder            ###   ########.fr       */
+/*   Created: 2022/09/19 01:03:03 by coder             #+#    #+#             */
+/*   Updated: 2022/09/19 01:03:15 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../headers/minishell.h"
 
 /*
-** wrapper for the given state
+** Use to free all stuff inside the given t_com struct.
+** ie: self = destroy_exec_info(self);
 */
-int	parse_state(t_ms_data *ms)
+void	*destroy_exec_info(t_com *self)
 {
-	ms->rl_spaced_buffer = add_spaces(ms->rl_buffer, ms);
-	if (ms->set_buffer_to_null)
-	{
-		ms->rl_buffer = NULL;
-	}
-	ms->rl_split = ft_split_shell(ms->rl_spaced_buffer, ' ');
-	assert (ms->rl_split);
-	ms->tokens = tokenize_splits(ms);
-	expand_variables(ms);
-	categorize_tokens(ms->tokens);
-	ms->state = EXECSTATE;
-	return (0);
+	if (!self)
+		return (NULL);
 }
