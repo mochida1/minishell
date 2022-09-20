@@ -6,7 +6,7 @@
 /*   By: viferrei <viferrei@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/18 21:48:16 by viferrei          #+#    #+#             */
-/*   Updated: 2022/09/18 22:40:41 by viferrei         ###   ########.fr       */
+/*   Updated: 2022/09/20 23:19:56 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ void	handle_redirects(t_ms_data *ms)
 	outfile = NULL;
 	while (tokens)
 	{
-		if (tokens == '<')
+		if (!ft_strcmp(tokens->value, "<"))
 			infile = tokens->next->value;
-		if (tokens == '>')
+		if (!ft_strcmp(tokens->value, ">"))
 			outfile = tokens->next->value;
 		tokens = tokens->next;
 	}
