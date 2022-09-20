@@ -12,7 +12,7 @@ INCLUDES = -I /headers
 
 # Lists sources. Manually because of norm...
 BUILTIN = builtin_cd_utils.c builtin_cd.c builtin_echo.c builtin_env.c \
-			builtin_export.c builtin_pwd.c
+			builtin_export.c builtin_pwd.c builtin_unset.c
 EXEC = exec_one_cmd.c handle_redirects.c execve_TESTE.c
 MAIN = minishell.c
 PARSE = expand_vars_utils.c expand_vars.c token_types.c token_types2.c tokens.c
