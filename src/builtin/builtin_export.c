@@ -6,7 +6,7 @@
 /*   By: viferrei <viferrei@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/17 00:12:17 by viferrei          #+#    #+#             */
-/*   Updated: 2022/09/21 00:30:29 by viferrei         ###   ########.fr       */
+/*   Updated: 2022/09/21 00:37:57 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,28 +16,23 @@
 int	equal_found(char *str)
 {
 	size_t	len;
+	char	*head;
 	char	*name;
 
 	if (!*str)
 		return (0);
-	len = 0;
-	while (str[len] && str[len] != '=')
-		len++;
-	name = ft_substr(*str, 0, len);
+	head = str;
 	while (*str)
 	{
 		if (!is_variable(*str))
 		{
-			printf("export: '%s': not a valid identifier", name);
-			safe_free(name);
+			printf("export: '%s': not a valid identifier", head);
+			return(0);
 		}
 		if(*str == '=')
-		{
-			safe_free(name);
 			return (1);
-		}
+		*str++;
 	}
-	safe_free(name);
 	return (0);
 }
 
