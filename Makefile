@@ -13,7 +13,8 @@ INCLUDES = -I /headers
 # Lists sources. Manually because of norm...
 BUILTIN = builtin_cd_utils.c builtin_cd.c builtin_echo.c builtin_env.c \
 			builtin_export.c builtin_pwd.c
-EXEC = exec_one_cmd.c execve_TESTE.c
+EXEC = exec_one_cmd.c execve_TESTE.c destroy_exec_info.c get_exec_info.c \
+tok_args.c tok_command.c tok_input.c tok_output.c tok_envp.c tok_utils.c
 MAIN = minishell.c
 PARSE = expand_vars_utils.c expand_vars.c token_types.c token_types2.c tokens.c
 PROMPT = add_spaces_utils.c add_spaces.c ft_split_shell.c prompt_utils.c

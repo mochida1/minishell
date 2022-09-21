@@ -137,6 +137,16 @@ int	exec_MVP_TESTE(t_ms_data *ms, char **envp)
 	char	*path;
 	int		pid;
 	int 	e_status;
+	t_com	*data;
+
+//<< EOF < INFILE cdm arg1 arg2 >> APP > OW | < in << eof cdm arg1 arg2 > ow >> app
+	data = get_exec_info(ms);
+	PRINT_COM(data);
+	data = destroy_exec_info (data);
+
+	data = get_exec_info(ms);
+	PRINT_COM(data);
+	data = destroy_exec_info (data);
 
 	e_status = 0;
 	pid = create_child();
