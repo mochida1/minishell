@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 02:19:46 by coder             #+#    #+#             */
-/*   Updated: 2022/09/21 03:16:39 by coder            ###   ########.fr       */
+/*   Updated: 2022/09/22 01:52:36 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,8 +86,8 @@ int	get_token_type(t_tokens *temp)
 */
 static int	set_token_indexes(t_tokens *tokens)
 {
-	t_tokens *temp;
-	int i;
+	t_tokens	*temp;
+	int			i;
 
 	temp = tokens;
 	i = 0;

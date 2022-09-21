@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 23:09:16 by coder             #+#    #+#             */
-/*   Updated: 2022/09/21 03:03:47 by coder            ###   ########.fr       */
+/*   Updated: 2022/09/22 01:49:34 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,9 @@ void		exec_one_cmd(t_ms_data *ms);
 
 // get_exec_info.c
 t_com		*get_exec_info(t_ms_data *ms);
+
+// destroy_exec_info.c
+void		*destroy_exec_info(t_com *self);
 
 // tok_command.c
 char		*tok_command(t_ms_data *ms, t_com *self);
@@ -83,10 +86,6 @@ int			ft_strcmp(char *str, char *str2);
 // get_envs.c
 t_env_list	*get_env(char **envp);
 void		*destroy_env_list(t_env_list *envs);
-
-// test_utils.c
-int	print_token_list(t_ms_data *ms); // REMOVER ANTES DA ENTREGA
-int	check_for_some_shady_shit(t_ms_data *ms); // REMOVER ANTES DA ENTREGA
 
 /*
 ** PROMPT
@@ -156,5 +155,9 @@ char		*get_home_dir_from_envs(t_ms_data *ms);
 ** TESTS
 */
 void		test_expand_vars(t_ms_data *ms); // REMOVER ANTES DA ENTREGA
+// test_utils.c
+int			print_token_list(t_ms_data *ms); // REMOVER ANTES DA ENTREGA
+int			check_for_some_shady_shit(t_ms_data *ms); // REMOVER ANTES DA ENTREGA
+void		PRINT_COM(t_com *data); // REMOVER ANTES DA ENTREGA
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 02:58:01 by coder             #+#    #+#             */
-/*   Updated: 2022/09/21 04:05:51 by coder            ###   ########.fr       */
+/*   Updated: 2022/09/22 01:52:01 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,30 +43,26 @@ static int	tok_count_outputs(t_tokens *arg_temp)
 */
 static void	tok_fill_outlist(t_reds *self, t_tokens *tokens)
 {
-	t_tokens	*tempt;
-	t_reds		*tempr;
-
-	tempt = tokens;
-	tempr = self;
-	if (tempt && tempt->type == OPTOKEN)
-		tempt = tempt->next;
-	while (tempt && tempr &&tempt->type != OPTOKEN)
+	if (tokens && tokens->type == OPTOKEN)
+		tokens = tokens->next;
+	while (tokens && self && tokens->type != OPTOKEN)
 	{
-		if (tempt->type == REDTOKEN)
+		if (tokens->type == REDTOKEN)
 		{
-			if (!ft_strcmp(">", tempt->value))
+			if (!ft_strcmp(">", tokens->value))
 			{
-				tempr->type = INFILE;
-				tempr->target = ft_strdup(tempt->next->value);
+				self->type = OVERWRITE;
+				self->target = ft_strdup(tokens->next->value);
+				self = self->next;
 			}
-			else if (!ft_strcmp(">>", tempt->value))
+			if (!ft_strcmp(">>", tokens->value))
 			{
-				tempr->type = HEREDOC;
-				tempr->target = ft_strdup(tempt->next->value);
+				self->type = APPEND;
+				self->target = ft_strdup(tokens->next->value);
+				self = self->next;
 			}
-			tempr = tempr->next;
 		}
-		tempt = tempt->next;
+		tokens = tokens->next;
 	}
 }
 

@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 23:09:13 by coder             #+#    #+#             */
-/*   Updated: 2022/09/19 02:43:18 by coder            ###   ########.fr       */
+/*   Updated: 2022/09/22 01:49:17 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,17 +47,16 @@
 # define FDTOKEN		5
 
 /*
-** HEREDOC		<<
-** INFILE		<
-** OVERWRITE	>
-** APPEND		>>
+** HEREDOC				<<
+** INFILE				<
+** OVERWRITE			>
+** APPEND				>>
 */
 # define NOPE			0
 # define HEREDOC		1
 # define INFILE			2
 # define OVERWRITE		3
 # define APPEND			4
-
 
 typedef struct s_tokens
 {
@@ -109,9 +108,8 @@ typedef struct s_reds
 {
 	int				type;
 	char			*target;
-	struct	s_reds	*next;
+	struct s_reds	*next;
 }				t_reds;
-
 
 typedef struct s_com
 {

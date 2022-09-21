@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 03:01:41 by coder             #+#    #+#             */
-/*   Updated: 2022/09/21 04:02:52 by coder            ###   ########.fr       */
+/*   Updated: 2022/09/22 01:21:38 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ t_reds	*create_red_list(int nodes)
 		return (NULL);
 	head = ft_calloc(1, sizeof(t_reds));
 	self = head;
-	while (i > nodes)
+	while (i < nodes - 1)
 	{
 		self->next = ft_calloc(1, sizeof(t_reds));
 		i++;
