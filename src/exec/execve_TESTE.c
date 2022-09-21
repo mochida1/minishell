@@ -146,13 +146,13 @@ void PRINT_COM(t_com *data)
 	}
 	while (temp)
 	{
-		printf ("%d %s\n", temp->type, temp->target);
+		printf ("in:%d, %s\n", temp->type, temp->target);
 		temp = temp->next;
 	}
 	temp = data->red_out;
 	while (temp)
 	{
-		printf ("%d %s\n", temp->type, temp->target);
+		printf ("out:%d, %s\n", temp->type, temp->target);
 		temp = temp->next;
 	}
 }
@@ -170,6 +170,7 @@ int	exec_MVP_TESTE(t_ms_data *ms, char **envp)
 	t_com	*data;
 
 	data = get_exec_info(ms);
+	// << EOF < INFILE cdm arg1 arg2 >> APP > OW
 	PRINT_COM(data);
 
 	e_status = 0;

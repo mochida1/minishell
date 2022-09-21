@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/10 16:44:54 by coder             #+#    #+#             */
-/*   Updated: 2022/09/19 01:57:45 by coder            ###   ########.fr       */
+/*   Updated: 2022/09/21 03:50:04 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ int	token_is_command(t_tokens *temp)
 		return (1);
 	if (temp->prev && temp->prev->type == OPTOKEN)
 		return (1);
-	if (temp->prev && temp->prev->type == WORDTOKEN)
+	if (temp->prev && temp->prev->type == FDTOKEN)
 	{
 		if (temp->prev->prev && temp->prev->prev->type == REDTOKEN)
 			return (1);

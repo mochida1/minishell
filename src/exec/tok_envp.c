@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 03:04:27 by coder             #+#    #+#             */
-/*   Updated: 2022/09/21 03:05:27 by coder            ###   ########.fr       */
+/*   Updated: 2022/09/21 03:45:15 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,12 @@ static int	count_envs(t_env_list *head)
 /*
 ** Fills the temporary envp PP
 */
-static void	tok_fill_envp(char **ret, t_env_list *head)
+static void	tok_fill_envp(char **ret, t_env_list *head, int top)
 {
 	int	i;
 
 	i = 0;
-	while (head)
+	while (head && i < top - 1)
 	{
 		ret[i] = ft_strdup(head->content);
 		i++;
@@ -56,7 +56,7 @@ char	**tok_envp(t_env_list *head)
 	count = count_envs(temp);
 	if (!count)
 		return (0);
-	ret = ft_calloc(count, sizeof(char *));
-	tok_fill_envp(ret, temp);
+	ret = ft_calloc(count, sizeof(*ret));
+	tok_fill_envp(ret, temp, count);
 	return (ret);
 }

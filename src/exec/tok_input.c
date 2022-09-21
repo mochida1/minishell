@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 02:52:05 by coder             #+#    #+#             */
-/*   Updated: 2022/09/21 03:20:49 by coder            ###   ########.fr       */
+/*   Updated: 2022/09/21 04:08:08 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ static void	tok_fill_inlist(t_reds *self, t_tokens *tokens)
 	tempr = self;
 	if (tempt && tempt->type == OPTOKEN)
 		tempt = tempt->next;
-	while (tempt && tempt->type != OPTOKEN)
+	while (tempt && tempr && tempt->type != OPTOKEN)
 	{
 		if (tempt->type == REDTOKEN)
 		{

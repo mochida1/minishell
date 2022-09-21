@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 02:58:01 by coder             #+#    #+#             */
-/*   Updated: 2022/09/21 03:06:32 by coder            ###   ########.fr       */
+/*   Updated: 2022/09/21 04:05:51 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ static int	tok_count_outputs(t_tokens *arg_temp)
 			else if (!ft_strcmp(">>", temp->value))
 				ret++;
 		}
+		temp = temp->next;
 	}
 	return (ret);
 }
@@ -49,7 +50,7 @@ static void	tok_fill_outlist(t_reds *self, t_tokens *tokens)
 	tempr = self;
 	if (tempt && tempt->type == OPTOKEN)
 		tempt = tempt->next;
-	while (tempt && tempt->type != OPTOKEN)
+	while (tempt && tempr &&tempt->type != OPTOKEN)
 	{
 		if (tempt->type == REDTOKEN)
 		{
