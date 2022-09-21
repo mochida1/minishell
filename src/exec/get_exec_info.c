@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/18 21:12:55 by coder             #+#    #+#             */
-/*   Updated: 2022/09/19 02:43:50 by coder            ###   ########.fr       */
+/*   Updated: 2022/09/21 03:09:11 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,10 @@
 ** Checks if token type at index is a PIPE
 ** returns 1 if it is, else returns 0;
 */
-int tok_from_pipe(t_ms_data *ms)
+static int tok_from_pipe(t_ms_data *ms)
 {
 	t_tokens *temp;
+
 	temp = iterate_to_tok_index(ms);
 	if (temp->type == OPTOKEN)
 		return (1);
@@ -26,36 +27,28 @@ int tok_from_pipe(t_ms_data *ms)
 }
 
 /*
-** Searches throught tokens untill it reaches ms->token_index.
-** Returns a pointer to said node.
+** Checks wether there's a pipe after the command block
 */
-t_tokens	*iterate_to_tok_index(t_ms_data *ms)
+static int	tok_to_pipe(t_ms_data *ms)
 {
 	t_tokens	*temp;
-	temp = ms->tokens;
-	while (temp && (temp->index != ms->token_index))
-		temp = temp->next;
-	return (temp);
-}
-
-int	tok_intype(t_ms_data *ms)
-{
-	t_tokens	*temp;
-	int			ret;
 
 	temp = iterate_to_tok_index(ms);
-	ret = NOPE;
-	while (temp && temp->type != OPTOKEN)
-	{
-		if (temp->type == REDTOKEN)
+	if (temp && temp->type == OPTOKEN)
 		{
-			if (!ft_strcmp("<", temp->value))
-				ret = INFILE;
-			else if (!ft_strcmp("<<", temp->value))
-				ret = HEREDOC;
+			temp = temp->next;
+			ms->token_index++;
 		}
+	while (temp)
+	{
+		if (temp->type == OPTOKEN)
+		{
+			return (1);
+		}
+		ms->token_index++;
+		temp = temp->next;
 	}
-
+	return (0);
 }
 
 /*
@@ -71,8 +64,9 @@ t_com	*get_exec_info(t_ms_data *ms)
 	self->receives_from_pipe = tok_from_pipe(ms);
 	self->command = tok_command(ms, self);
 	self->args = tok_args(ms);
-	self->input_type = tok_intype(ms);
+	self->red_in = tok_input(ms);
+	self->red_out = tok_output(ms);
+	self->envp = tok_envp(ms->env_head);
 	self->sends_to_pipe = tok_to_pipe(ms); //AQUI ATUALIZA ms->index
 	return (self);
 }
-

@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 23:09:16 by coder             #+#    #+#             */
-/*   Updated: 2022/09/19 02:01:29 by coder            ###   ########.fr       */
+/*   Updated: 2022/09/21 03:03:47 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,14 +34,27 @@ int			env(t_env_list	*env_list);
 int			has_pipe(t_tokens *tokens);
 void		exec_one_cmd(t_ms_data *ms);
 
+// get_exec_info.c
+t_com		*get_exec_info(t_ms_data *ms);
+
 // tok_command.c
 char		*tok_command(t_ms_data *ms, t_com *self);
 
 // tok_args.c
 char		**tok_args(t_ms_data *ms);
 
-// get_exec_info.c
-t_com		*get_exec_info(t_ms_data *ms);
+// tok_input.c
+t_reds		*tok_input(t_ms_data *ms);
+
+// tok_output.c
+t_reds		*tok_output(t_ms_data *ms);
+
+// tok_envp.c
+char		**tok_envp(t_env_list *head);
+
+// tok_utils.c
+t_tokens	*iterate_to_tok_index(t_ms_data *ms);
+t_reds		*create_red_list(int nodes);
 
 // STATES
 int			error_state(t_ms_data *ms);
@@ -107,7 +120,6 @@ int			expand_variables(t_ms_data *ms);
 // tokens.c
 t_tokens	*tokenize_splits(t_ms_data *ms);
 void		categorize_tokens(t_tokens *tokens);
-int			token_is_error(t_tokens *temp);
 int			check_for_non_print(char *value);
 
 // token_types.c
@@ -116,6 +128,10 @@ int			token_is_operator(char *value);
 int			token_is_redirect(char *value);
 int			token_is_word(t_tokens *temp);
 int			token_is_command(t_tokens *temp);
+
+// token_types_2.c
+int			token_is_error(t_tokens *temp);
+int			token_is_fd(t_tokens *temp);
 
 /*
 ** SIGNALS

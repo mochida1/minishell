@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 01:03:03 by coder             #+#    #+#             */
-/*   Updated: 2022/09/19 01:03:15 by coder            ###   ########.fr       */
+/*   Updated: 2022/09/21 03:09:44 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,4 +20,5 @@ void	*destroy_exec_info(t_com *self)
 {
 	if (!self)
 		return (NULL);
+	return (NULL);
 }

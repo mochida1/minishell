@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 02:19:46 by coder             #+#    #+#             */
-/*   Updated: 2022/09/19 01:57:51 by coder            ###   ########.fr       */
+/*   Updated: 2022/09/21 03:16:39 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,7 @@ static int	set_token_indexes(t_tokens *tokens)
 	while (temp)
 	{
 		temp->index = i;
+		i++;
 		temp = temp->next;
 	}
 	return (i);

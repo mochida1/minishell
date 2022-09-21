@@ -127,6 +127,36 @@ char	*get_path(char *cmd_arg, char **envp)
 	return (NULL);
 }
 
+void PRINT_COM(t_com *data)
+{
+	t_reds	*temp = data->red_in;
+	int i = 0;
+	printf ("command: %s\n", data->command);
+	printf ("error: %s\n", data->error_to_print);
+	while (data->args[i])
+	{
+		printf ("arg[%d]: %s\n", i, data->args[i]);
+		i++;
+	}
+	i = 0;
+	while (data->envp[i])
+	{
+		printf ("envp[%d]: %s\n", i, data->envp[i]);
+		i++;
+	}
+	while (temp)
+	{
+		printf ("%d %s\n", temp->type, temp->target);
+		temp = temp->next;
+	}
+	temp = data->red_out;
+	while (temp)
+	{
+		printf ("%d %s\n", temp->type, temp->target);
+		temp = temp->next;
+	}
+}
+
 /*
 ** execve para testes. deletar após implementar tudo direitinho
 ** pega o primeiro argumento da linha e usa como comando.
@@ -137,6 +167,10 @@ int	exec_MVP_TESTE(t_ms_data *ms, char **envp)
 	char	*path;
 	int		pid;
 	int 	e_status;
+	t_com	*data;
+
+	data = get_exec_info(ms);
+	PRINT_COM(data);
 
 	e_status = 0;
 	pid = create_child();

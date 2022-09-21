@@ -3,14 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_state.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: viferrei <viferrei@student.42sp.org.br     +#+  +:+       +#+        */
+/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 17:13:30 by coder             #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2022/09/18 18:16:37 by coder            ###   ########.fr       */
-=======
-/*   Updated: 2022/09/13 22:39:52 by viferrei         ###   ########.fr       */
->>>>>>> one-command
+/*   Updated: 2022/09/21 03:19:31 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +25,7 @@ static int	shutup_unused_args(int delete, char me)
 */
 int	init_signal_handlers(void)
 {
-	signal(SIGINT, sigint_handler);
+	// signal(SIGINT, sigint_handler);
 	signal(SIGQUIT, SIG_IGN);
 	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 00:53:46 by coder             #+#    #+#             */
-/*   Updated: 2022/09/19 01:01:33 by coder            ###   ########.fr       */
+/*   Updated: 2022/09/21 03:08:24 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,14 +94,15 @@ char	*tok_command(t_ms_data *ms, t_com *self)
 	t_tokens	*temp;
 	char		*path;
 
+	path = NULL;
 	temp = iterate_to_tok_index(ms);
 	while (temp && (temp->type != COMTOKEN && temp->type != BITOKEN))
 		temp = temp->next;
 	if (!temp)
 		return (NULL);
-	if(temp->type == BITOKEN)
-		return(ft_strdup(temp->value));
-	if(temp->type == COMTOKEN)
+	if (temp->type == BITOKEN)
+		return (ft_strdup(temp->value));
+	if (temp->type == COMTOKEN)
 		path = tok_get_path(temp->value, ms->env_head);
 	if (!path)
 	{

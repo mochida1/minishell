@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 01:59:31 by coder             #+#    #+#             */
-/*   Updated: 2022/09/19 02:00:24 by coder            ###   ########.fr       */
+/*   Updated: 2022/09/21 01:33:59 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 /*
 ** counts the number of consecutive args and returns it;
 */
-static int tok_count_args(t_tokens *temp)
+static int	tok_count_args(t_tokens *temp)
 {
 	t_tokens	*other;
 	int			ret;

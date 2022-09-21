@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/10 18:38:57 by coder             #+#    #+#             */
-/*   Updated: 2022/09/19 01:18:06 by coder            ###   ########.fr       */
+/*   Updated: 2022/09/21 02:33:34 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,9 @@ int	token_is_error(t_tokens *temp)
 	return (0);
 }
 
-int token_is_fd(t_tokens *temp)
+int	token_is_fd(t_tokens *temp)
 {
 	if (temp->prev && temp->prev->type == REDTOKEN)
-	return (1);
+		return (1);
+	return (0);
 }
