@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/17 00:12:17 by viferrei          #+#    #+#             */
-/*   Updated: 2022/09/22 01:57:13 by coder            ###   ########.fr       */
+/*   Updated: 2022/09/22 02:01:11 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 int	export(t_ms_data *ms)
 {
 	t_env_list	*head;
-	(void) args;
 
 	head = ms->env_head;
 	while (head->next)
