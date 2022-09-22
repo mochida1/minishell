@@ -6,7 +6,7 @@
 /*   By: viferrei <viferrei@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/17 19:45:04 by coder             #+#    #+#             */
-/*   Updated: 2022/09/18 21:19:25 by viferrei         ###   ########.fr       */
+/*   Updated: 2022/09/23 01:32:06 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ int	builtin_pwd(/*char **args,*/ t_ms_data *ms)
 {
 	char	path_name[PATH_MAX];
 
+	// (void) args;
 	if (!getcwd(path_name, PATH_MAX))
 	{
 		write (2, "Error: user is trying to fuck shit up!\n", 40);

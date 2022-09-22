@@ -3,14 +3,49 @@
 /*                                                        :::      ::::::::   */
 /*   test_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
+/*   By: viferrei <viferrei@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/10 17:12:58 by coder             #+#    #+#             */
-/*   Updated: 2022/09/10 17:17:58 by coder            ###   ########.fr       */
+/*   Updated: 2022/09/23 00:30:47 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../headers/minishell.h"
+
+
+/*
+** THIS IS A DEBUGGING FUNCTION
+** Printa uma struct de comandos.
+*/
+void	PRINT_COM(t_com *data)
+{
+	int i = 0;
+	printf ("command: %s\n", data->command);
+	printf ("error: %s\n", data->error_to_print);
+	while (data->args && data->args[i])
+	{
+		printf ("arg[%d]: %s\n", i, data->args[i]);
+		i++;
+	}
+	i = 0;
+	while (data->envp[i])
+	{
+		printf ("envp[%d]: %s\n", i, data->envp[i]);
+		i++;
+	}
+	t_reds	*temp = data->red_in;
+	while (temp)
+	{
+		printf ("in:%d, %s\n", temp->type, temp->target);
+		temp = temp->next;
+	}
+	temp = data->red_out;
+	while (temp)
+	{
+		printf ("out:%d, %s\n", temp->type, temp->target);
+		temp = temp->next;
+	}
+}
 
 /*
 ** THIS IS A DEBUGGING FUNCTION

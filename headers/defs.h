@@ -6,7 +6,7 @@
 /*   By: viferrei <viferrei@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 23:09:13 by coder             #+#    #+#             */
-/*   Updated: 2022/09/18 20:16:14 by viferrei         ###   ########.fr       */
+/*   Updated: 2022/09/23 00:19:57 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,11 +44,25 @@
 # define WORDTOKEN		2
 # define OPTOKEN		3
 # define REDTOKEN		4
+# define FDTOKEN		5
+
+/*
+** HEREDOC				<<
+** INFILE				<
+** OVERWRITE			>
+** APPEND				>>
+*/
+# define NOPE			0
+# define HEREDOC		1
+# define INFILE			2
+# define OVERWRITE		3
+# define APPEND			4
 
 typedef struct s_tokens
 {
 	char			*value;
 	int				type;
+	int				index;
 	struct s_tokens	*next;
 	struct s_tokens	*prev;
 }				t_tokens;
@@ -70,6 +84,7 @@ typedef struct s_ms_data
 	char				**rl_split;
 	int					exit_code;
 	char				*home_original;
+	int					token_index;
 	struct s_env_list	*env_head;
 	struct s_tokens		*tokens;
 }				t_ms_data;
@@ -88,6 +103,25 @@ typedef struct s_global
 {
 	volatile int	exit_code;
 }				t_global;
+
+typedef struct s_reds
+{
+	int				type;
+	char			*target;
+	struct s_reds	*next;
+}				t_reds;
+
+typedef struct s_com
+{
+	char			*command;
+	char			**args;
+	char			**envp;
+	struct s_reds	*red_in;
+	struct s_reds	*red_out;
+	int				receives_from_pipe;
+	int				sends_to_pipe;
+	char			*error_to_print;
+}				t_com;
 
 // GLOBAL VARIABLE
 // t_global	g_global;

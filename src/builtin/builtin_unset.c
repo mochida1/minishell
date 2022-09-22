@@ -6,7 +6,7 @@
 /*   By: viferrei <viferrei@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 01:05:53 by viferrei          #+#    #+#             */
-/*   Updated: 2022/09/21 02:10:52 by viferrei         ###   ########.fr       */
+/*   Updated: 2022/09/23 01:33:20 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int		builtin_unset(char	**args, t_ms_data *ms)
 	{
 		while (head)
 			compare_arg_env(*args, head, tmp, prev);
-		*args++;	
+		args++;	
 	}
 	return (0);
 }

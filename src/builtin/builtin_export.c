@@ -6,7 +6,7 @@
 /*   By: viferrei <viferrei@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/17 00:12:17 by viferrei          #+#    #+#             */
-/*   Updated: 2022/09/21 01:37:22 by viferrei         ###   ########.fr       */
+/*   Updated: 2022/09/23 01:33:13 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,7 @@
 // Returns 1 if a '=' is found in the string
 int	equal_found(char *str)
 {
-	size_t	len;
 	char	*head;
-	char	*name;
 
 	if (!*str)
 		return (0);
@@ -29,9 +27,9 @@ int	equal_found(char *str)
 			printf("export: '%s': not a valid identifier", head);
 			return(0);
 		}
-		if(*str == '=')
+		if (*str == '=')
 			return (1);
-		*str++;
+		str++;
 	}
 	return (0);
 }
@@ -40,6 +38,7 @@ int	equal_found(char *str)
 int	export(char	**args, t_ms_data *ms)
 {
 	t_env_list	*head;
+	// (void) args;
 
 	head = ms->env_head;
 	while (head->next)

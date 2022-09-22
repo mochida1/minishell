@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   token_types.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: viferrei <viferrei@student.42sp.org.br     +#+  +:+       +#+        */
+/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/10 16:44:54 by coder             #+#    #+#             */
-/*   Updated: 2022/09/11 01:15:35 by viferrei         ###   ########.fr       */
+/*   Updated: 2022/09/21 03:50:04 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,8 +80,6 @@ int	token_is_word(t_tokens *temp)
 {
 	if (temp->value[0] == '\'' || temp->value[0] == '\"')
 		return (1);
-	if (temp->prev && temp->prev->type == REDTOKEN)
-		return (1);
 	if (check_for_non_print(temp->value))
 		return (1);
 	return (0);
@@ -99,7 +97,7 @@ int	token_is_command(t_tokens *temp)
 		return (1);
 	if (temp->prev && temp->prev->type == OPTOKEN)
 		return (1);
-	if (temp->prev && temp->prev->type == WORDTOKEN)
+	if (temp->prev && temp->prev->type == FDTOKEN)
 	{
 		if (temp->prev->prev && temp->prev->prev->type == REDTOKEN)
 			return (1);
