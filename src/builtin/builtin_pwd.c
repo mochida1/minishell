@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtin_pwd.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
+/*   By: viferrei <viferrei@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/17 19:45:04 by coder             #+#    #+#             */
-/*   Updated: 2022/09/22 01:57:00 by coder            ###   ########.fr       */
+/*   Updated: 2022/09/23 00:14:26 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	builtin_pwd(t_ms_data *ms)
 {
 	char	path_name[PATH_MAX];
 
-	(void) args;
+	// (void) args;
 	if (!getcwd(path_name, PATH_MAX))
 	{
 		write (2, "Error: user is trying to fuck shit up!\n", 40);
