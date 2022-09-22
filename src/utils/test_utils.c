@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   test_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
+/*   By: viferrei <viferrei@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/10 17:12:58 by coder             #+#    #+#             */
-/*   Updated: 2022/09/22 01:47:55 by coder            ###   ########.fr       */
+/*   Updated: 2022/09/23 00:26:09 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	PRINT_COM(t_com *data)
 	int i = 0;
 	printf ("command: %s\n", data->command);
 	printf ("error: %s\n", data->error_to_print);
-	while (data->args[i])
+	while (data->args && data->args[i])
 	{
 		printf ("arg[%d]: %s\n", i, data->args[i]);
 		i++;
