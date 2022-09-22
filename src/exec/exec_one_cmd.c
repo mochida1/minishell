@@ -6,7 +6,7 @@
 /*   By: viferrei <viferrei@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 21:40:45 by viferrei          #+#    #+#             */
-/*   Updated: 2022/09/23 01:32:04 by viferrei         ###   ########.fr       */
+/*   Updated: 2022/09/23 01:50:03 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,8 +67,8 @@ int	exec_builtin(t_ms_data *ms)
 			// 	return(builtin_cd(ms));
 			// if (!ft_strcmp(head->value, "pwd"))
 			// 	return(builtin_pwd(ms));
-			// if (!ft_strcmp(head->value, "export"))
-			// 	return(export(head->next->value, ms->env_head));
+			if (!ft_strcmp(head->value, "export"))
+				return(builtin_export(args, ms->env_head));
 			// if (!ft_strcmp(head->value, "unset"))
 			// 	return(builtin_unset(ms));
 			// if (!ft_strcmp(head->value, "env"))
@@ -82,12 +82,13 @@ int	exec_builtin(t_ms_data *ms)
 }
 
 // Handles single-command input - either builtin or not.
-void	exec_one_cmd(t_ms_data *ms)
+int	exec_one_cmd(t_ms_data *ms)
 {
 	handle_redirects(ms);
 	if (is_builtin(ms->tokens))
-		exec_builtin(ms);
+		return(exec_builtin(ms));
 	else
 		;
 		// fork_exec_one_cmd(ms);
+	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: viferrei <viferrei@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/17 00:12:17 by viferrei          #+#    #+#             */
-/*   Updated: 2022/09/23 01:33:13 by viferrei         ###   ########.fr       */
+/*   Updated: 2022/09/23 01:47:23 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	equal_found(char *str)
 }
 
 // Adds variable to the environment list if its value is set 
-int	export(char	**args, t_ms_data *ms)
+int	builtin_export(char	**args, t_ms_data *ms)
 {
 	t_env_list	*head;
 	// (void) args;
