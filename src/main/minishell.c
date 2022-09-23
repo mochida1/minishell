@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
+/*   By: viferrei <viferrei@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 01:58:25 by viferrei          #+#    #+#             */
-/*   Updated: 2022/09/11 21:02:42 by coder            ###   ########.fr       */
+/*   Updated: 2022/09/23 21:49:26 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	main(int argc, char *argv[], char **envp)
 		if (ms->state == PARSESTATE)
 			parse_state(ms);
 		if (ms->state == EXECSTATE)
-			exec_state(ms, envp);
+			exec_state(ms/*, envp*/);
 		if (ms->state == CLEANSTATE)
 			clean_state(ms);
 	}

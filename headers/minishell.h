@@ -6,7 +6,7 @@
 /*   By: viferrei <viferrei@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 23:09:16 by coder             #+#    #+#             */
-/*   Updated: 2022/09/23 01:48:07 by viferrei         ###   ########.fr       */
+/*   Updated: 2022/09/23 22:30:06 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 /*
 ** BUILTIN
 */
-int			env(t_env_list	*env_list);
+int			builtin_env(t_env_list	*env_list);
 int			builtin_export(char	**args, t_ms_data *ms);
 
 /*
@@ -33,7 +33,7 @@ int			builtin_export(char	**args, t_ms_data *ms);
 */
 // exec_one_cmd.c
 int			has_pipe(t_tokens *tokens);
-int			exec_one_cmd(t_ms_data *ms);
+int			exec_one_cmd(t_com *cmd, t_ms_data *ms);
 
 // handle_redirects.c
 void		handle_redirects(t_ms_data *ms);
