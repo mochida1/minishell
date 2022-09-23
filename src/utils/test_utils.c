@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/10 17:12:58 by coder             #+#    #+#             */
-/*   Updated: 2022/09/22 01:47:55 by coder            ###   ########.fr       */
+/*   Updated: 2022/09/23 02:50:35 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,20 +17,32 @@
 ** THIS IS A DEBUGGING FUNCTION
 ** Printa uma struct de comandos.
 */
+//<< EOF < INFILE cdm arg1 arg2 >> APP > OW | < in << eof cdm arg3 arg4 > ow >> app
 void	PRINT_COM(t_com *data)
 {
+	if (!data)
+		return ;
 	int i = 0;
+	printf ("---------------------------\n");
+	if (data->block_exec)
+	{
+		printf ("error: %s", data->error_to_print);
+		return ;
+	}
 	printf ("command: %s\n", data->command);
-	printf ("error: %s\n", data->error_to_print);
-	while (data->args[i])
+	if (data->receives_from_pipe)
+		printf("receives from pipe\n");
+	if (data->sends_to_pipe)
+		printf("sends to pipe\n");
+	while (data->args && data->args[i])
 	{
 		printf ("arg[%d]: %s\n", i, data->args[i]);
 		i++;
 	}
 	i = 0;
-	while (data->envp[i])
+	while (data->envp && data->envp[i])
 	{
-		printf ("envp[%d]: %s\n", i, data->envp[i]);
+		// printf ("envp[%d]: %s\n", i, data->envp[i]);
 		i++;
 	}
 	t_reds	*temp = data->red_in;
@@ -45,6 +57,7 @@ void	PRINT_COM(t_com *data)
 		printf ("out:%d, %s\n", temp->type, temp->target);
 		temp = temp->next;
 	}
+	printf ("***************************\n");
 }
 
 /*

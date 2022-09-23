@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 01:59:31 by coder             #+#    #+#             */
-/*   Updated: 2022/09/21 01:33:59 by coder            ###   ########.fr       */
+/*   Updated: 2022/09/23 02:01:04 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,11 @@ char	**tok_args(t_ms_data *ms)
 	i = 0;
 	temp = iterate_to_tok_index(ms);
 	while (temp && temp->type != WORDTOKEN)
+	{
 		temp = temp->next;
+		if (temp->type == OPTOKEN)
+			return (NULL);
+	}
 	if (!temp)
 		return (NULL);
 	count = tok_count_args(temp);

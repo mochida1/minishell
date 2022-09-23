@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 23:09:13 by coder             #+#    #+#             */
-/*   Updated: 2022/09/22 01:49:17 by coder            ###   ########.fr       */
+/*   Updated: 2022/09/23 02:33:15 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,6 +113,7 @@ typedef struct s_reds
 
 typedef struct s_com
 {
+	int				block_exec;
 	char			*command;
 	char			**args;
 	char			**envp;
