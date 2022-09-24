@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/10 17:12:58 by coder             #+#    #+#             */
-/*   Updated: 2022/09/23 02:50:35 by coder            ###   ########.fr       */
+/*   Updated: 2022/09/24 02:57:15 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void	PRINT_COM(t_com *data)
 	}
 	printf ("***************************\n");
 }
-
+// < target cmd arg arg2 arg3 arg4 arg5 | cmd2 arg21 arg22 > out
 /*
 ** THIS IS A DEBUGGING FUNCTION
 ** prints the tokens. Yup. With printf.

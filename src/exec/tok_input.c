@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 02:52:05 by coder             #+#    #+#             */
-/*   Updated: 2022/09/22 00:48:44 by coder            ###   ########.fr       */
+/*   Updated: 2022/09/24 21:04:02 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ t_reds	*tok_input(t_ms_data *ms)
 	int			count;
 
 	temp = iterate_to_tok_index(ms);
-	count = tok_count_inputs(ms->tokens);
+	count = tok_count_inputs(temp);
 	self = create_red_list(count);
 	if (self)
 		tok_fill_inlist(self, temp);

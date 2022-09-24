@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 01:59:31 by coder             #+#    #+#             */
-/*   Updated: 2022/09/23 02:01:04 by coder            ###   ########.fr       */
+/*   Updated: 2022/09/24 02:18:21 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ char	**tok_args(t_ms_data *ms)
 	while (temp && temp->type != WORDTOKEN)
 	{
 		temp = temp->next;
-		if (temp->type == OPTOKEN)
+		if (temp && temp->type == OPTOKEN)
 			return (NULL);
 	}
 	if (!temp)

@@ -142,6 +142,7 @@ int	exec_MVP_TESTE(t_ms_data *ms, char **envp)
 //<< EOF < INFILE cdm arg1 arg2 >> APP > OW | < in << eof cdm arg3 arg4 > ow >> app
 	while (1)
 	{
+		printf ("token index is: %d\n", ms->token_index);
 		data = get_exec_info(ms);
 		if (!data)
 			break ;
