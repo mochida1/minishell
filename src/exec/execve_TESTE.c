@@ -139,14 +139,21 @@ int	exec_MVP_TESTE(t_ms_data *ms, char **envp)
 	int 	e_status;
 	t_com	*data;
 
-//<< EOF < INFILE cdm arg1 arg2 >> APP > OW | < in << eof cdm arg1 arg2 > ow >> app
-	data = get_exec_info(ms);
-	PRINT_COM(data);
-	data = destroy_exec_info (data);
-
-	data = get_exec_info(ms);
-	PRINT_COM(data);
-	data = destroy_exec_info (data);
+//<< EOF < INFILE cdm arg1 arg2 >> APP > OW | < in << eof cdm arg3 arg4 > ow >> app
+	while (1)
+	{
+		printf ("token index is: %d\n", ms->token_index);
+		data = get_exec_info(ms);
+		if (!data)
+			break ;
+		PRINT_COM(data);
+		if (data->block_exec)
+			{
+				data = destroy_exec_info(data);
+				break;
+			}
+		data = destroy_exec_info(data);
+	}
 
 	e_status = 0;
 	pid = create_child();

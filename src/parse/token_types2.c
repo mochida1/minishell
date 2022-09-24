@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/10 18:38:57 by coder             #+#    #+#             */
-/*   Updated: 2022/09/21 02:33:34 by coder            ###   ########.fr       */
+/*   Updated: 2022/09/24 21:54:23 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,10 @@
 
 int	token_is_error(t_tokens *temp)
 {
+	if (temp->type == OPTOKEN && (!ft_strcmp(temp->value, "||")))
+		return (1);
+	if (temp->type == OPTOKEN && !temp->prev)
+		return (1);
 	if (temp->prev && temp->prev->type == REDTOKEN)
 		if (temp->type == OPTOKEN || temp->type == REDTOKEN)
 			return (1);

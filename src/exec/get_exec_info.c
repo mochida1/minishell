@@ -6,7 +6,11 @@
 /*   By: viferrei <viferrei@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/18 21:12:55 by coder             #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2022/09/23 00:28:57 by viferrei         ###   ########.fr       */
+=======
+/*   Updated: 2022/09/23 02:58:54 by coder            ###   ########.fr       */
+>>>>>>> hm-fix1
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +25,7 @@ static int	tok_from_pipe(t_ms_data *ms)
 	t_tokens	*temp;
 
 	temp = iterate_to_tok_index(ms);
-	if (temp->type == OPTOKEN)
+	if (temp && temp->type == OPTOKEN)
 		return (1);
 	return (0);
 }
@@ -52,6 +56,47 @@ static int	tok_to_pipe(t_ms_data *ms)
 }
 
 /*
+** return the last token index
+*/
+int	last_tok_index (t_ms_data *ms)
+{
+	t_tokens	*temp;
+	int			ret;
+
+	ret = 0;
+	temp = ms->tokens;
+	while (temp)
+	{
+		ret = temp->index;
+		temp = temp->next;
+	}
+	return (ret);
+}
+
+/*
+** Checks for errors that should block further execution.
+** Updates error_to_print.
+** Returns 1 if there are errors, else 0.
+*/
+int	check_for_errtokens(t_ms_data *ms, t_com *self)
+{
+	t_tokens	*temp;
+
+	temp = ms->tokens;
+	while (temp)
+	{
+		if(temp->type == ERRTOKEN)
+		{
+			self->block_exec = 1;
+			self->error_to_print = ft_strdup("Invalid syntax, lear to ytpe.");
+			return (1);
+		}
+		temp = temp->next;
+	}
+	return (0);
+}
+
+/*
 ** Creates a struct that contains all the info used to execute a command or
 ** builtin command from minishell.
 ** Must be destroyed after use with destroy_exec_info(thisStruct);
@@ -60,7 +105,14 @@ t_com	*get_exec_info(t_ms_data *ms)
 {
 	t_com	*self;
 
+	// printf ("LAST TOKEN INDEX IS: %d,\n", last_tok_index(ms));
+	// printf ("MS TOKEN INDEX IS: %d,\n", ms->token_index);
+	// printf ("TYPE IS: %d,\n", ms->tokens->type);
+	if (ms->token_index > last_tok_index(ms))
+		return (NULL);
 	self = ft_calloc(1, sizeof(t_com));
+	if (check_for_errtokens(ms, self))
+		return(self);
 	self->receives_from_pipe = tok_from_pipe(ms);
 	self->command = tok_command(ms, self);
 	self->args = tok_args(ms);

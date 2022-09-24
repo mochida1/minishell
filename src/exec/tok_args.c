@@ -6,7 +6,11 @@
 /*   By: viferrei <viferrei@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 01:59:31 by coder             #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2022/09/23 22:28:07 by viferrei         ###   ########.fr       */
+=======
+/*   Updated: 2022/09/24 02:18:21 by coder            ###   ########.fr       */
+>>>>>>> main
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +48,11 @@ char	**tok_args(t_ms_data *ms)
 	i = 0;
 	temp = iterate_to_tok_index(ms);
 	while (temp && temp->type != WORDTOKEN)
+	{
 		temp = temp->next;
+		if (temp && temp->type == OPTOKEN)
+			return (NULL);
+	}
 	if (!temp)
 		return (NULL);
 	count = tok_count_args(temp);
