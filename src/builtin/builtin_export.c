@@ -6,7 +6,7 @@
 /*   By: viferrei <viferrei@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/17 00:12:17 by viferrei          #+#    #+#             */
-/*   Updated: 2022/09/23 22:22:14 by viferrei         ###   ########.fr       */
+/*   Updated: 2022/09/24 22:08:27 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,13 +38,15 @@ int	equal_found(char *str)
 int	builtin_export(char	**args, t_ms_data *ms)
 {
 	t_env_list	*head;
-	// (void) args;
 
 	head = ms->env_head;
 	while (head->next)
 		head = head->next;
 	if (!args)
-		printf("export: forgot something?");
+	{
+		printf("export: forgot something?\n");
+		return(ms->exit_code);
+	}
 	while (*args)
 	{
 		if (equal_found(*args))
@@ -55,7 +57,5 @@ int	builtin_export(char	**args, t_ms_data *ms)
 		}
 		(args)++;
 	}
-	head->next = NULL;
-	ms->exit_code = 0;
 	return(ms->exit_code);
 }
