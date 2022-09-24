@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 21:38:27 by coder             #+#    #+#             */
-/*   Updated: 2022/09/18 18:15:09 by coder            ###   ########.fr       */
+/*   Updated: 2022/09/24 22:12:56 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,11 @@ t_env_list	*get_env(char **envp)
 	while (envp[index])
 	{
 		temp->content = ft_strdup(envp[index]);
-		temp->next = ft_calloc(1, sizeof(*self));
+		if (envp[index + 1])
+			temp->next = ft_calloc(1, sizeof(*self));
 		temp = temp->next;
 		index++;
 	}
-	temp->next = safe_free(temp->next);
 	return (self);
 }
 
