@@ -6,7 +6,7 @@
 /*   By: viferrei <viferrei@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/26 14:11:51 by viferrei          #+#    #+#             */
-/*   Updated: 2022/09/03 21:40:34 by viferrei         ###   ########.fr       */
+/*   Updated: 2022/09/24 21:46:34 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ char	*ft_strdup(const char *s1)
 	char	*s2;
 	int		i;
 
+	if (!s1)
+		return (NULL);
 	s2 = (char *) malloc(ft_strlen(s1) + 1);
 	if (!s2)
 		return (0);
