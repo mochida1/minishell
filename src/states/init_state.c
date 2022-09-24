@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 17:13:30 by coder             #+#    #+#             */
-/*   Updated: 2022/09/23 02:58:17 by coder            ###   ########.fr       */
+/*   Updated: 2022/09/25 00:12:56 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static int	shutup_unused_args(int delete, char me)
 int	init_signal_handlers(void)
 {
 	// signal(SIGINT, sigint_handler);
-	// signal(SIGQUIT, SIG_IGN);
+	signal(SIGQUIT, SIG_IGN);
 	return (1);
 }
 
