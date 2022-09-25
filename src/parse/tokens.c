@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 02:19:46 by coder             #+#    #+#             */
-/*   Updated: 2022/09/22 01:52:36 by coder            ###   ########.fr       */
+/*   Updated: 2022/09/26 00:38:26 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,9 +82,9 @@ int	get_token_type(t_tokens *temp)
 
 /*
 ** Sets indexes to the corresponding tokens, as to be used by tok_to_com() and
-** ms->token_index data structure.
+** ms->tok_index data structure.
 */
-static int	set_token_indexes(t_tokens *tokens)
+static int	set_tok_indexes(t_tokens *tokens)
 {
 	t_tokens	*temp;
 	int			i;
@@ -108,7 +108,7 @@ void	categorize_tokens(t_tokens *tokens)
 	t_tokens	*temp;
 
 	temp = tokens;
-	set_token_indexes(tokens);
+	set_tok_indexes(tokens);
 	while (temp)
 	{
 		temp->type = get_token_type(temp);
