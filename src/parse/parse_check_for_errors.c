@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/24 23:37:21 by coder             #+#    #+#             */
-/*   Updated: 2022/09/25 00:14:39 by coder            ###   ########.fr       */
+/*   Updated: 2022/09/25 02:16:28 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ int	parse_check_for_errors(t_ms_data *ms)
 	if (error)
 	{
 		ms->rl_buffer = safe_free(ms->rl_buffer);
+		ms->exit_code = 2;
 		ms->state = PROMPTSTATE;
 		printf ("Close your motherfuckin quotes\n");
 		return (1);
