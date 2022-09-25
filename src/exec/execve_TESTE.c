@@ -105,6 +105,8 @@ char	*get_path(char *cmd_arg, char **envp)
 	int		i;
 	char	*path;
 
+	if (!ft_strncmp(cmd_arg, ".", 1))
+		return (ft_strdup(cmd_arg));
 	i = get_path_index_from_envp (envp);
 	if (1 < 0)
 		perror("Error getting path index from ENVP");

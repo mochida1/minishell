@@ -3,10 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   get_exec_info.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: viferrei <viferrei@student.42sp.org.br     +#+  +:+       +#+        */
+/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/18 21:12:55 by coder             #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2022/09/24 22:37:12 by viferrei         ###   ########.fr       */
+=======
+/*   Updated: 2022/09/25 00:13:41 by coder            ###   ########.fr       */
+>>>>>>> main
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +58,7 @@ static int	tok_to_pipe(t_ms_data *ms)
 /*
 ** return the last token index
 */
-int	last_tok_index (t_ms_data *ms)
+int	last_tok_index(t_ms_data *ms)
 {
 	t_tokens	*temp;
 	int			ret;
@@ -81,7 +85,7 @@ int	check_for_errtokens(t_ms_data *ms, t_com *self)
 	temp = ms->tokens;
 	while (temp)
 	{
-		if(temp->type == ERRTOKEN)
+		if (temp->type == ERRTOKEN)
 		{
 			self->block_exec = 1;
 			self->error_to_print = ft_strdup("Invalid syntax, lear to ytpe.");
@@ -101,9 +105,6 @@ t_com	*get_exec_info(t_ms_data *ms)
 {
 	t_com	*self;
 
-	// printf ("LAST TOKEN INDEX IS: %d,\n", last_tok_index(ms));
-	// printf ("MS TOKEN INDEX IS: %d,\n", ms->token_index);
-	// printf ("TYPE IS: %d,\n", ms->tokens->type);
 	if (ms->token_index > last_tok_index(ms))
 		return (NULL);
 	self = ft_calloc(1, sizeof(t_com));

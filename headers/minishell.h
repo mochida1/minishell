@@ -6,7 +6,7 @@
 /*   By: viferrei <viferrei@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 23:09:16 by coder             #+#    #+#             */
-/*   Updated: 2022/09/23 22:30:06 by viferrei         ###   ########.fr       */
+/*   Updated: 2022/09/25 22:32:49 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,6 +119,9 @@ char		*find_variable(char	*str);
 // expand_vars.c
 int			expand_variables(t_ms_data *ms);
 
+// parse_check_for_errors.c
+int			parse_check_for_errors(t_ms_data *ms);
+
 // tokens.c
 t_tokens	*tokenize_splits(t_ms_data *ms);
 void		categorize_tokens(t_tokens *tokens);
@@ -148,7 +151,7 @@ void		sigint_handler(int signo);
 int			builtin_pwd(/*char **args,*/ t_ms_data *ms);
 
 // builtin_cd.c
-int			builtin_cd(char **args, t_ms_data *ms);
+int			builtin_cd(char **args, char **envp, t_ms_data *ms);
 // builtin_cd_utils.c
 char		*expand_home(char *path, t_ms_data *ms);
 int			count_args(char **args);

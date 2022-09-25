@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expand_vars.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: viferrei <viferrei@student.42sp.org.br     +#+  +:+       +#+        */
+/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 17:40:14 by viferrei          #+#    #+#             */
-/*   Updated: 2022/09/16 01:08:31 by viferrei         ###   ########.fr       */
+/*   Updated: 2022/09/25 20:00:16 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ char	*get_var_value(char *name, t_env_list *env)
 	var_size = ft_strlen(name);
 	var_value = NULL;
 	len = 0;
-	while (env->content)
+	while (env)
 	{
 		str = env->content;
 		if (ft_strnstr(str, name, var_size) && *(str + var_size) == '=')
@@ -50,7 +50,7 @@ char	*get_var_value(char *name, t_env_list *env)
 	return (var_value);
 }
 
-// Returns the string up to 
+// Returns the string up to
 char	*update_token(t_ms_data *ms, char *var_name, char *var_head)
 {
 	char	*value;

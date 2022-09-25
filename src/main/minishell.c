@@ -6,7 +6,11 @@
 /*   By: viferrei <viferrei@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 01:58:25 by viferrei          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2022/09/23 21:49:26 by viferrei         ###   ########.fr       */
+=======
+/*   Updated: 2022/09/25 21:07:58 by coder            ###   ########.fr       */
+>>>>>>> main
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +21,7 @@ int	main(int argc, char *argv[], char **envp)
 	t_ms_data	*ms;
 
 	ms = ft_calloc (1, sizeof(t_ms_data));
-	ms->state = 1;
+	ms->state = INITSTATE;
 	while (1)
 	{
 		if (ms->state <= ERRSTATE)

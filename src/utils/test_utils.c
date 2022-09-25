@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/10 17:12:58 by coder             #+#    #+#             */
-/*   Updated: 2022/09/24 21:58:42 by coder            ###   ########.fr       */
+/*   Updated: 2022/09/25 22:08:45 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ int	print_token_list(t_ms_data *ms)
 
 	ret = 0;
 	temp = ms->tokens;
+	printf ("TOKEN LIST IS: \n");
 	while (temp)
 	{
 		printf ("<: %p\n", temp->prev);
@@ -78,6 +79,7 @@ int	print_token_list(t_ms_data *ms)
 		printf (">: %p\n", temp->next);
 		ret += printf ("v: %s\n", temp->value);
 		printf ("t: %d\n", temp->type);
+		printf ("i: %d\n", temp->index);
 		printf ("\n------------------\n");
 		temp = temp->next;
 	}
