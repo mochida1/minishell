@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 23:09:16 by coder             #+#    #+#             */
-/*   Updated: 2022/09/24 23:39:10 by coder            ###   ########.fr       */
+/*   Updated: 2022/09/25 18:20:14 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,7 +148,7 @@ void		sigint_handler(int signo);
 int			builtin_pwd(t_ms_data *ms);
 
 // builtin_cd.c
-int			builtin_cd(char **args, t_ms_data *ms);
+int			builtin_cd(char **args, char **envp, t_ms_data *ms);
 // builtin_cd_utils.c
 char		*expand_home(char *path, t_ms_data *ms);
 int			count_args(char **args);
