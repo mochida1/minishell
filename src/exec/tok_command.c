@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 00:53:46 by coder             #+#    #+#             */
-/*   Updated: 2022/09/25 02:48:57 by coder            ###   ########.fr       */
+/*   Updated: 2022/09/25 21:27:39 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,8 @@ static char	*tok_get_path(char *value, t_env_list *env_head)
 
 	temp = env_head;
 	if (!ft_strncmp(value, ".", 1))
+		return (ft_strdup(value));
+	if (value[0] == '\0')
 		return (ft_strdup(value));
 	while (temp && ft_strncmp(temp->content, "PATH=", 5))
 		temp = temp->next;

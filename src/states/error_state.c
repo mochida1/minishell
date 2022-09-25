@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 17:18:04 by coder             #+#    #+#             */
-/*   Updated: 2022/09/25 21:41:47 by coder            ###   ########.fr       */
+/*   Updated: 2022/09/25 20:26:08 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ int	error_state(t_ms_data *ms)
 	ms->rl_prompt = safe_free (ms->rl_prompt);
 	ms->tokens = destroy_token_list(ms);
 	destroy_env_list(ms->env_head);
+	ms->oldpwd = safe_free(ms->oldpwd);
 	ms = safe_free(ms);
 	if (should_exit)
 	{
