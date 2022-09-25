@@ -6,7 +6,7 @@
 /*   By: viferrei <viferrei@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/17 00:12:17 by viferrei          #+#    #+#             */
-/*   Updated: 2022/09/25 22:34:33 by viferrei         ###   ########.fr       */
+/*   Updated: 2022/09/26 00:27:36 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,14 @@ int	equal_found(char *str)
 	return (0);
 }
 
-// Adds variable to the environment list if its value is set 
+// Returns 1 if the variable already exists among environment list
+// int	var_exists(char *str, t_env_list *env)
+// {
+	// get_var_name
+// }
+
+// Adds variable to the environment list if its value is set. Replaces it if
+// needed
 int	builtin_export(char	**args, t_ms_data *ms)
 {
 	t_env_list	*head;
@@ -50,6 +57,8 @@ int	builtin_export(char	**args, t_ms_data *ms)
 	}
 	while (*args)
 	{
+		// if (var_exists(*args, ms->env_head))
+		// 	builtin_unset(args, ms);
 		if (equal_found(*args))
 		{
 			head->next = ft_calloc(1, sizeof(t_env_list));
