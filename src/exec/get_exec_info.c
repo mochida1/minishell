@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/18 21:12:55 by coder             #+#    #+#             */
-/*   Updated: 2022/09/25 00:13:41 by coder            ###   ########.fr       */
+/*   Updated: 2022/09/26 00:38:26 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static int	tok_to_pipe(t_ms_data *ms)
 	if (temp && temp->type == OPTOKEN)
 	{
 		temp = temp->next;
-		ms->token_index++;
+		ms->tok_index++;
 	}
 	while (temp)
 	{
@@ -45,7 +45,7 @@ static int	tok_to_pipe(t_ms_data *ms)
 		{
 			return (1);
 		}
-		ms->token_index++;
+		ms->tok_index++;
 		temp = temp->next;
 	}
 	return (0);
@@ -101,7 +101,7 @@ t_com	*get_exec_info(t_ms_data *ms)
 {
 	t_com	*self;
 
-	if (ms->token_index > last_tok_index(ms))
+	if (ms->tok_index > last_tok_index(ms))
 		return (NULL);
 	self = ft_calloc(1, sizeof(t_com));
 	if (check_for_errtokens(ms, self))
