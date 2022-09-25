@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 17:38:58 by coder             #+#    #+#             */
-/*   Updated: 2022/09/25 21:39:04 by coder            ###   ########.fr       */
+/*   Updated: 2022/09/25 22:21:42 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ int	parse_state(t_ms_data *ms)
 		return (1);
 	if (!ms->rl_buffer[0])
 	{
+		ms->rl_spaced_buffer = NULL;
+		ms->rl_split = NULL;
 		ms->state = CLEANSTATE;
 		return (0);
 	}
@@ -28,7 +30,6 @@ int	parse_state(t_ms_data *ms)
 	if (ms->set_buffer_to_null)
 		ms->rl_buffer = NULL;
 	ms->rl_split = ft_split_shell(ms->rl_spaced_buffer, ' ');
-	assert (ms->rl_split);
 	ms->tokens = tokenize_splits(ms);
 	expand_variables(ms);
 	categorize_tokens(ms->tokens);

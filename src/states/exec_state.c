@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 20:59:48 by coder             #+#    #+#             */
-/*   Updated: 2022/09/25 21:23:52 by coder            ###   ########.fr       */
+/*   Updated: 2022/09/25 22:05:22 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	exec_state(t_ms_data *ms, char **envp)
 	if (!has_pipe(ms->tokens))
 		exec_one_cmd(ms);
 	ms->exit_code = exec_MVP_TESTE(ms, envp);
-	// print_token_list(ms);
+	print_token_list(ms);
 	ms->state = CLEANSTATE;
 	return (0);
 }
