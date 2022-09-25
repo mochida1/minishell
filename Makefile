@@ -73,11 +73,13 @@ test:
 
 clean:
 	@rm -rf $(BUILDDIR)
+	@rm -f vgcore*
 	@make clean -C $(LIBFT_DIR)
 
 fclean: clean
 	@rm -f $(NAME)
 	@rm -f $(NAME_FS)
+	@rm -f vgcore*
 	@make fclean -C $(LIBFT_DIR)
 
 re: fclean all

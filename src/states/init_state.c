@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 17:13:30 by coder             #+#    #+#             */
-/*   Updated: 2022/09/25 00:12:56 by coder            ###   ########.fr       */
+/*   Updated: 2022/09/25 21:16:31 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ static int	shutup_unused_args(int delete, char me)
 */
 int	init_signal_handlers(void)
 {
-	// signal(SIGINT, sigint_handler);
-	signal(SIGQUIT, SIG_IGN);
+	signal(SIGINT, sigint_handler);
+	// signal(SIGQUIT, SIG_IGN);
 	return (1);
 }
 
@@ -40,6 +40,8 @@ int	init_data(t_ms_data *ms, char **envp)
 	ms->env_head = get_env(envp);
 	if (!ms->env_head)
 		return (1);
+	ms->oldpwd = ft_strdup("");
+	ms->home_original = ft_strdup(get_home_dir_from_envs(ms) + 5);
 	return (0);
 }
 
@@ -53,7 +55,6 @@ int	init_state(t_ms_data *ms, int argc, char *argv[], char **envp)
 	rc = shutup_unused_args(argc, argv[0][0]);
 	rc = init_signal_handlers();
 	rc = init_data(ms, envp);
-	ms->home_original = ft_strdup(get_home_dir_from_envs(ms) + 5);
 	ms->state = PROMPTSTATE;
 	if (rc)
 		ms->state = ERRSTATE;
