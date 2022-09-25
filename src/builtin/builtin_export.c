@@ -3,14 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtin_export.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
+/*   By: viferrei <viferrei@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/17 00:12:17 by viferrei          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2022/09/24 22:36:11 by viferrei         ###   ########.fr       */
-=======
-/*   Updated: 2022/09/24 22:09:17 by coder            ###   ########.fr       */
->>>>>>> main
+/*   Updated: 2022/09/25 22:34:33 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,10 +39,6 @@ int	equal_found(char *str)
 int	builtin_export(char	**args, t_ms_data *ms)
 {
 	t_env_list	*head;
-<<<<<<< HEAD
-=======
-	// (void) args;
->>>>>>> main
 
 	head = ms->env_head;
 	while (head->next)
