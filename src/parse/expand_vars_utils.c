@@ -6,11 +6,24 @@
 /*   By: viferrei <viferrei@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/10 21:11:37 by viferrei          #+#    #+#             */
-/*   Updated: 2022/09/10 22:14:32 by viferrei         ###   ########.fr       */
+/*   Updated: 2022/09/26 01:23:58 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../headers/minishell.h"
+
+// Returns the name of the variable.
+char	*get_var_name(char	*var_head)
+{
+	size_t	len;
+
+	len = 0;
+	if (*var_head == '$')
+		var_head++;
+	while (var_head[len] && is_variable(var_head[len]))
+		len++;
+	return (ft_substr(var_head, 0, len));
+}
 
 // Checks if the char is acceptable in a variable name.
 int	is_variable(char c)

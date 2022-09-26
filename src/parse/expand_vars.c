@@ -6,23 +6,11 @@
 /*   By: viferrei <viferrei@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 17:40:14 by viferrei          #+#    #+#             */
-/*   Updated: 2022/09/26 00:26:14 by viferrei         ###   ########.fr       */
+/*   Updated: 2022/09/26 01:22:43 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../headers/minishell.h"
-
-// Returns the name of the variable.
-char	*get_var_name(char	*var_head)
-{
-	size_t	len;
-
-	len = 0;
-	var_head++;
-	while (var_head[len] && is_variable(var_head[len]))
-		len++;
-	return (ft_substr(var_head, 0, len));
-}
 
 // Finds the variable and returns its value.
 char	*get_var_value(char *name, t_env_list *env)
