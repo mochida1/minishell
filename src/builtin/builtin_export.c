@@ -6,7 +6,7 @@
 /*   By: viferrei <viferrei@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/17 00:12:17 by viferrei          #+#    #+#             */
-/*   Updated: 2022/09/26 01:56:22 by viferrei         ###   ########.fr       */
+/*   Updated: 2022/09/26 02:34:28 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,15 +40,12 @@ int	var_exists(char *arg, t_env_list *env)
 {
 	t_env_list	*head;
 	char		*var_name;
-	size_t		var_size;
 
 	head = env;
 	var_name = get_var_name(arg);
-	var_size = ft_strlen(var_name);
 	while (head)
 	{
-		if (!ft_strncmp(head->content, var_name, var_size) 
-			&& *(head->content + var_size) == '=')
+		if (vars_match(head->content, var_name))
 		{
 			free(var_name);
 			return(1);
@@ -69,7 +66,7 @@ void	replace_var(char *arg, t_env_list *env)
 	var_name = get_var_name(arg);
 	while (head)
 	{
-		if (!ft_strncmp(head->content, var_name, ft_strlen(var_name)))
+		if (vars_match(head->content, var_name))
 		{
 			old_value = head->content;
 			head->content = ft_strdup(arg);

@@ -6,7 +6,7 @@
 /*   By: viferrei <viferrei@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 17:40:14 by viferrei          #+#    #+#             */
-/*   Updated: 2022/09/26 01:22:43 by viferrei         ###   ########.fr       */
+/*   Updated: 2022/09/26 02:37:51 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,18 +15,16 @@
 // Finds the variable and returns its value.
 char	*get_var_value(char *name, t_env_list *env)
 {
-	size_t	var_size;
 	size_t	len;
 	char	*str;
 	char	*var_value;
 
-	var_size = ft_strlen(name);
 	var_value = NULL;
 	len = 0;
 	while (env)
 	{
 		str = env->content;
-		if (ft_strnstr(str, name, var_size) && *(str + var_size) == '=')
+		if (vars_match(str, name))
 		{
 			while (*(str - 1) != '=')
 				str++;

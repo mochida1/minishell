@@ -6,7 +6,7 @@
 /*   By: viferrei <viferrei@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 01:05:53 by viferrei          #+#    #+#             */
-/*   Updated: 2022/09/23 01:33:57 by viferrei         ###   ########.fr       */
+/*   Updated: 2022/09/26 02:53:12 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,19 +16,22 @@
 void	compare_arg_env(char *arg, t_env_list *head, t_env_list *tmp, 
 						t_env_list *prev)
 {
-	if (!ft_strncmp(arg, head->content, ft_strlen(arg)))
+	while(head)
 	{
-		if (!prev)
-			tmp = head;
-		else
+		if (!ft_strncmp(arg, head->content, ft_strlen(arg)))
 		{
-			prev->next = head->next;
-			tmp = head;
+			if (!prev)
+				tmp = head;
+			else
+			{
+				prev->next = head->next;
+				tmp = head;
+			}
 		}
+		head = head->next;
+		prev = head;
+		safe_free(tmp);
 	}
-	prev = head;
-	head = head->next;
-	safe_free(tmp);
 }
 
 int		builtin_unset(char	**args, t_ms_data *ms)
@@ -40,12 +43,11 @@ int		builtin_unset(char	**args, t_ms_data *ms)
 	head = ms->env_head;
 	tmp = NULL;
 	prev = NULL;
-	if (!args[1])
+	if (!args)
 		return (0);
 	while (*args)
 	{
-		while (head)
-			compare_arg_env(*args, head, tmp, prev);
+		compare_arg_env(*args, head, tmp, prev);
 		args++;	
 	}
 	return (0);

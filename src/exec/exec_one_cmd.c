@@ -6,7 +6,7 @@
 /*   By: viferrei <viferrei@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 21:40:45 by viferrei          #+#    #+#             */
-/*   Updated: 2022/09/25 22:34:37 by viferrei         ###   ########.fr       */
+/*   Updated: 2022/09/26 02:39:00 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,8 +69,8 @@ int	exec_builtin(t_com *cmd, t_ms_data *ms)
 			// 	return(builtin_pwd(ms));
 			if (!ft_strcmp(head->value, "export"))
 				return(builtin_export(cmd->args, ms));
-			// if (!ft_strcmp(head->value, "unset"))
-			// 	return(builtin_unset(ms));
+			if (!ft_strcmp(head->value, "unset"))
+				return(builtin_unset(cmd->args, ms));
 			if (!ft_strcmp(head->value, "env"))
 				return(builtin_env(ms->env_head));
 			// if (!ft_strcmp(head->value, "exit"))

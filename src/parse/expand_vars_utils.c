@@ -6,11 +6,21 @@
 /*   By: viferrei <viferrei@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/10 21:11:37 by viferrei          #+#    #+#             */
-/*   Updated: 2022/09/26 01:23:58 by viferrei         ###   ########.fr       */
+/*   Updated: 2022/09/26 02:32:30 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../headers/minishell.h"
+
+// Returns 1 if both variables match
+int	vars_match(char *env_var, char *var_name)
+{
+	size_t		var_size;
+	var_size = ft_strlen(var_name);
+	if (!ft_strncmp(env_var, var_name, var_size) && *(env_var + var_size) == '=')
+		return (1);
+	return (0);
+}
 
 // Returns the name of the variable.
 char	*get_var_name(char	*var_head)
