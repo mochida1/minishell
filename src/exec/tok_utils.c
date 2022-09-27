@@ -6,14 +6,14 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 03:01:41 by coder             #+#    #+#             */
-/*   Updated: 2022/09/22 01:21:38 by coder            ###   ########.fr       */
+/*   Updated: 2022/09/26 00:38:26 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../headers/minishell.h"
 
 /*
-** Searches throught tokens untill it reaches ms->token_index.
+** Searches throught tokens untill it reaches ms->tok_index.
 ** Returns a pointer to said node.
 */
 t_tokens	*iterate_to_tok_index(t_ms_data *ms)
@@ -21,7 +21,7 @@ t_tokens	*iterate_to_tok_index(t_ms_data *ms)
 	t_tokens	*temp;
 
 	temp = ms->tokens;
-	while (temp && (temp->index != ms->token_index))
+	while (temp && (temp->index != ms->tok_index))
 		temp = temp->next;
 	return (temp);
 }

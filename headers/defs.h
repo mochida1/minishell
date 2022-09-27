@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 23:09:13 by coder             #+#    #+#             */
-/*   Updated: 2022/09/25 21:08:37 by coder            ###   ########.fr       */
+/*   Updated: 2022/09/26 00:38:26 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ typedef struct s_ms_data
 	char				*rl_prompt;
 	char				**rl_split;
 	int					exit_code;
-	int					token_index;
+	int					tok_index;
 	char				*home_original;
 	char				*oldpwd;
 	struct s_env_list	*env_head;
