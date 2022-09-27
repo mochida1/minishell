@@ -6,10 +6,9 @@
 /*   By: viferrei <viferrei@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/17 00:12:17 by viferrei          #+#    #+#             */
-/*   Updated: 2022/09/26 02:34:28 by viferrei         ###   ########.fr       */
+/*   Updated: 2022/09/28 04:19:55 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "../../headers/minishell.h"
 
@@ -28,7 +27,7 @@ int	equal_found(char *str)
 		else if (!is_variable(*str))
 		{
 			printf("export: '%s': not a valid identifier\n", head);
-			return(0);
+			return (0);
 		}
 		str++;
 	}
@@ -48,7 +47,7 @@ int	var_exists(char *arg, t_env_list *env)
 		if (vars_match(head->content, var_name))
 		{
 			free(var_name);
-			return(1);
+			return (1);
 		}
 		head = head->next;
 	}
@@ -96,12 +95,12 @@ void	set_variable(char *arg, t_ms_data *ms)
 	}
 }
 
-int		builtin_export(char	**args, t_ms_data *ms)
+int	builtin_export(char	**args, t_ms_data *ms)
 {
 	if (!args)
 	{
 		printf("export: forgot something?\n");
-		return(ms->exit_code);
+		return (ms->exit_code);
 	}
 	while (*args)
 	{
@@ -109,5 +108,5 @@ int		builtin_export(char	**args, t_ms_data *ms)
 			set_variable(*args, ms);
 		(args)++;
 	}
-	return(ms->exit_code);
+	return (ms->exit_code);
 }

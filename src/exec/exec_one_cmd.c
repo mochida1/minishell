@@ -6,7 +6,7 @@
 /*   By: viferrei <viferrei@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 21:40:45 by viferrei          #+#    #+#             */
-/*   Updated: 2022/09/28 02:58:06 by viferrei         ###   ########.fr       */
+/*   Updated: 2022/09/28 03:58:48 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,8 @@ int	exec_builtin(t_com *cmd, t_ms_data *ms)
 	{
 		if (head->type == BITOKEN)
 		{
-			// if (!ft_strcmp(head->value, "echo"))
-			// 	return(builtin_echo(ms));
+			if (!ft_strcmp(head->value, "echo"))
+				return(builtin_echo(cmd->args));
 			// if (!ft_strcmp(head->value, "cd"))
 			// 	return(builtin_cd(ms));
 			// if (!ft_strcmp(head->value, "pwd"))
