@@ -6,7 +6,7 @@
 /*   By: viferrei <viferrei@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 01:05:53 by viferrei          #+#    #+#             */
-/*   Updated: 2022/09/28 02:35:06 by viferrei         ###   ########.fr       */
+/*   Updated: 2022/09/28 04:18:25 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	compare_arg_env(char *arg, t_ms_data *ms)
 		free(tmp);
 	}
 	head = ms->env_head;
-	while(head->next)
+	while (head->next)
 	{
 		if (vars_match(head->next->content, arg))
 		{
@@ -42,14 +42,14 @@ void	compare_arg_env(char *arg, t_ms_data *ms)
 	}
 }
 
-int		builtin_unset(char	**args, t_ms_data *ms)
+int	builtin_unset(char	**args, t_ms_data *ms)
 {	
 	if (!args)
 		return (0);
 	while (*args)
 	{
-		compare_arg_env(*args, ms); 
-		args++;	
+		compare_arg_env (*args, ms);
+		args++;
 	}
 	return (0);
 }

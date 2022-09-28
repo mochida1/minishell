@@ -6,7 +6,7 @@
 /*   By: viferrei <viferrei@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 23:09:16 by coder             #+#    #+#             */
-/*   Updated: 2022/09/26 02:32:48 by viferrei         ###   ########.fr       */
+/*   Updated: 2022/09/28 03:59:14 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@
 */
 int			builtin_env(t_env_list	*env_list);
 int			builtin_export(char	**args, t_ms_data *ms);
+int			builtin_echo(char **args);
 int			builtin_unset(char	**args, t_ms_data *ms);
 
 /*
