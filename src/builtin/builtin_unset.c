@@ -6,48 +6,49 @@
 /*   By: viferrei <viferrei@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 01:05:53 by viferrei          #+#    #+#             */
-/*   Updated: 2022/09/26 02:53:12 by viferrei         ###   ########.fr       */
+/*   Updated: 2022/09/28 02:35:06 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../headers/minishell.h"
 
 // Frees environment list node if it matches unset argument
-void	compare_arg_env(char *arg, t_env_list *head, t_env_list *tmp, 
-						t_env_list *prev)
+void	compare_arg_env(char *arg, t_ms_data *ms)
 {
-	while(head)
+	t_env_list	*head;
+	t_env_list	*tmp;
+
+	if (!arg)
+		return ;
+	if (vars_match(ms->env_head->content, arg))
 	{
-		if (!ft_strncmp(arg, head->content, ft_strlen(arg)))
+		tmp = ms->env_head;
+		ms->env_head = ms->env_head->next;
+		free(tmp->content);
+		free(tmp);
+	}
+	head = ms->env_head;
+	while(head->next)
+	{
+		if (vars_match(head->next->content, arg))
 		{
-			if (!prev)
-				tmp = head;
-			else
-			{
-				prev->next = head->next;
-				tmp = head;
-			}
+			tmp = head->next;
+			head->next = head->next->next;
+			safe_free(tmp->content);
+			safe_free(tmp);
 		}
-		head = head->next;
-		prev = head;
-		safe_free(tmp);
+		else
+			head = head->next;
 	}
 }
 
 int		builtin_unset(char	**args, t_ms_data *ms)
 {	
-	t_env_list	*head;
-	t_env_list	*tmp;
-	t_env_list	*prev;
-
-	head = ms->env_head;
-	tmp = NULL;
-	prev = NULL;
 	if (!args)
 		return (0);
 	while (*args)
 	{
-		compare_arg_env(*args, head, tmp, prev);
+		compare_arg_env(*args, ms); 
 		args++;	
 	}
 	return (0);
