@@ -6,7 +6,7 @@
 /*   By: viferrei <viferrei@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 21:40:45 by viferrei          #+#    #+#             */
-/*   Updated: 2022/09/26 02:39:00 by viferrei         ###   ########.fr       */
+/*   Updated: 2022/09/28 02:58:06 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ int	exec_builtin(t_com *cmd, t_ms_data *ms)
 // Handles single-command input - either builtin or not.
 int	exec_one_cmd(t_com *cmd, t_ms_data *ms)
 {
-	handle_redirects(ms);
+	// handle_redirects(ms);
 	if (is_builtin(ms->tokens))
 		return(exec_builtin(cmd, ms));
 	else
