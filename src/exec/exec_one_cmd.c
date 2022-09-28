@@ -6,7 +6,7 @@
 /*   By: viferrei <viferrei@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 21:40:45 by viferrei          #+#    #+#             */
-/*   Updated: 2022/09/28 02:58:06 by viferrei         ###   ########.fr       */
+/*   Updated: 2022/09/28 03:27:59 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,11 +84,17 @@ int	exec_builtin(t_com *cmd, t_ms_data *ms)
 // Handles single-command input - either builtin or not.
 int	exec_one_cmd(t_com *cmd, t_ms_data *ms)
 {
+	// int	original_fd[2];
+
+	// original_fd[0] = dup(STDIN_FILENO);
+	// original_fd[1] = dup(STDOUT_FILENO);
 	// handle_redirects(ms);
 	if (is_builtin(ms->tokens))
 		return(exec_builtin(cmd, ms));
 	else
 		;
 		// fork_exec_one_cmd(ms);
+	// dup2(original_fd[0], STDIN_FILENO);
+	// dup2(original_fd[1], STDOUT_FILENO);
 	return (0);
 }
