@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: viferrei <viferrei@student.42sp.org.br     +#+  +:+       +#+        */
+/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 23:09:16 by coder             #+#    #+#             */
-/*   Updated: 2022/09/28 03:59:14 by viferrei         ###   ########.fr       */
+/*   Updated: 2022/10/01 22:53:01 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,18 @@
 /*
 ** BUILTIN
 */
-int			builtin_env(t_env_list	*env_list);
+int			builtin_env(char **args, char **envp, t_env_list *env_list);
 int			builtin_export(char	**args, t_ms_data *ms);
 int			builtin_echo(char **args);
 int			builtin_unset(char	**args, t_ms_data *ms);
+// builtin_pwd.c
+int			builtin_pwd(char **args, char **envp, t_ms_data *ms);
+// builtin_cd.c
+int			builtin_cd(char **args, char **envp, t_ms_data *ms);
+// builtin_cd_utils.c
+char		*expand_home(char *path, t_ms_data *ms);
+int			count_args(char **args);
+char		*get_home_dir_from_envs(t_ms_data *ms);
 
 /*
 ** EXEC
@@ -147,19 +155,6 @@ int			token_is_fd(t_tokens *temp);
 */
 // signals.c
 void		sigint_handler(int signo);
-
-/*
-** BUILTINS
-*/
-// builtin_pwd.c
-int			builtin_pwd(/*char **args,*/ t_ms_data *ms);
-
-// builtin_cd.c
-int			builtin_cd(char **args, char **envp, t_ms_data *ms);
-// builtin_cd_utils.c
-char		*expand_home(char *path, t_ms_data *ms);
-int			count_args(char **args);
-char		*get_home_dir_from_envs(t_ms_data *ms);
 
 /*
 ** TESTS

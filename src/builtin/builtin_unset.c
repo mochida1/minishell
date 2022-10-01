@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtin_unset.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: viferrei <viferrei@student.42sp.org.br     +#+  +:+       +#+        */
+/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 01:05:53 by viferrei          #+#    #+#             */
-/*   Updated: 2022/09/28 04:18:25 by viferrei         ###   ########.fr       */
+/*   Updated: 2022/09/30 03:48:56 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	compare_arg_env(char *arg, t_ms_data *ms)
 	}
 }
 
-int	builtin_unset(char	**args, t_ms_data *ms)
+int	builtin_unset(char **args, t_ms_data *ms)
 {	
 	if (!args)
 		return (0);
