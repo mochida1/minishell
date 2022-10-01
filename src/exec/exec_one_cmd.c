@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_one_cmd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: viferrei <viferrei@student.42sp.org.br     +#+  +:+       +#+        */
+/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 21:40:45 by viferrei          #+#    #+#             */
-/*   Updated: 2022/09/28 03:58:48 by viferrei         ###   ########.fr       */
+/*   Updated: 2022/10/01 23:01:32 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ int	exec_builtin(t_com *cmd, t_ms_data *ms)
 			if (!ft_strcmp(head->value, "unset"))
 				return(builtin_unset(cmd->args, ms));
 			if (!ft_strcmp(head->value, "env"))
-				return(builtin_env(ms->env_head));
+				return(builtin_env(cmd->args, cmd->envp, ms->env_head));
 			// if (!ft_strcmp(head->value, "exit"))
 			// 	return(builtin_exit(ms));
 		}
