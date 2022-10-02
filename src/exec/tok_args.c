@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tok_args.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: viferrei <viferrei@student.42sp.org.br     +#+  +:+       +#+        */
+/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 01:59:31 by coder             #+#    #+#             */
-/*   Updated: 2022/09/24 22:37:18 by viferrei         ###   ########.fr       */
+/*   Updated: 2022/10/02 22:45:40 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,11 @@ static int	tok_count_args(t_tokens *temp)
 
 	other = temp;
 	ret = 0;
+	if (other && (other->type == COMTOKEN || other->type == BITOKEN))
+	{
+		ret++;
+		other = other->next;
+	}
 	while (other && other->type == WORDTOKEN)
 	{
 		ret++;
@@ -43,7 +48,7 @@ char	**tok_args(t_ms_data *ms)
 	count = 0;
 	i = 0;
 	temp = iterate_to_tok_index(ms);
-	while (temp && temp->type != WORDTOKEN)
+	while (temp && (temp->type != COMTOKEN && temp->type != BITOKEN))
 	{
 		temp = temp->next;
 		if (temp && temp->type == OPTOKEN)

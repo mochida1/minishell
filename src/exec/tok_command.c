@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 00:53:46 by coder             #+#    #+#             */
-/*   Updated: 2022/09/25 21:27:39 by coder            ###   ########.fr       */
+/*   Updated: 2022/10/01 23:06:46 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,10 @@ char	*tok_command(t_ms_data *ms, t_com *self)
 	if (!temp)
 		return (NULL);
 	if (temp->type == BITOKEN)
+	{
+		self->is_builtin = 1;
 		return (ft_strdup(temp->value));
+	}
 	if (temp->type == COMTOKEN)
 		path = tok_get_path(temp->value, ms->env_head);
 	if (!path)

@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 20:13:11 by coder             #+#    #+#             */
-/*   Updated: 2022/09/11 21:12:53 by coder            ###   ########.fr       */
+/*   Updated: 2022/10/03 01:30:58 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,16 @@ int	set_prompt(t_ms_data *ms)
 */
 int	get_data_from_readline(t_ms_data *ms)
 {
+	char	*temp;
+
 	ms->rl_buffer = readline(ms->rl_prompt);
 	if (ms->rl_buffer)
-		return (0);
+		{
+			temp = ms->rl_buffer;
+			ms->rl_buffer = ft_strtrim(temp, " ");
+			temp = safe_free(temp);
+			return (0);
+		}
 	else if (!(ms->rl_buffer))
 		return (1);
 	return (0);

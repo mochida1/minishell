@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 23:09:16 by coder             #+#    #+#             */
-/*   Updated: 2022/10/01 22:53:01 by coder            ###   ########.fr       */
+/*   Updated: 2022/10/02 21:22:14 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,8 +116,6 @@ int			get_data_from_readline(t_ms_data *ms);
 // ft_split_shell.c
 char		**ft_split_shell(char *str, char delimiter);
 
-// execve_TESTE.c
-int			exec_MVP_TESTE(t_ms_data *ms, char **envp);
 
 /*
 ** PARSE
@@ -164,5 +162,7 @@ void		test_expand_vars(t_ms_data *ms); // REMOVER ANTES DA ENTREGA
 int			print_token_list(t_ms_data *ms); // REMOVER ANTES DA ENTREGA
 int			check_for_some_shady_shit(t_ms_data *ms); // REMOVER ANTES DA ENTREGA
 void		PRINT_COM(t_com *data); // REMOVER ANTES DA ENTREGA
+// execve_TESTE.c
+int			exec_MVP_TESTE(t_com *cmd, t_ms_data *ms); // REMOVER ANTES DA ENTREGA
 
 #endif

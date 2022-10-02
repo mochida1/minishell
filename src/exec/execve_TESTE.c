@@ -134,28 +134,11 @@ char	*get_path(char *cmd_arg, char **envp)
 ** pega o primeiro argumento da linha e usa como comando.
 ** retorna statsu de saída do filho
 */
-int	exec_MVP_TESTE(t_ms_data *ms, char **envp)
+int	exec_MVP_TESTE(t_com *cmd, t_ms_data *ms)
 {
 	char	*path;
 	int		pid;
 	int 	e_status;
-	t_com	*data;
-
-//<< EOF < INFILE cdm arg1 arg2 >> APP > OW | < in << eof cdm arg3 arg4 > ow >> app
-	while (1)
-	{
-		printf ("token index is: %d\n", ms->tok_index);
-		data = get_exec_info(ms);
-		if (!data)
-			break ;
-		PRINT_COM(data);
-		if (data->block_exec)
-			{
-				data = destroy_exec_info(data);
-				break;
-			}
-		data = destroy_exec_info(data);
-	}
 
 	e_status = 0;
 	pid = create_child();
@@ -165,17 +148,16 @@ int	exec_MVP_TESTE(t_ms_data *ms, char **envp)
 	}
 	if (!pid)
 	{
-		path = get_path(ms->rl_split[0], envp);
+		path = cmd->command;
 		if (!get_exec_error(path, ms))
-			execve(path, ms->rl_split, envp);
+			execve(path, cmd->args, cmd->envp);
 		else
 		{
 			printf("command not found!\n");
+			path = NULL;
+			ms->exit_code = 127;
+			ms->issue_exit = -1;
 		}
-		safe_free(path);
-		path = NULL;
-		exit(e_status);
 	}
-		printf ("\n\nexit status: %d\n\n", e_status);
-		return (0);
+	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/17 21:13:35 by coder             #+#    #+#             */
-/*   Updated: 2022/10/01 22:50:53 by coder            ###   ########.fr       */
+/*   Updated: 2022/10/02 22:48:53 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,14 +121,14 @@ int	builtin_cd(char **args, char **envp, t_ms_data *ms)
 
 	(void) envp;
 	arg_number = count_args(args);
-	if (arg_number == 0)
-		ms->exit_code = cd_to_home(ms);
-	if (arg_number > 1)
-	{
-		ms->exit_code = 1;
-		write(2, "cd: too many freaking arguments", 32);
-	}
 	if (arg_number == 1)
+		ms->exit_code = cd_to_home(ms);
+	if (arg_number > 2)
+	{
+		write(2, "cd: too many freaking arguments\n", 32);
+		return (ms->exit_code = 1);
+	}
+	if (arg_number == 2)
 	{
 		expanded_path = expand_home(args[0], ms);
 		if (ft_strlen(expanded_path) > PATH_MAX)

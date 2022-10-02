@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtin_echo.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: viferrei <viferrei@student.42sp.org.br     +#+  +:+       +#+        */
+/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 03:55:52 by viferrei          #+#    #+#             */
-/*   Updated: 2022/09/28 04:19:15 by viferrei         ###   ########.fr       */
+/*   Updated: 2022/10/03 00:52:51 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ int	builtin_echo(char **args)
 	int	i;
 
 	newline = 1;
-	i = 0;
-	if (!args)
+	i = 1;
+	if (!args[1])
 	{
 		printf("\n");
 		return (0);
@@ -29,7 +29,7 @@ int	builtin_echo(char **args)
 		newline = 0;
 		i++;
 	}
-	while (args[i + 1])
+	while (args[i])
 	{
 		printf("%s ", args[i]);
 		i++;

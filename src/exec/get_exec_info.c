@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_exec_info.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: viferrei <viferrei@student.42sp.org.br     +#+  +:+       +#+        */
+/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/18 21:12:55 by coder             #+#    #+#             */
-/*   Updated: 2022/09/28 01:33:57 by viferrei         ###   ########.fr       */
+/*   Updated: 2022/10/02 23:42:04 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ int	check_for_errtokens(t_ms_data *ms, t_com *self)
 		if (temp->type == ERRTOKEN)
 		{
 			self->block_exec = 1;
-			self->error_to_print = ft_strdup("Invalid syntax, lear to ytpe.");
+			self->error_to_print = ft_strdup("Invalid syntax, lear to ytpe.\n");
 			return (1);
 		}
 		temp = temp->next;

@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 17:18:04 by coder             #+#    #+#             */
-/*   Updated: 2022/09/25 20:26:08 by coder            ###   ########.fr       */
+/*   Updated: 2022/10/03 00:23:49 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,5 +36,5 @@ int	error_state(t_ms_data *ms)
 		write (1, "exit\n", 6);
 		exit(exit_temp);
 	}
-	exit (exit_temp * -1);
+	exit (exit_temp);
 }

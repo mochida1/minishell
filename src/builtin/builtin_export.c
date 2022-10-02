@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtin_export.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: viferrei <viferrei@student.42sp.org.br     +#+  +:+       +#+        */
+/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/17 00:12:17 by viferrei          #+#    #+#             */
-/*   Updated: 2022/09/28 04:19:55 by viferrei         ###   ########.fr       */
+/*   Updated: 2022/10/03 00:58:07 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,11 +97,12 @@ void	set_variable(char *arg, t_ms_data *ms)
 
 int	builtin_export(char	**args, t_ms_data *ms)
 {
-	if (!args)
+	if (!args[1])
 	{
 		printf("export: forgot something?\n");
 		return (ms->exit_code);
 	}
+	args++;
 	while (*args)
 	{
 		if (equal_found(*args))

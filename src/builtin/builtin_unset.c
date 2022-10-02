@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 01:05:53 by viferrei          #+#    #+#             */
-/*   Updated: 2022/09/30 03:48:56 by coder            ###   ########.fr       */
+/*   Updated: 2022/10/03 00:58:52 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,9 @@ void	compare_arg_env(char *arg, t_ms_data *ms)
 
 int	builtin_unset(char **args, t_ms_data *ms)
 {	
-	if (!args)
+	if (!args[1])
 		return (0);
+	args ++;
 	while (*args)
 	{
 		compare_arg_env (*args, ms);
