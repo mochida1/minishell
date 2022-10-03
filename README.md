@@ -101,6 +101,37 @@ O readline sempre vaza `still reachable: 204,580 bytes in 215 blocks`por padrão
 ```echo test000"$var_que_nao_existe"```
 ```echo exit```
 
+```exit```
+exits with 0;
+```exit 1```
+exits with 1;
+```exit a```
+*exit*
+*bash: exit: a: numeric argument required*
+exits with 2;
+```exit a b c d e f```
+*exit*
+*bash: exit: a: numeric argument required*
+exits with 2;
+```exit 1 2 3 4 5 6```
+*exit*
+*bash: exit: too many arguments*
+RETURNS 1, does not exit;
+```exit 1 a b c d e```
+*exit*
+*bash: exit: too many arguments*
+RETURNS 1, does not exit;
+```exit a 1 2 3 4 5```
+*exit*
+*bash: exit: a: numeric argument required*
+exits with 2;
+```exit 2147483647```
+exits with 255;
+```exit 2147483648```
+exits with 0;
+```exit 2147483649```
+exits with 1;
+
 ```<< EOF < INFILE cdm arg1 arg2 >> APP > OW | < in << eof cdm arg3 arg4 > ow >> app```
 
 echo with option -n

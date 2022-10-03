@@ -12,7 +12,7 @@ INCLUDES = -I /headers
 
 # Lists sources. Manually because of norm...
 BUILTIN = builtin_cd_utils.c builtin_cd.c builtin_echo.c builtin_env.c \
-			builtin_export.c builtin_pwd.c builtin_unset.c
+			builtin_export.c builtin_pwd.c builtin_unset.c builtin_exit.c
 EXEC = exec_one_cmd.c handle_redirects.c execve_TESTE.c destroy_exec_info.c \
 			get_exec_info.c tok_args.c tok_command.c tok_input.c tok_output.c \
 			tok_envp.c tok_utils.c

@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 23:09:16 by coder             #+#    #+#             */
-/*   Updated: 2022/10/02 21:22:14 by coder            ###   ########.fr       */
+/*   Updated: 2022/10/03 02:11:09 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ int			builtin_env(char **args, char **envp, t_env_list *env_list);
 int			builtin_export(char	**args, t_ms_data *ms);
 int			builtin_echo(char **args);
 int			builtin_unset(char	**args, t_ms_data *ms);
+int			builtin_exit(char **args, char **envp, t_ms_data *ms);
 // builtin_pwd.c
 int			builtin_pwd(char **args, char **envp, t_ms_data *ms);
 // builtin_cd.c
@@ -88,10 +89,6 @@ void		*safe_free(void *content);
 void		*free_rl_split(t_ms_data *ms);
 void		*destroy_token_list(t_ms_data *ms);
 void		*free_pp_char(char **pp);
-
-// builtin_cd_utils.c
-int			count_args(char **args);
-char		*get_home_dir_from_envs(t_ms_data *ms);
 
 // ft_strcmp.c
 int			ft_strcmp(char *str, char *str2);

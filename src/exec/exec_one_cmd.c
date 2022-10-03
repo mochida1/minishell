@@ -42,8 +42,8 @@ int	exec_builtin(t_com *cmd, t_ms_data *ms)
 		return(builtin_unset(cmd->args, ms));
 	if (!ft_strcmp(cmd->command, "env"))
 		return(builtin_env(cmd->args, cmd->envp, ms->env_head));
-	// if (!ft_strcmp(cmd->command, "exit"))
-	// 	return(builtin_exit(ms));
+	if (!ft_strcmp(cmd->command, "exit"))
+		return(builtin_exit(cmd->args, cmd->envp, ms));
 	return(0);
 }
 

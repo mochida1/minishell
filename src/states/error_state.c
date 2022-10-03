@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 17:18:04 by coder             #+#    #+#             */
-/*   Updated: 2022/10/03 00:23:49 by coder            ###   ########.fr       */
+/*   Updated: 2022/10/03 02:14:16 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 /*
 ** wrapper for the given state
+** if issue_exit < 0 does not print exit.
 */
 int	error_state(t_ms_data *ms)
 {
