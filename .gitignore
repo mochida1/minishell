@@ -7,3 +7,4 @@ vgcore*
 *.dSYM
 test_prog
 vf-notes.md
+nfs*
