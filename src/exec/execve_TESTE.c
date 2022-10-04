@@ -150,7 +150,10 @@ int	exec_MVP_TESTE(t_com *cmd, t_ms_data *ms)
 	{
 		path = cmd->command;
 		if (!get_exec_error(path, ms))
+		{
+			sig_defaults();
 			execve(path, cmd->args, cmd->envp);
+		}
 		else
 		{
 			printf("command not found!\n");
