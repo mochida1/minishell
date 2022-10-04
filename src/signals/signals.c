@@ -3,14 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   signals.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: viferrei <viferrei@student.42sp.org.br     +#+  +:+       +#+        */
+/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/10 20:29:26 by coder             #+#    #+#             */
-/*   Updated: 2022/09/18 20:16:08 by viferrei         ###   ########.fr       */
+/*   Updated: 2022/10/05 00:13:57 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../headers/minishell.h"
+
+/*
+** sets signals back to their defaults
+*/
+void	sig_defaults(void)
+{
+	signal(SIGINT, SIG_DFL);
+	signal(SIGQUIT, SIG_DFL);
+}
 
 /*
 ** Handles CTRL+C
