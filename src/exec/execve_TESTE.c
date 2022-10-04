@@ -129,12 +129,6 @@ char	*get_path(char *cmd_arg, char **envp)
 	return (NULL);
 }
 
-void	exec_sig_defaults()
-{
-	signal(SIGINT, SIG_DFL);
-	signal(SIGQUIT, SIG_DFL);
-}
-
 /*
 ** execve para testes. deletar após implementar tudo direitinho
 ** pega o primeiro argumento da linha e usa como comando.
@@ -157,7 +151,7 @@ int	exec_MVP_TESTE(t_com *cmd, t_ms_data *ms)
 		path = cmd->command;
 		if (!get_exec_error(path, ms))
 		{
-			exec_sig_defaults();
+			sig_defaults();
 			execve(path, cmd->args, cmd->envp);
 		}
 		else

@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/17 21:13:35 by coder             #+#    #+#             */
-/*   Updated: 2022/10/02 22:48:53 by coder            ###   ########.fr       */
+/*   Updated: 2022/10/05 00:59:50 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,7 +130,7 @@ int	builtin_cd(char **args, char **envp, t_ms_data *ms)
 	}
 	if (arg_number == 2)
 	{
-		expanded_path = expand_home(args[0], ms);
+		expanded_path = expand_home(args[1], ms);
 		if (ft_strlen(expanded_path) > PATH_MAX)
 		{
 			expanded_path = safe_free (expanded_path);

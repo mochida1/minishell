@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/17 23:24:07 by coder             #+#    #+#             */
-/*   Updated: 2022/10/02 22:46:56 by coder            ###   ########.fr       */
+/*   Updated: 2022/10/05 00:57:55 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ char	*get_home_dir_from_envs(t_ms_data *ms)
 				ms->exit_code = 1;
 				return (NULL);
 			}
-			return (temp->content);
+			return (temp->content + 5);
 		}
 		temp = temp->next;
 	}
