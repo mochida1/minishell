@@ -3,16 +3,41 @@
 /*                                                        :::      ::::::::   */
 /*   expand_vars.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: viferrei <viferrei@student.42sp.org.br     +#+  +:+       +#+        */
+/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 17:40:14 by viferrei          #+#    #+#             */
-/*   Updated: 2022/09/19 01:07:49 by viferrei         ###   ########.fr       */
+/*   Updated: 2022/10/05 00:13:13 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../headers/minishell.h"
 
-// Returns a string with the expanded variable.
+// Finds the variable and returns its value.
+char	*get_var_value(char *name, t_env_list *env)
+{
+	size_t	len;
+	char	*str;
+	char	*var_value;
+
+	var_value = NULL;
+	len = 0;
+	while (env)
+	{
+		str = env->content;
+		if (vars_match(str, name))
+		{
+			while (*(str - 1) != '=')
+				str++;
+			while (str[len])
+				len++;
+			var_value = ft_substr(str, 0, len);
+		}
+		env = env->next;
+	}
+	return (var_value);
+}
+
+// Returns the string up to
 char	*update_token(t_ms_data *ms, char *var_name, char *var_head)
 {
 	char	*value;

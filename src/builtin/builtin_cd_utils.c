@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/17 23:24:07 by coder             #+#    #+#             */
-/*   Updated: 2022/09/18 18:11:35 by coder            ###   ########.fr       */
+/*   Updated: 2022/10/02 22:46:56 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,12 @@ int	count_args(char **args)
 	int	i;
 
 	i = 0;
-	if (!args || !args[i])
+	if (!args)
 		return (0);
 	while (args[i])
+	{
 		i++;
+	}
 	return (i);
 }
 

@@ -1,30 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   builtin_env.c                                      :+:      :+:    :+:   */
+/*   testprogram.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/27 22:50:18 by coder             #+#    #+#             */
-/*   Updated: 2022/10/01 22:52:27 by coder            ###   ########.fr       */
+/*   Created: 2022/09/25 02:33:52 by coder             #+#    #+#             */
+/*   Updated: 2022/10/02 22:04:52 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../headers/minishell.h"
+#include <stdio.h>
+#include <stdlib.h>
 
-int	builtin_env(char **args, char **envp, t_env_list *env_list)
+int	main (int argc, char *argv[])
 {
-	t_env_list	*temp;
-
-	(void) args;
-	(void) envp;
-	if (!env_list)
-		return (1);
-	temp = env_list;
-	while (temp)
+	int i = 0;
+	printf ("argc: %d\n", argc);
+	while (argv[i])
 	{
-		printf("%s\n", temp->content);
-		temp = temp->next;
+		printf ("arg[%d]: %s\n", i, argv[i]);
+		i++;
 	}
-	return (0);
+	printf ("Saindo com exit code [%d].\n", i);
+	printf ("Há tanta suavidade em nada dizer e tudo entender...\n");
+	exit (i);
 }

@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/17 21:13:35 by coder             #+#    #+#             */
-/*   Updated: 2022/09/18 18:11:38 by coder            ###   ########.fr       */
+/*   Updated: 2022/10/02 22:48:53 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,29 +14,27 @@
 
 /*
 ** If there's an OLDPWD node inside the environmentals, updates it.
-** return 0 on success and 1 on failure;
+** return 0 on success. It should always be a success. But if not, returns 1.
 */
-static int	update_oldpwd(t_ms_data *ms)
+static int	update_oldpwd(t_ms_data *ms, char *curr_path)
 {
 	t_env_list	*oldpwd;
-	t_env_list	*pwd;
 
-	pwd = ms->env_head;
 	oldpwd = ms->env_head;
-	while (pwd)
-	{
-		if (ft_strncmp (pwd->content, "PWD=", 4))
-			break ;
-		pwd = pwd->next;
-	}
 	while (oldpwd)
 	{
 		if (ft_strncmp (oldpwd->content, "OLDPWD=", 7))
 			break ;
 		oldpwd = oldpwd->next;
 	}
-	oldpwd->content = safe_free(oldpwd->content);
-	oldpwd->content = ft_strjoin("OLD", pwd->content);
+	ms->oldpwd = safe_free(ms->oldpwd);
+	ms->oldpwd = ft_strdup(curr_path);
+	if (oldpwd)
+	{
+		oldpwd->content = safe_free(oldpwd->content);
+		oldpwd->content = ft_strjoin("OLDPWD=", ms->oldpwd);
+		return (0);
+	}
 	return (1);
 }
 
@@ -78,7 +76,6 @@ static int	cd_to_home(t_ms_data *ms)
 			write(2, "cd: something went terribly wrong\n", 34);
 			return (2);
 		}
-		update_oldpwd(ms);
 		update_pwd(ms, &home_path[5]);
 		return (0);
 	}
@@ -92,6 +89,9 @@ static int	cd_to_home(t_ms_data *ms)
 */
 static int	cd_to_path(char *path, t_ms_data *ms)
 {
+	char	curr_path[PATH_MAX];
+
+	getcwd(curr_path, PATH_MAX);
 	if (!access(path, R_OK | F_OK))
 	{
 		if (chdir(path))
@@ -99,6 +99,7 @@ static int	cd_to_path(char *path, t_ms_data *ms)
 			write(2, "cd: something went terribly wrong\n", 34);
 			return (2);
 		}
+		update_oldpwd(ms, curr_path);
 		update_pwd(ms, path);
 		return (0);
 	}
@@ -113,20 +114,21 @@ static int	cd_to_path(char *path, t_ms_data *ms)
 ** If there's an OLDPWD env, updates it accordingly;
 ** On failure, prints the error and gets exit status > 0;
 */
-int	builtin_cd(char **args, t_ms_data *ms)
+int	builtin_cd(char **args, char **envp, t_ms_data *ms)
 {
 	int		arg_number;
 	char	*expanded_path;
 
+	(void) envp;
 	arg_number = count_args(args);
-	if (arg_number == 0)
-		ms->exit_code = cd_to_home(ms);
-	if (arg_number > 1)
-	{
-		ms->exit_code = 1;
-		write(2, "cd: too many freaking arguments", 32);
-	}
 	if (arg_number == 1)
+		ms->exit_code = cd_to_home(ms);
+	if (arg_number > 2)
+	{
+		write(2, "cd: too many freaking arguments\n", 32);
+		return (ms->exit_code = 1);
+	}
+	if (arg_number == 2)
 	{
 		expanded_path = expand_home(args[0], ms);
 		if (ft_strlen(expanded_path) > PATH_MAX)

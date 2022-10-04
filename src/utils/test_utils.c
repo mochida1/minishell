@@ -6,12 +6,60 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/10 17:12:58 by coder             #+#    #+#             */
-/*   Updated: 2022/09/10 17:17:58 by coder            ###   ########.fr       */
+/*   Updated: 2022/09/25 22:08:45 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../headers/minishell.h"
 
+
+/*
+** THIS IS A DEBUGGING FUNCTION
+** Printa uma struct de comandos.
+*/
+//<< EOF < INFILE cdm arg1 arg2 >> APP > OW | < in << eof cdm arg3 arg4 > ow >> app
+void	PRINT_COM(t_com *data)
+{
+	if (!data)
+		return ;
+	int i = 0;
+	printf ("---------------------------\n");
+	if (data->block_exec)
+	{
+		printf ("error: %s", data->error_to_print);
+		return ;
+	}
+	printf ("command: %s\n", data->command);
+	if (data->receives_from_pipe)
+		printf("receives from pipe\n");
+	if (data->sends_to_pipe)
+		printf("sends to pipe\n");
+	while (data->args && data->args[i])
+	{
+		printf ("arg[%d]: %s\n", i, data->args[i]);
+		i++;
+	}
+	i = 0;
+	while (data->envp && data->envp[i])
+	{
+		// printf ("envp[%d]: %s\n", i, data->envp[i]);
+		i++;
+	}
+	t_reds	*temp = data->red_in;
+	while (temp)
+	{
+		printf ("in:%d, %s\n", temp->type, temp->target);
+		temp = temp->next;
+	}
+	temp = data->red_out;
+	while (temp)
+	{
+		printf ("out:%d, %s\n", temp->type, temp->target);
+		temp = temp->next;
+	}
+	printf ("***************************\n");
+}
+// < target cmd arg arg2 arg3 arg4 arg5 | cmd2 arg21 arg22 > out
 /*
 ** THIS IS A DEBUGGING FUNCTION
 ** prints the tokens. Yup. With printf.
@@ -23,6 +71,7 @@ int	print_token_list(t_ms_data *ms)
 
 	ret = 0;
 	temp = ms->tokens;
+	printf ("TOKEN LIST IS: \n");
 	while (temp)
 	{
 		printf ("<: %p\n", temp->prev);
@@ -30,6 +79,7 @@ int	print_token_list(t_ms_data *ms)
 		printf (">: %p\n", temp->next);
 		ret += printf ("v: %s\n", temp->value);
 		printf ("t: %d\n", temp->type);
+		printf ("i: %d\n", temp->index);
 		printf ("\n------------------\n");
 		temp = temp->next;
 	}

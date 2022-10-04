@@ -11,6 +11,7 @@ src/exec src/parse src/signals
 INCLUDES = -I /headers
 
 # Lists sources. Manually because of norm...
+<<<<<<< HEAD
 BUILTIN	= builtin_cd_utils.c builtin_cd.c builtin_echo.c builtin_env.c \
 			builtin_export.c builtin_pwd.c
 EXEC	= exec_one_cmd.c execve_TESTE.c
@@ -19,6 +20,18 @@ PARSE	= expand_exit_code.c expand_vars_utils.c expand_vars.c token_types.c \
 			token_types2.c tokens.c
 PROMPT	= add_spaces_utils.c add_spaces.c ft_split_shell.c prompt_utils.c
 STATES	= clean_state.c error_state.c exec_state.c init_state.c parse_state.c \
+=======
+BUILTIN = builtin_cd_utils.c builtin_cd.c builtin_echo.c builtin_env.c \
+			builtin_export.c builtin_pwd.c builtin_unset.c builtin_exit.c
+EXEC = exec_one_cmd.c handle_redirects.c execve_TESTE.c destroy_exec_info.c \
+			get_exec_info.c tok_args.c tok_command.c tok_input.c tok_output.c \
+			tok_envp.c tok_utils.c
+MAIN = minishell.c
+PARSE = expand_vars_utils.c expand_vars.c token_types.c token_types2.c \
+tokens.c parse_check_for_errors.c
+PROMPT = add_spaces_utils.c add_spaces.c ft_split_shell.c prompt_utils.c
+STATES = clean_state.c error_state.c exec_state.c init_state.c parse_state.c \
+>>>>>>> main
 			prompt_state.c
 UTILS	= ft_strcmp.c get_env.c safe_free.c test_utils.c
 SIGNALS = signals.c
@@ -35,7 +48,7 @@ OBJS = $(addprefix $(BUILDDIR)/, $(SOURCES:%.c=%.o))
 CC = gcc
 CF = -Wall -Wextra -Werror
 GDB = -ggdb
-VAL = valgrind --trace-children=yes --leak-check=full --track-origins=yes \
+VAL = valgrind --trace-children=no --leak-check=full --track-origins=yes \
 		./$(NAME)
 FSF = -fsanitize=address
 
@@ -72,11 +85,13 @@ test:
 
 clean:
 	@rm -rf $(BUILDDIR)
+	@rm -f vgcore*
 	@make clean -C $(LIBFT_DIR)
 
 fclean: clean
 	@rm -f $(NAME)
 	@rm -f $(NAME_FS)
+	@rm -f vgcore*
 	@make fclean -C $(LIBFT_DIR)
 
 re: fclean all

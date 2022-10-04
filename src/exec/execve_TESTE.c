@@ -105,6 +105,8 @@ char	*get_path(char *cmd_arg, char **envp)
 	int		i;
 	char	*path;
 
+	if (!ft_strncmp(cmd_arg, ".", 1))
+		return (ft_strdup(cmd_arg));
 	i = get_path_index_from_envp (envp);
 	if (1 < 0)
 		perror("Error getting path index from ENVP");
@@ -132,7 +134,7 @@ char	*get_path(char *cmd_arg, char **envp)
 ** pega o primeiro argumento da linha e usa como comando.
 ** retorna statsu de saída do filho
 */
-int	exec_MVP_TESTE(t_ms_data *ms, char **envp)
+int	exec_MVP_TESTE(t_com *cmd, t_ms_data *ms)
 {
 	char	*path;
 	int		pid;
@@ -146,17 +148,16 @@ int	exec_MVP_TESTE(t_ms_data *ms, char **envp)
 	}
 	if (!pid)
 	{
-		path = get_path(ms->rl_split[0], envp);
+		path = cmd->command;
 		if (!get_exec_error(path, ms))
-			execve(path, ms->rl_split, envp);
+			execve(path, cmd->args, cmd->envp);
 		else
 		{
 			printf("command not found!\n");
+			path = NULL;
+			ms->exit_code = 127;
+			ms->issue_exit = -1;
 		}
-		safe_free(path);
-		path = NULL;
-		exit(e_status);
 	}
-		printf ("\n\nexit status: %d\n\n", e_status);
-		return (0);
+	return (0);
 }
