@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expand_vars_utils.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
+/*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/10 21:11:37 by viferrei          #+#    #+#             */
-/*   Updated: 2022/10/05 00:13:31 by coder            ###   ########.fr       */
+/*   Updated: 2022/10/05 01:43:29 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,10 @@
 int	vars_match(char *env_var, char *var_name)
 {
 	size_t		var_size;
+
 	var_size = ft_strlen(var_name);
-	if (!ft_strncmp(env_var, var_name, var_size) && *(env_var + var_size) == '=')
+	if (!ft_strncmp(env_var, var_name, var_size)
+		&& *(env_var + var_size) == '=')
 		return (1);
 	return (0);
 }

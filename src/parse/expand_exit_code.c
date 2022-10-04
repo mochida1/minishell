@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expand_exit_code.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: viferrei <viferrei@student.42sp.org.br     +#+  +:+       +#+        */
+/*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 00:38:52 by viferrei          #+#    #+#             */
-/*   Updated: 2022/09/19 01:16:50 by viferrei         ###   ########.fr       */
+/*   Updated: 2022/10/05 01:42:13 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

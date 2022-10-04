@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_state.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
+/*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 17:38:58 by coder             #+#    #+#             */
-/*   Updated: 2022/10/05 00:12:53 by coder            ###   ########.fr       */
+/*   Updated: 2022/10/05 01:44:55 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static int	is_only_space(char *str)
 	{
 		if (!*str)
 			return (1);
-		if(*str != ' ')
+		if (*str != ' ')
 			return (0);
 		str++;
 	}

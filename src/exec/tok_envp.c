@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 03:04:27 by coder             #+#    #+#             */
-/*   Updated: 2022/09/21 03:45:15 by coder            ###   ########.fr       */
+/*   Updated: 2022/10/05 01:37:10 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 static int	count_envs(t_env_list *head)
 {
-	t_env_list *temp;
-	int i;
+	t_env_list	*temp;
+	int			i;
 
 	temp = head;
 	i = 0;
