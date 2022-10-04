@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 23:09:16 by coder             #+#    #+#             */
-/*   Updated: 2022/10/05 00:14:26 by coder            ###   ########.fr       */
+/*   Updated: 2022/10/05 00:26:16 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ int			exec_one_cmd(t_com *cmd, t_ms_data *ms);
 
 // handle_redirects.c
 void		handle_redirects(t_ms_data *ms);
+
 // get_exec_info.c
 t_com		*get_exec_info(t_ms_data *ms);
 
@@ -124,6 +125,7 @@ int			is_variable(char c);
 char		*find_variable(char	*str);
 
 // expand_vars.c
+void		handle_variable_expansions(t_ms_data *ms);
 void		expand_exit_code(t_ms_data *ms);
 void		expand_variables(t_ms_data *ms);
 
