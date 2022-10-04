@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 23:09:16 by coder             #+#    #+#             */
-/*   Updated: 2022/10/05 00:13:58 by coder            ###   ########.fr       */
+/*   Updated: 2022/10/05 01:27:13 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -149,8 +149,10 @@ int			token_is_fd(t_tokens *temp);
 ** SIGNALS
 */
 // signals.c
+int			signal_handlers(void);
 void		sigint_handler(int signo);
 void		sig_defaults(void);
+void		ignore_signals(void);
 
 /*
 ** TESTS
