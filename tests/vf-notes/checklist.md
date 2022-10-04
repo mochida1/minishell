@@ -1,6 +1,9 @@
 ## Quotes
 - [x] Error message for unclosed quotes.
 
+## Exit code
+- [ ] 127 for "command not found!"
+
 ## Built-ins
 ### Export
 - [x] Error message if no arguments;
@@ -14,5 +17,5 @@
 - [x] Unsets the first variable in the list.
 
 ## Variable expansion
-- [ ]  (EXPORT) Checks if it works for variables with no parameters like `VARIABLE=`
-- [ ]  Checks `VAR=$VAR` expansions (recursion).
+- [x]  (EXPORT) Checks if it works for variables with no parameters like `VARIABLE=`
+- [x]  Checks `VAR=$VAR` expansions.
