@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 02:05:59 by coder             #+#    #+#             */
-/*   Updated: 2022/10/03 02:26:38 by coder            ###   ########.fr       */
+/*   Updated: 2022/10/05 01:04:56 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 */
 int	arg_is_number(char *arg)
 {
-	while(*arg)
+	while (*arg)
 	{
 		if (!ft_isdigit(*arg))
 			return (0);
