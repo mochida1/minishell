@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 02:05:59 by coder             #+#    #+#             */
-/*   Updated: 2022/10/05 01:04:56 by coder            ###   ########.fr       */
+/*   Updated: 2022/10/06 02:23:57 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,5 +52,5 @@ int	builtin_exit(char **args, char **envp, t_ms_data *ms)
 	else if (args[1] && arg_is_number(args[1]))
 		ms->exit_code = ft_atoi(args[1]);
 	ms->issue_exit = 1;
-	return (ms->exit_code);
+	return ((unsigned char) ms->exit_code);
 }
