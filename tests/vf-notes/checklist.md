@@ -5,6 +5,8 @@
 - [ ] 127 for "command not found!"
 
 ## Built-ins
+### Env
+- [ ] error message if PATH is unset.
 ### Export
 - [x] Error message if no arguments;
 	obs.: does not appear if there's a space in the argument;
@@ -15,6 +17,9 @@
 
 ### Unset
 - [x] Unsets the first variable in the list.
+- [ ] Unsets all variables in the env list.
+- [ ] No segfault if trying to unset all variables and then some.
+- [ ] 
 
 ## Variable expansion
 - [x]  (EXPORT) Checks if it works for variables with no parameters like `VARIABLE=`

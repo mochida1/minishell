@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtin_unset.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
+/*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 01:05:53 by viferrei          #+#    #+#             */
-/*   Updated: 2022/10/03 00:58:52 by coder            ###   ########.fr       */
+/*   Updated: 2022/10/06 01:07:20 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	compare_arg_env(char *arg, t_ms_data *ms)
 		free(tmp);
 	}
 	head = ms->env_head;
-	while (head->next)
+	while (head && head->next)
 	{
 		if (vars_match(head->next->content, arg))
 		{
