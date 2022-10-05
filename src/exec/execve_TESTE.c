@@ -136,7 +136,6 @@ char	*get_path(char *cmd_arg, char **envp)
 */
 int	exec_MVP_TESTE(t_com *cmd, t_ms_data *ms)
 {
-	char	*path;
 	int		pid;
 	int 	e_status;
 
@@ -144,20 +143,20 @@ int	exec_MVP_TESTE(t_com *cmd, t_ms_data *ms)
 	pid = create_child();
 	if (pid)
 	{
+		ignore_signals();
 		waitpid(pid, &e_status, 0);
+		signal_handlers();
 	}
 	if (!pid)
 	{
-		path = cmd->command;
-		if (!get_exec_error(path, ms))
+		if (!get_exec_error(cmd->command, ms))
 		{
 			sig_defaults();
-			execve(path, cmd->args, cmd->envp);
+			execve(cmd->command, cmd->args, cmd->envp);
 		}
 		else
 		{
 			printf("command not found!\n");
-			path = NULL;
 			ms->exit_code = 127;
 			ms->issue_exit = -1;
 		}
