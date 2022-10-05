@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_state.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
+/*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 17:38:58 by coder             #+#    #+#             */
-/*   Updated: 2022/10/03 01:22:49 by coder            ###   ########.fr       */
+/*   Updated: 2022/10/05 01:44:55 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static int	is_only_space(char *str)
 	{
 		if (!*str)
 			return (1);
-		if(*str != ' ')
+		if (*str != ' ')
 			return (0);
 		str++;
 	}
@@ -44,7 +44,7 @@ int	parse_state(t_ms_data *ms)
 		ms->rl_buffer = NULL;
 	ms->rl_split = ft_split_shell(ms->rl_spaced_buffer, ' ');
 	ms->tokens = tokenize_splits(ms);
-	expand_variables(ms);
+	handle_variable_expansions(ms);
 	categorize_tokens(ms->tokens);
 	ms->state = EXECSTATE;
 	return (0);

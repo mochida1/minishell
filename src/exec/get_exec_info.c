@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/18 21:12:55 by coder             #+#    #+#             */
-/*   Updated: 2022/10/02 23:42:04 by coder            ###   ########.fr       */
+/*   Updated: 2022/10/05 01:36:40 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,7 @@ t_com	*get_exec_info(t_ms_data *ms)
 		return (NULL);
 	self = ft_calloc(1, sizeof(t_com));
 	if (check_for_errtokens(ms, self))
-		return(self);
+		return (self);
 	self->receives_from_pipe = tok_from_pipe(ms);
 	self->command = tok_command(ms, self);
 	self->args = tok_args(ms);
