@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 00:53:46 by coder             #+#    #+#             */
-/*   Updated: 2022/10/01 23:06:46 by coder            ###   ########.fr       */
+/*   Updated: 2022/10/06 01:46:47 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,8 @@ static char	*tok_get_path(char *value, t_env_list *env_head)
 		return (ft_strdup(value));
 	while (temp && ft_strncmp(temp->content, "PATH=", 5))
 		temp = temp->next;
+	if (!temp)
+		return (NULL);
 	all_paths = ft_split(temp->content + 5, ':');
 	all_paths = cat_cmd_to_all_paths(value, all_paths);
 	path = access_all_paths(all_paths);
