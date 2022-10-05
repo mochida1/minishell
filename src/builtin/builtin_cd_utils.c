@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtin_cd_utils.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: viferrei <viferrei@student.42sp.org.br     +#+  +:+       +#+        */
+/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/17 23:24:07 by coder             #+#    #+#             */
-/*   Updated: 2022/09/23 01:31:20 by viferrei         ###   ########.fr       */
+/*   Updated: 2022/10/05 00:57:55 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,12 @@ int	count_args(char **args)
 	int	i;
 
 	i = 0;
-	if (!args || !args[i])
+	if (!args)
 		return (0);
 	while (args[i])
+	{
 		i++;
+	}
 	return (i);
 }
 
@@ -62,7 +64,7 @@ char	*get_home_dir_from_envs(t_ms_data *ms)
 				ms->exit_code = 1;
 				return (NULL);
 			}
-			return (temp->content);
+			return (temp->content + 5);
 		}
 		temp = temp->next;
 	}

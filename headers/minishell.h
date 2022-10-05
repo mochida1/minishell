@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: viferrei <viferrei@student.42sp.org.br     +#+  +:+       +#+        */
+/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 23:09:16 by coder             #+#    #+#             */
-/*   Updated: 2022/09/26 02:32:48 by viferrei         ###   ########.fr       */
+/*   Updated: 2022/10/05 01:34:10 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,19 @@
 /*
 ** BUILTIN
 */
-int			builtin_env(t_env_list	*env_list);
+int			builtin_env(char **args, char **envp, t_env_list *env_list);
 int			builtin_export(char	**args, t_ms_data *ms);
+int			builtin_echo(char **args);
 int			builtin_unset(char	**args, t_ms_data *ms);
+int			builtin_exit(char **args, char **envp, t_ms_data *ms);
+// builtin_pwd.c
+int			builtin_pwd(char **args, char **envp, t_ms_data *ms);
+// builtin_cd.c
+int			builtin_cd(char **args, char **envp, t_ms_data *ms);
+// builtin_cd_utils.c
+char		*expand_home(char *path, t_ms_data *ms);
+int			count_args(char **args);
+char		*get_home_dir_from_envs(t_ms_data *ms);
 
 /*
 ** EXEC
@@ -38,6 +48,7 @@ int			exec_one_cmd(t_com *cmd, t_ms_data *ms);
 
 // handle_redirects.c
 void		handle_redirects(t_ms_data *ms);
+
 // get_exec_info.c
 t_com		*get_exec_info(t_ms_data *ms);
 
@@ -80,10 +91,6 @@ void		*free_rl_split(t_ms_data *ms);
 void		*destroy_token_list(t_ms_data *ms);
 void		*free_pp_char(char **pp);
 
-// builtin_cd_utils.c
-int			count_args(char **args);
-char		*get_home_dir_from_envs(t_ms_data *ms);
-
 // ft_strcmp.c
 int			ft_strcmp(char *str, char *str2);
 
@@ -107,8 +114,6 @@ int			get_data_from_readline(t_ms_data *ms);
 // ft_split_shell.c
 char		**ft_split_shell(char *str, char delimiter);
 
-// execve_TESTE.c
-int			exec_MVP_TESTE(t_ms_data *ms, char **envp);
 
 /*
 ** PARSE
@@ -120,7 +125,9 @@ int			is_variable(char c);
 char		*find_variable(char	*str);
 
 // expand_vars.c
-int			expand_variables(t_ms_data *ms);
+void		handle_variable_expansions(t_ms_data *ms);
+void		expand_exit_code(t_ms_data *ms);
+void		expand_variables(t_ms_data *ms);
 
 // parse_check_for_errors.c
 int			parse_check_for_errors(t_ms_data *ms);
@@ -146,19 +153,7 @@ int			token_is_fd(t_tokens *temp);
 */
 // signals.c
 void		sigint_handler(int signo);
-
-/*
-** BUILTINS
-*/
-// builtin_pwd.c
-int			builtin_pwd(/*char **args,*/ t_ms_data *ms);
-
-// builtin_cd.c
-int			builtin_cd(char **args, char **envp, t_ms_data *ms);
-// builtin_cd_utils.c
-char		*expand_home(char *path, t_ms_data *ms);
-int			count_args(char **args);
-char		*get_home_dir_from_envs(t_ms_data *ms);
+void		sig_defaults(void);
 
 /*
 ** TESTS
@@ -168,5 +163,7 @@ void		test_expand_vars(t_ms_data *ms); // REMOVER ANTES DA ENTREGA
 int			print_token_list(t_ms_data *ms); // REMOVER ANTES DA ENTREGA
 int			check_for_some_shady_shit(t_ms_data *ms); // REMOVER ANTES DA ENTREGA
 void		PRINT_COM(t_com *data); // REMOVER ANTES DA ENTREGA
+// execve_TESTE.c
+int			exec_MVP_TESTE(t_com *cmd, t_ms_data *ms); // REMOVER ANTES DA ENTREGA
 
 #endif

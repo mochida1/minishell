@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   prompt_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
+/*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 20:13:11 by coder             #+#    #+#             */
-/*   Updated: 2022/09/11 21:12:53 by coder            ###   ########.fr       */
+/*   Updated: 2022/10/05 01:44:01 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,16 @@ int	set_prompt(t_ms_data *ms)
 */
 int	get_data_from_readline(t_ms_data *ms)
 {
+	char	*temp;
+
 	ms->rl_buffer = readline(ms->rl_prompt);
 	if (ms->rl_buffer)
+	{
+		temp = ms->rl_buffer;
+		ms->rl_buffer = ft_strtrim(temp, " ");
+		temp = safe_free(temp);
 		return (0);
+	}
 	else if (!(ms->rl_buffer))
 		return (1);
 	return (0);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expand_vars.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: viferrei <viferrei@student.42sp.org.br     +#+  +:+       +#+        */
+/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 17:40:14 by viferrei          #+#    #+#             */
-/*   Updated: 2022/09/26 02:37:51 by viferrei         ###   ########.fr       */
+/*   Updated: 2022/10/05 00:17:44 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ void	if_variable(char *var_head, t_ms_data *ms)
 }
 
 // Iterates through tokens and expands their variables.
-int	expand_variables(t_ms_data *ms)
+void	expand_variables(t_ms_data *ms)
 {
 	char		*var_head;
 	t_tokens	*head;
@@ -89,5 +89,10 @@ int	expand_variables(t_ms_data *ms)
 			ms->tokens = ms->tokens->next;
 	}
 	ms->tokens = head;
-	return (ms->state);
+}
+
+void	handle_variable_expansions(t_ms_data *ms)
+{
+	expand_exit_code(ms);
+	expand_variables(ms);
 }

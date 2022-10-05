@@ -3,18 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   builtin_export.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: viferrei <viferrei@student.42sp.org.br     +#+  +:+       +#+        */
+/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/17 00:12:17 by viferrei          #+#    #+#             */
-/*   Updated: 2022/09/26 02:34:28 by viferrei         ###   ########.fr       */
+/*   Updated: 2022/10/05 00:36:37 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "../../headers/minishell.h"
 
 // Returns 1 if a '=' is found in the string
-int	equal_found(char *str)
+int	equal_found(char *str, t_ms_data *ms)
 {
 	char	*head;
 
@@ -28,7 +27,8 @@ int	equal_found(char *str)
 		else if (!is_variable(*str))
 		{
 			printf("export: '%s': not a valid identifier\n", head);
-			return(0);
+			ms->exit_code = 1;
+			return (0);
 		}
 		str++;
 	}
@@ -48,7 +48,7 @@ int	var_exists(char *arg, t_env_list *env)
 		if (vars_match(head->content, var_name))
 		{
 			free(var_name);
-			return(1);
+			return (1);
 		}
 		head = head->next;
 	}
@@ -96,18 +96,19 @@ void	set_variable(char *arg, t_ms_data *ms)
 	}
 }
 
-int		builtin_export(char	**args, t_ms_data *ms)
+int	builtin_export(char	**args, t_ms_data *ms)
 {
-	if (!args)
+	if (!args[1])
 	{
 		printf("export: forgot something?\n");
-		return(ms->exit_code);
+		return (ms->exit_code);
 	}
+	args++;
 	while (*args)
 	{
-		if (equal_found(*args))
+		if (equal_found(*args, ms))
 			set_variable(*args, ms);
 		(args)++;
 	}
-	return(ms->exit_code);
+	return (ms->exit_code);
 }

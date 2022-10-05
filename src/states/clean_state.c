@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 23:06:20 by coder             #+#    #+#             */
-/*   Updated: 2022/09/26 00:38:26 by coder            ###   ########.fr       */
+/*   Updated: 2022/10/03 00:27:24 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,15 @@ int	clean_state(t_ms_data *ms)
 	ms->rl_buffer = safe_free(ms->rl_buffer);
 	ms->rl_split = free_rl_split(ms);
 	ms->tokens = destroy_token_list(ms);
-	if (ms->issue_exit)
+	if (ms->issue_exit < 0)
 	{
-		printf ("EXIT ISSUED!\n");
-		ms->state = ms->issue_exit;
-		ms->env_head = destroy_env_list(ms->env_head);
+		ms->issue_exit = 0;
+		ms->state = 0;
+		return (0);
+	}
+	if (ms->issue_exit > 0)
+	{
+		ms->state = 0;
 		return (0);
 	}
 	else

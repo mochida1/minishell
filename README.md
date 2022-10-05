@@ -57,3 +57,87 @@ utilizar `-lreadline` como em `gcc -Wall -Wextra -Werror nomearquivo.c -lreadlin
 - \[0\]```cat out > wc``` Toda token depois de uma REDTOKEN é uma WORDTOKEN;
 - \[2\]```cat out >``` Caso não exista token depois de uma REDTOKEN, retorna erro: ```syntax error near unexpected token `newline'```
 - \[2\]```cat << > out``` Duas REDTOKENS seguidas dá bosta: ```syntax error near unexpected token ` ```
+
+## testes
+O readline sempre vaza `still reachable: 204,580 bytes in 215 blocks`por padrão.
+``` template ```
+
+```not echo```
+```echonot```
+```echo$```
+
+```echo```
+```echo ```
+```echo                     ```
+```echo test001```
+```echo test001             ```
+```echo test             001```
+```echo $```
+```echo $PWD```
+```echo $test000```
+```echo test000 $PWD```
+```echo "test000 $PWD"```
+```echo 'test000 $PWD'```
+```echo test000 "$PWD"```
+```echo test000 '$PWD'```
+```echo test000 $var_que_nao_existe```
+```echo "test000 $var_que_nao_existe"```
+```echo 'test000 $var_que_nao_existe'```
+```echo test000 "$var_que_nao_existe"```
+```echo test000 '$var_que_nao_existe'```
+```echo test000$PWD```
+```echo "test000$PWD"```
+```echo 'test000$PWD'```
+```echo test000"$PWD"```
+```echo test000'$PWD'```
+```echo "test000"$PWD```
+```echo 'test000'$PWD```
+```echo test000$var_que_nao_existe```
+```echo "test000$var_que_nao_existe"```
+```echo 'test000$var_que_nao_existe'```
+```echo 'test000'$var_que_nao_existe```
+```echo "test000"$var_que_nao_existe```
+```echo test000'$var_que_nao_existe'```
+```echo test000"$var_que_nao_existe"```
+```echo exit```
+
+```exit```
+exits with 0;
+```exit 1```
+exits with 1;
+```exit a```
+*exit*
+*bash: exit: a: numeric argument required*
+exits with 2;
+```exit a b c d e f```
+*exit*
+*bash: exit: a: numeric argument required*
+exits with 2;
+```exit 1 2 3 4 5 6```
+*exit*
+*bash: exit: too many arguments*
+RETURNS 1, does not exit;
+```exit 1 a b c d e```
+*exit*
+*bash: exit: too many arguments*
+RETURNS 1, does not exit;
+```exit a 1 2 3 4 5```
+*exit*
+*bash: exit: a: numeric argument required*
+exits with 2;
+```exit 2147483647```
+exits with 255;
+```exit 2147483648```
+exits with 0;
+```exit 2147483649```
+exits with 1;
+
+```<< EOF < INFILE cdm arg1 arg2 >> APP > OW | < in << eof cdm arg3 arg4 > ow >> app```
+
+echo with option -n
+◦ cd with only a relative or absolute path
+◦ pwd with no options
+◦ export with no options
+◦ unset with no options
+◦ env with no options or arguments
+◦ exit with no options

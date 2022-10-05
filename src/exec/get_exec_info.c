@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_exec_info.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: viferrei <viferrei@student.42sp.org.br     +#+  +:+       +#+        */
+/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/18 21:12:55 by coder             #+#    #+#             */
-/*   Updated: 2022/09/28 01:33:57 by viferrei         ###   ########.fr       */
+/*   Updated: 2022/10/05 01:36:40 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ int	check_for_errtokens(t_ms_data *ms, t_com *self)
 		if (temp->type == ERRTOKEN)
 		{
 			self->block_exec = 1;
-			self->error_to_print = ft_strdup("Invalid syntax, lear to ytpe.");
+			self->error_to_print = ft_strdup("Invalid syntax, lear to ytpe.\n");
 			return (1);
 		}
 		temp = temp->next;
@@ -105,7 +105,7 @@ t_com	*get_exec_info(t_ms_data *ms)
 		return (NULL);
 	self = ft_calloc(1, sizeof(t_com));
 	if (check_for_errtokens(ms, self))
-		return(self);
+		return (self);
 	self->receives_from_pipe = tok_from_pipe(ms);
 	self->command = tok_command(ms, self);
 	self->args = tok_args(ms);
