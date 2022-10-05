@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/17 23:24:07 by coder             #+#    #+#             */
-/*   Updated: 2022/10/05 00:57:55 by coder            ###   ########.fr       */
+/*   Updated: 2022/10/06 02:00:52 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,10 @@ char	*expand_home(char *path, t_ms_data *ms)
 {
 	char	*home;
 
-	if (path[0] != '~')
+	if (path[0] != '~' && path[0] != '-')
 		return (ft_strdup(path));
+	if (path[0] == '-')
+		return (ft_strdup(ms->oldpwd));
 	home = get_home_dir_from_envs(ms);
 	if (!home)
 		home = ms->home_original;
