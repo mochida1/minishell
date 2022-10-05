@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/17 21:13:35 by coder             #+#    #+#             */
-/*   Updated: 2022/10/05 00:59:50 by coder            ###   ########.fr       */
+/*   Updated: 2022/10/05 02:33:34 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,21 +18,21 @@
 */
 static int	update_oldpwd(t_ms_data *ms, char *curr_path)
 {
-	t_env_list	*oldpwd;
+	t_env_list	*ls_oldpwd;
 
-	oldpwd = ms->env_head;
-	while (oldpwd)
+	ls_oldpwd = ms->env_head;
+	while (ls_oldpwd)
 	{
-		if (ft_strncmp (oldpwd->content, "OLDPWD=", 7))
+		if (!ft_strncmp (ls_oldpwd->content, "OLDPWD=", 7))
 			break ;
-		oldpwd = oldpwd->next;
+		ls_oldpwd = ls_oldpwd->next;
 	}
 	ms->oldpwd = safe_free(ms->oldpwd);
 	ms->oldpwd = ft_strdup(curr_path);
-	if (oldpwd)
+	if (ls_oldpwd)
 	{
-		oldpwd->content = safe_free(oldpwd->content);
-		oldpwd->content = ft_strjoin("OLDPWD=", ms->oldpwd);
+		ls_oldpwd->content = safe_free(ls_oldpwd->content);
+		ls_oldpwd->content = ft_strjoin("OLDPWD=", ms->oldpwd);
 		return (0);
 	}
 	return (1);
@@ -49,7 +49,7 @@ static int	update_pwd(t_ms_data *ms, char *path)
 	temp = ms->env_head;
 	while (temp)
 	{
-		if (ft_strncmp (temp->content, "PWD=", 4))
+		if (!ft_strncmp(temp->content, "PWD=", 4))
 		{
 			temp->content = safe_free(temp->content);
 			temp->content = ft_strjoin("PWD=", path);
@@ -67,16 +67,19 @@ static int	update_pwd(t_ms_data *ms, char *path)
 static int	cd_to_home(t_ms_data *ms)
 {
 	char	*home_path;
+	char	curr_path[PATH_MAX];
 
+	getcwd(curr_path, PATH_MAX);
 	home_path = get_home_dir_from_envs(ms);
 	if (home_path)
 	{
-		if (chdir(&home_path[5]))
+		if (chdir(home_path))
 		{
 			write(2, "cd: something went terribly wrong\n", 34);
 			return (2);
 		}
-		update_pwd(ms, &home_path[5]);
+		update_oldpwd(ms, curr_path);
+		update_pwd(ms, home_path);
 		return (0);
 	}
 	write (2, "cd: HOME not set\n", 17);
@@ -100,7 +103,8 @@ static int	cd_to_path(char *path, t_ms_data *ms)
 			return (2);
 		}
 		update_oldpwd(ms, curr_path);
-		update_pwd(ms, path);
+		getcwd(curr_path, PATH_MAX);
+		update_pwd(ms, curr_path);
 		return (0);
 	}
 	write (2, "cd: couldnt go to ", 28);
