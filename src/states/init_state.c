@@ -28,8 +28,6 @@ int	init_data(t_ms_data *ms, char **envp)
 {
 	set_prompt(ms);
 	ms->env_head = get_env(envp);
-	if (!ms->env_head)
-		return (1);
 	ms->oldpwd = ft_strdup("");
 	ms->home_original = ft_strdup(get_home_dir_from_envs(ms));
 	return (0);

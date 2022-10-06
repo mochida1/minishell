@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/17 21:13:35 by coder             #+#    #+#             */
-/*   Updated: 2022/10/05 02:33:34 by coder            ###   ########.fr       */
+/*   Updated: 2022/10/06 03:24:40 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,7 @@ static int	cd_to_path(char *path, t_ms_data *ms)
 		update_pwd(ms, curr_path);
 		return (0);
 	}
-	write (2, "cd: couldnt go to ", 28);
+	write (2, "cd: couldnt go to ", 18);
 	write (2, path, ft_strlen(path));
 	write (2, "\n", 1);
 	return (1);
