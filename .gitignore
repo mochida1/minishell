@@ -9,3 +9,5 @@ test_prog
 vf-notes.md
 nfs*
 .nfs*
+
+0_env
