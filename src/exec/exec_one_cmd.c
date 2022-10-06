@@ -6,7 +6,7 @@
 /*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 21:40:45 by viferrei          #+#    #+#             */
-/*   Updated: 2022/10/05 02:16:19 by viferrei         ###   ########.fr       */
+/*   Updated: 2022/10/07 01:16:48 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ int	exec_one_cmd(t_com *cmd, t_ms_data *ms)
 	original_fd[1] = dup(STDOUT_FILENO);
 	handle_redirects(cmd);
 	if (cmd->is_builtin)
-		return (exec_builtin(cmd, ms));
+		ms->exit_code = (exec_builtin(cmd, ms));
 	else
 		ms->exit_code = exec_MVP_TESTE(cmd, ms);
 	return (0);

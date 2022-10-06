@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/10 20:29:26 by coder             #+#    #+#             */
-/*   Updated: 2022/10/05 00:13:57 by coder            ###   ########.fr       */
+/*   Updated: 2022/10/05 01:26:33 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ void	sig_defaults(void)
 {
 	signal(SIGINT, SIG_DFL);
 	signal(SIGQUIT, SIG_DFL);
+	signal(SIGTERM, SIG_DFL);
 }
 
 /*
@@ -32,4 +33,26 @@ void	sigint_handler(int signo)
 	rl_replace_line("", 0);
 	rl_on_new_line();
 	rl_redisplay();
+}
+
+/*
+** Makes signals do minishell stuff;
+*/
+int	signal_handlers(void)
+{
+	signal(SIGINT, sigint_handler);
+	signal(SIGQUIT, SIG_IGN);
+	signal(SIGQUIT, SIG_DFL);
+	return (1);
+}
+
+/*
+** Makes stuff ignore signals so that minishell won't be killed after
+** a ctrl+c on a fork;
+*/
+void	ignore_signals(void)
+{
+	signal(SIGINT, SIG_IGN);
+	signal(SIGQUIT, SIG_IGN);
+	signal(SIGTERM, SIG_IGN);
 }
