@@ -6,7 +6,7 @@
 /*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/10 17:12:58 by coder             #+#    #+#             */
-/*   Updated: 2022/10/06 01:47:27 by viferrei         ###   ########.fr       */
+/*   Updated: 2022/10/06 02:23:46 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,11 +104,6 @@ int	check_for_some_shady_shit(t_ms_data *ms)
 		shaddy_shit_has_happened++;
 	}
 	if (!ms->rl_prompt)
-	{
-		ms->state = -1;
-		shaddy_shit_has_happened++;
-	}
-	if (!ms->env_head)
 	{
 		ms->state = -1;
 		shaddy_shit_has_happened++;
