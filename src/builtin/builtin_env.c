@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 22:50:18 by coder             #+#    #+#             */
-/*   Updated: 2022/10/01 22:52:27 by coder            ###   ########.fr       */
+/*   Updated: 2022/10/06 03:59:19 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,10 @@ int	builtin_env(char **args, char **envp, t_env_list *env_list)
 	(void) args;
 	(void) envp;
 	if (!env_list)
-		return (1);
+	{
+		write (2, "Y u env when no env?\n", 21);
+		return (2);
+	}
 	temp = env_list;
 	while (temp)
 	{

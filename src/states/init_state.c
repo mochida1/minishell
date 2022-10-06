@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 17:13:30 by coder             #+#    #+#             */
-/*   Updated: 2022/10/05 01:11:03 by coder            ###   ########.fr       */
+/*   Updated: 2022/10/06 03:55:07 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,6 @@ int	init_data(t_ms_data *ms, char **envp)
 {
 	set_prompt(ms);
 	ms->env_head = get_env(envp);
-	if (!ms->env_head)
-		return (1);
 	ms->oldpwd = ft_strdup("");
 	ms->home_original = ft_strdup(get_home_dir_from_envs(ms));
 	return (0);
