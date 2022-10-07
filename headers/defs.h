@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   defs.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
+/*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 23:09:13 by coder             #+#    #+#             */
-/*   Updated: 2022/10/02 23:52:48 by coder            ###   ########.fr       */
+/*   Updated: 2022/10/07 04:36:07 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@
 # define INFILE			2
 # define OVERWRITE		3
 # define APPEND			4
+# define NO_REDIRECT	-1
 
 typedef struct s_tokens
 {

@@ -48,7 +48,7 @@ int			has_pipe(t_tokens *tokens);
 int			exec_one_cmd(t_com *cmd, t_ms_data *ms);
 
 // handle_redirects.c
-void		handle_redirects(t_ms_data *ms);
+int			handle_redirects(t_com *cmd, int original_fds[2])
 
 // get_exec_info.c
 t_com		*get_exec_info(t_ms_data *ms);

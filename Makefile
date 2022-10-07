@@ -5,7 +5,7 @@ BUILDDIR = objs
 LIBFT_DIR = libft
 LIBFT = $(LIBFT_DIR)/libft.a
 VPATH = src tests src/builtin src/states src/prompt src/utils src/main \
-src/exec src/parse src/signals
+src/exec src/parse src/signals src/redirects
 
 # headers
 INCLUDES = -I /headers

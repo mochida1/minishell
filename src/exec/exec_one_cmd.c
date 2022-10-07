@@ -6,7 +6,7 @@
 /*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 21:40:45 by viferrei          #+#    #+#             */
-/*   Updated: 2022/10/07 01:16:48 by viferrei         ###   ########.fr       */
+/*   Updated: 2022/10/07 04:01:48 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,11 +50,11 @@ int	exec_builtin(t_com *cmd, t_ms_data *ms)
 // Handles single-command input - either builtin or not.
 int	exec_one_cmd(t_com *cmd, t_ms_data *ms)
 {
-	int	original_fd[2];
+	int	original_fds[2];
 
-	original_fd[0] = dup(STDIN_FILENO);
-	original_fd[1] = dup(STDOUT_FILENO);
-	handle_redirects(cmd);
+	original_fds[0] = NO_REDIRECT;
+	original_fds[1] = NO_REDIRECT;
+	handle_redirects(cmd, &original_fds);
 	if (cmd->is_builtin)
 		ms->exit_code = (exec_builtin(cmd, ms));
 	else
