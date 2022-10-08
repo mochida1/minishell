@@ -6,28 +6,19 @@
 /*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/18 21:48:16 by viferrei          #+#    #+#             */
-/*   Updated: 2022/10/07 04:49:16 by viferrei         ###   ########.fr       */
+/*   Updated: 2022/10/08 03:14:37 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../headers/minishell.h"
 
-// Handle redirects for one command only.
-int	handle_redirects(t_com *cmd, int original_fds[2])
-{
-	if (handle_input(cmd->red_in, original_fds))
-		return (1);
-	handle_output(cmd->red_out, original_fds);
-	return (0);
-}
-
 int	redirect_input(t_reds *in)
 {
 	int	fd;
-	
+
 	if (in->target && access(in->target, F_OK))
 	{
-		printf("%s: No such file or directory\n", infile->target);
+		printf("%s: No such file or directory\n", in->target);
 		return (1);
 	}
 	else if (in->target)
@@ -42,6 +33,7 @@ int	redirect_input(t_reds *in)
 int	handle_input(t_reds *red_in, int original_fds[2])
 {
 	t_reds	*in;
+	// int		fd;
 
 	in = red_in;
 	if (!in)
@@ -52,7 +44,13 @@ int	handle_input(t_reds *red_in, int original_fds[2])
 	{
 		if (in->type == INFILE)
 			if (redirect_input(in))
-				return(1);
+				return (1);
+		if (in->type == HEREDOC)
+		{
+			// fd = heredoc(in->target);
+			// dup2(fd, STDIN_FILENO);
+			// close(fd);
+		}
 		in = in->next;
 	}
 	return (0);
@@ -81,12 +79,26 @@ int	handle_output(t_reds *red_out, int original_fds[2])
 	return (0);
 }
 
+// Handle redirects for one command only.
+int	handle_redirects(t_com *cmd, int original_fds[2])
+{
+	if (handle_input(cmd->red_in, original_fds))
+		return (1);
+	handle_output(cmd->red_out, original_fds);
+	return (0);
+}
+
 int	restore_original_fds(int original_fds[2])
 {
 	if (original_fds[0] != NO_REDIRECT)
 	{
 		dup2(original_fds[0], STDIN_FILENO);
 		close(original_fds[0]);
+	}
+	if (original_fds[1] != NO_REDIRECT)
+	{
+		dup2(original_fds[1], STDOUT_FILENO);
+		close(original_fds[1]);
 	}
 	return (0);
 }
