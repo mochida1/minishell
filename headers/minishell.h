@@ -40,6 +40,10 @@ int			builtin_cd(char **args, char **envp, t_ms_data *ms);
 char		*expand_home(char *path, t_ms_data *ms);
 int			count_args(char **args);
 char		*get_home_dir_from_envs(t_ms_data *ms);
+int			cd_error_args(t_ms_data *ms);
+// builtin_cd_utils2.c
+int			update_pwd(t_ms_data *ms, char *path);
+int			update_oldpwd(t_ms_data *ms, char *curr_path);
 
 /*
 ** EXEC

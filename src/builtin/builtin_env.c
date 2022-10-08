@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtin_env.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 22:50:18 by coder             #+#    #+#             */
-/*   Updated: 2022/10/06 02:22:03 by viferrei         ###   ########.fr       */
+/*   Updated: 2022/10/09 01:05:47 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	builtin_env(char **args, char **envp, t_env_list *env_list)
 	temp = env_list;
 	while (temp)
 	{
-		if(!ft_strncmp(temp->content, "PATH=", 5))
+		if (!ft_strncmp(temp->content, "PATH=", 5))
 			break ;
 		temp = temp->next;
 	}
