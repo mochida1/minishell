@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_one_cmd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 21:40:45 by viferrei          #+#    #+#             */
-/*   Updated: 2022/10/06 02:20:29 by viferrei         ###   ########.fr       */
+/*   Updated: 2022/10/08 07:38:10 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,8 @@ int	exec_builtin(t_com *cmd, t_ms_data *ms)
 int	exec_one_cmd(t_com *cmd, t_ms_data *ms)
 {
 	// handle_redirects(ms);
+	if (ms->issue_exit) // isso pode ser mudado pelo heredoc para sair do programa
+		return (ms->issue_exit);
 	if (cmd->is_builtin)
 		ms->exit_code = (exec_builtin(cmd, ms));
 	else

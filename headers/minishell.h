@@ -18,6 +18,7 @@
 # include "../libft/libft.h"
 # include <readline/readline.h>
 # include <readline/history.h>
+# include <fcntl.h> // open
 # include <signal.h> // sigaction
 # include <stdio.h> // readline
 # include <sys/wait.h> // wait
@@ -49,6 +50,10 @@ int			exec_one_cmd(t_com *cmd, t_ms_data *ms);
 
 // handle_redirects.c
 void		handle_redirects(t_ms_data *ms);
+
+// heredoc.c, heredoc_utils.c
+int			heredoc(char *target, t_ms_data *ms);
+int			write_to_heredoc(int ret_fd, char *target);
 
 // get_exec_info.c
 t_com		*get_exec_info(t_ms_data *ms);
