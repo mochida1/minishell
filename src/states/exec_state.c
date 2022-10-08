@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_state.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 20:59:48 by coder             #+#    #+#             */
-/*   Updated: 2022/10/05 01:45:51 by viferrei         ###   ########.fr       */
+/*   Updated: 2022/10/08 04:01:18 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,8 @@ int	exec_state(t_ms_data *ms)
 		cmd = get_exec_info(ms);
 		control = exec_loop(cmd, ms);
 		destroy_exec_info(cmd);
+		if (ms->issue_exit)
+			break ;
 	}
 	ms->state = CLEANSTATE;
 	return (0);
