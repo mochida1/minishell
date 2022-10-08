@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   defs.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
+/*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 23:09:13 by coder             #+#    #+#             */
 /*   Updated: 2022/10/08 02:23:56 by coder            ###   ########.fr       */
@@ -57,6 +57,7 @@
 # define INFILE			2
 # define OVERWRITE		3
 # define APPEND			4
+# define NO_REDIRECT	-1
 
 typedef struct s_tokens
 {
@@ -107,7 +108,7 @@ typedef struct s_global
 
 typedef struct s_reds
 {
-	int				type;
+	int				type; 
 	char			*target;
 	struct s_reds	*next;
 }				t_reds;

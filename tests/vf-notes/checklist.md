@@ -22,5 +22,9 @@
 - [ ] 
 
 ## Variable expansion
-- [x]  (EXPORT) Checks if it works for variables with no parameters like `VARIABLE=`
-- [x]  Checks `VAR=$VAR` expansions.
+- [x] (EXPORT) Checks if it works for variables with no parameters like `VARIABLE=`
+- [x] Checks `VAR=$VAR` expansions.
+
+## Redirects
+- [x] Command is not executed if an infile does not exist.
+- [ ] Argumentos com aspas.

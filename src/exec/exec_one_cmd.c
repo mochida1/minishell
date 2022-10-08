@@ -50,12 +50,21 @@ int	exec_builtin(t_com *cmd, t_ms_data *ms)
 // Handles single-command input - either builtin or not.
 int	exec_one_cmd(t_com *cmd, t_ms_data *ms)
 {
-	// handle_redirects(ms);
-	if (ms->issue_exit) // isso pode ser mudado pelo heredoc para sair do programa
-		return (ms->issue_exit);
+	int	original_fds[2];
+
+	original_fds[0] = NO_REDIRECT;
+	original_fds[1] = NO_REDIRECT;
+	if (handle_redirects(cmd, original_fds))
+	{
+		restore_original_fds(original_fds);
+		return (1);
+	}
+  if (ms->issue_exit) // isso pode ser mudado pelo heredoc para sair do programa
+	  return (ms->issue_exit);
 	if (cmd->is_builtin)
 		ms->exit_code = (exec_builtin(cmd, ms));
 	else
 		ms->exit_code = exec_MVP_TESTE(cmd, ms);
+	restore_original_fds(original_fds);
 	return (0);
 }

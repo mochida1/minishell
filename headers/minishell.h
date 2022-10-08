@@ -3,11 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
+/*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/27 23:09:16 by coder             #+#    #+#             */
-
-/*   Updated: 2022/10/05 01:27:13 by coder            ###   ########.fr       */
+/*   Created: 2022/10/08 02:46:15 by viferrei          #+#    #+#             */
+/*   Updated: 2022/10/08 02:46:25 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +48,8 @@ int			has_pipe(t_tokens *tokens);
 int			exec_one_cmd(t_com *cmd, t_ms_data *ms);
 
 // handle_redirects.c
-void		handle_redirects(t_ms_data *ms);
+int			handle_redirects(t_com *cmd, int original_fds[2]);
+int			restore_original_fds(int original_fds[2]);
 
 // heredoc.c, heredoc_utils.c
 int			heredoc(char *target, t_ms_data *ms);
