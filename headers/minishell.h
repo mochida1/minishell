@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/08 02:46:15 by viferrei          #+#    #+#             */
-/*   Updated: 2022/10/09 21:31:05 by coder            ###   ########.fr       */
+/*   Updated: 2022/10/09 22:31:36 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@
 # include <signal.h> // sigaction
 # include <stdio.h> // readline
 # include <sys/wait.h> // wait
-# include <assert.h> /* assert serve como um 'if (false){quebra o programa}'*/
 
 /*
 ** BUILTIN
