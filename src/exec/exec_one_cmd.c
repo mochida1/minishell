@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_one_cmd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
+/*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 21:40:45 by viferrei          #+#    #+#             */
-/*   Updated: 2022/10/09 22:22:24 by coder            ###   ########.fr       */
+/*   Updated: 2022/10/10 01:46:42 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,12 +48,8 @@ int	exec_builtin(t_com *cmd, t_ms_data *ms)
 }
 
 // Handles single-command input - either builtin or not.
-int	exec_one_cmd(t_com *cmd, t_ms_data *ms)
+int	exec_one_cmd(t_com *cmd, t_ms_data *ms, int original_fds[2])
 {
-	int	original_fds[2];
-
-	original_fds[0] = NO_REDIRECT;
-	original_fds[1] = NO_REDIRECT;
 	if (handle_redirects(cmd, original_fds, ms))
 	{
 		restore_original_fds(original_fds);
@@ -65,6 +61,5 @@ int	exec_one_cmd(t_com *cmd, t_ms_data *ms)
 		ms->exit_code = exec_builtin(cmd, ms);
 	else
 		ms->exit_code = exec_com(cmd, ms);
-	restore_original_fds(original_fds);
 	return (0);
 }

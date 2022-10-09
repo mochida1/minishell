@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
+/*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/08 02:46:15 by viferrei          #+#    #+#             */
-/*   Updated: 2022/10/09 22:31:36 by coder            ###   ########.fr       */
+/*   Updated: 2022/10/10 01:43:58 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int			update_oldpwd(t_ms_data *ms, char *curr_path);
 */
 // exec_one_cmd.c
 int			has_pipe(t_tokens *tokens);
-int			exec_one_cmd(t_com *cmd, t_ms_data *ms);
+int			exec_one_cmd(t_com *cmd, t_ms_data *ms, int original_fds[2]);
 // get_exec_info.c
 t_com		*get_exec_info(t_ms_data *ms);
 // destroy_exec_info.c
