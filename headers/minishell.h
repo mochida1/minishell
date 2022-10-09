@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/08 02:46:15 by viferrei          #+#    #+#             */
-/*   Updated: 2022/10/08 02:46:25 by viferrei         ###   ########.fr       */
+/*   Updated: 2022/10/09 21:31:05 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,31 +50,28 @@ int			update_oldpwd(t_ms_data *ms, char *curr_path);
 // exec_one_cmd.c
 int			has_pipe(t_tokens *tokens);
 int			exec_one_cmd(t_com *cmd, t_ms_data *ms);
-
 // get_exec_info.c
 t_com		*get_exec_info(t_ms_data *ms);
-
 // destroy_exec_info.c
 void		*destroy_exec_info(t_com *self);
-
 // tok_command.c
 char		*tok_command(t_ms_data *ms, t_com *self);
-
 // tok_args.c
 char		**tok_args(t_ms_data *ms);
-
 // tok_input.c
 t_reds		*tok_input(t_ms_data *ms);
-
 // tok_output.c
 t_reds		*tok_output(t_ms_data *ms);
-
 // tok_envp.c
 char		**tok_envp(t_env_list *head);
-
 // tok_utils.c
 t_tokens	*iterate_to_tok_index(t_ms_data *ms);
 t_reds		*create_red_list(int nodes);
+// exec_com.c
+int			exec_com(t_com *cmd, t_ms_data *ms);
+// exec_com_utils.c
+int			get_exec_error(char *path, t_ms_data *ms);
+char		*get_path(char *cmd_arg, char **envp);
 
 // STATES
 int			error_state(t_ms_data *ms);
@@ -181,7 +178,5 @@ void		test_expand_vars(t_ms_data *ms); // REMOVER ANTES DA ENTREGA
 int			print_token_list(t_ms_data *ms); // REMOVER ANTES DA ENTREGA
 int			check_for_some_shady_shit(t_ms_data *ms); // REMOVER ANTES DA ENTREGA
 void		PRINT_COM(t_com *data); // REMOVER ANTES DA ENTREGA
-// execve_TESTE.c
-int			exec_MVP_TESTE(t_com *cmd, t_ms_data *ms); // REMOVER ANTES DA ENTREGA
 
 #endif

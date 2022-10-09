@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_one_cmd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 21:40:45 by viferrei          #+#    #+#             */
-/*   Updated: 2022/10/09 02:07:51 by viferrei         ###   ########.fr       */
+/*   Updated: 2022/10/09 22:22:24 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ int	exec_one_cmd(t_com *cmd, t_ms_data *ms)
 	if (cmd->is_builtin)
 		ms->exit_code = exec_builtin(cmd, ms);
 	else
-		ms->exit_code = exec_MVP_TESTE(cmd, ms);
+		ms->exit_code = exec_com(cmd, ms);
 	restore_original_fds(original_fds);
 	return (0);
 }
