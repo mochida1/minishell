@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/17 23:24:07 by coder             #+#    #+#             */
-/*   Updated: 2022/10/06 02:00:52 by coder            ###   ########.fr       */
+/*   Updated: 2022/10/09 01:05:58 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,4 +72,14 @@ char	*get_home_dir_from_envs(t_ms_data *ms)
 	}
 	ms->exit_code = 1;
 	return (NULL);
+}
+
+/*
+** Norminette can be a bitch.
+*/
+int	cd_error_args(t_ms_data *ms)
+{
+	write(2, "cd: too many freaking arguments\n", 32);
+	ms->exit_code = 1;
+	return (ms->exit_code);
 }
