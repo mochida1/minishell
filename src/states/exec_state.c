@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_state.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
+/*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 20:59:48 by coder             #+#    #+#             */
-/*   Updated: 2022/10/09 20:13:55 by coder            ###   ########.fr       */
+/*   Updated: 2022/10/10 01:35:37 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ int	exec_state(t_ms_data *ms)
 {
 	t_com	*cmd;
 	int		control;
-	int		pipes;
 
 	control = 1;
 	pipes = 0;
@@ -52,13 +51,10 @@ int	exec_state(t_ms_data *ms)
 	{
 		cmd = get_exec_info(ms);
 		control = exec_loop(cmd, ms);
-		pipes = cmd->sends_to_pipe;
 		destroy_exec_info(cmd);
 		if (ms->issue_exit)
 			break ;
 	}
-	if (pipes && !cmd && !ms->issue_exit)
-		exec_open_pipe();
 	ms->state = CLEANSTATE;
 	return (0);
 }
