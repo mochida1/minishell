@@ -48,7 +48,7 @@ int			has_pipe(t_tokens *tokens);
 int			exec_one_cmd(t_com *cmd, t_ms_data *ms);
 
 // handle_redirects.c
-int			handle_redirects(t_com *cmd, int original_fds[2]);
+int			handle_redirects(t_com *cmd, int original_fds[2], t_ms_data *ms);
 int			restore_original_fds(int original_fds[2]);
 
 // heredoc.c, heredoc_utils.c

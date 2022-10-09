@@ -30,10 +30,10 @@ int	redirect_input(t_reds *in)
 	return (0);
 }
 
-int	handle_input(t_reds *red_in, int original_fds[2])
+int	handle_input(t_reds *red_in, int original_fds[2], t_ms_data *ms)
 {
 	t_reds	*in;
-	// int		fd;
+	int		fd;
 
 	in = red_in;
 	if (!in)
@@ -47,9 +47,10 @@ int	handle_input(t_reds *red_in, int original_fds[2])
 				return (1);
 		if (in->type == HEREDOC)
 		{
-			// fd = heredoc(in->target);
-			// dup2(fd, STDIN_FILENO);
-			// close(fd);
+			restore_original_fds(original_fds);
+			fd = heredoc(in->target, ms);
+			dup2(fd, STDIN_FILENO);
+			close(fd);
 		}
 		in = in->next;
 	}
@@ -80,21 +81,27 @@ int	handle_output(t_reds *red_out, int original_fds[2])
 }
 
 // Handle redirects for one command only.
-int	handle_redirects(t_com *cmd, int original_fds[2])
+int	handle_redirects(t_com *cmd, int original_fds[2], t_ms_data *ms)
 {
-	if (handle_input(cmd->red_in, original_fds))
+	if (handle_input(cmd->red_in, original_fds, ms))
 		return (1);
 	handle_output(cmd->red_out, original_fds);
 	return (0);
 }
 
+int	restore_input(int original_input)
+{
+	if (original_input != NO_REDIRECT)
+	{
+		dup2(original_input, STDIN_FILENO);
+		close(original_input);
+	}
+	return (0);
+}
+
 int	restore_original_fds(int original_fds[2])
 {
-	if (original_fds[0] != NO_REDIRECT)
-	{
-		dup2(original_fds[0], STDIN_FILENO);
-		close(original_fds[0]);
-	}
+	restore_input(original_fds[0]);
 	if (original_fds[1] != NO_REDIRECT)
 	{
 		dup2(original_fds[1], STDOUT_FILENO);

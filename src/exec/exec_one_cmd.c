@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_one_cmd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
+/*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 21:40:45 by viferrei          #+#    #+#             */
-/*   Updated: 2022/10/08 07:38:10 by coder            ###   ########.fr       */
+/*   Updated: 2022/10/09 02:07:51 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,17 +54,18 @@ int	exec_one_cmd(t_com *cmd, t_ms_data *ms)
 
 	original_fds[0] = NO_REDIRECT;
 	original_fds[1] = NO_REDIRECT;
-	if (handle_redirects(cmd, original_fds))
+	if (handle_redirects(cmd, original_fds, ms))
 	{
 		restore_original_fds(original_fds);
 		return (1);
 	}
-  if (ms->issue_exit) // isso pode ser mudado pelo heredoc para sair do programa
-	  return (ms->issue_exit);
+	if (ms->issue_exit)
+		return (ms->issue_exit);
 	if (cmd->is_builtin)
 		ms->exit_code = (exec_builtin(cmd, ms));
 	else
 		ms->exit_code = exec_MVP_TESTE(cmd, ms);
 	restore_original_fds(original_fds);
+	printf("%d\n\n", STDIN_FILENO);
 	return (0);
 }

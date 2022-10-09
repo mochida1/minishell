@@ -11,4 +11,5 @@ nfs*
 .nfs*
 
 0_env
+infile
 delete.me
