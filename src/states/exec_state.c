@@ -6,15 +6,11 @@
 /*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 20:59:48 by coder             #+#    #+#             */
-/*   Updated: 2022/10/10 01:35:37 by viferrei         ###   ########.fr       */
+/*   Updated: 2022/10/10 01:36:03 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../headers/minishell.h"
-
-void exec_open_pipe(void)
-{
-}
 
 int	exec_loop(t_com *cmd, t_ms_data *ms)
 {
