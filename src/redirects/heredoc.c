@@ -69,7 +69,6 @@ char	*heredoc(char *target, t_ms_data *ms)
 	ret_fd = open (random_name, O_CREAT | O_TRUNC | O_DIRECTORY | O_RDWR, 0666);
 	pid = fork();
 	daddy_issues(pid);
-
 	if (!pid)
 	{
 		signal(SIGINT, SIG_DFL);

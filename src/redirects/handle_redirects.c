@@ -107,4 +107,3 @@ int	handle_redirects(t_com *cmd, int original_fds[2], t_ms_data *ms)
 	handle_output(cmd->red_out, original_fds);
 	return (0);
 }
-
