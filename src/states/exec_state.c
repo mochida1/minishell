@@ -6,13 +6,13 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 20:59:48 by coder             #+#    #+#             */
-/*   Updated: 2022/10/09 04:06:30 by coder            ###   ########.fr       */
+/*   Updated: 2022/10/09 20:13:55 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../headers/minishell.h"
 
-void exec_open_pipe(void);
+void exec_open_pipe(void)
 {
 }
 
