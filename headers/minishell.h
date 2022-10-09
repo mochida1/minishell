@@ -51,14 +51,6 @@ int			update_oldpwd(t_ms_data *ms, char *curr_path);
 int			has_pipe(t_tokens *tokens);
 int			exec_one_cmd(t_com *cmd, t_ms_data *ms);
 
-// handle_redirects.c
-int			handle_redirects(t_com *cmd, int original_fds[2], t_ms_data *ms);
-int			restore_original_fds(int original_fds[2]);
-
-// heredoc.c, heredoc_utils.c
-char		*heredoc(char *target, t_ms_data *ms);
-int			write_to_heredoc(int ret_fd, char *target);
-
 // get_exec_info.c
 t_com		*get_exec_info(t_ms_data *ms);
 
@@ -89,7 +81,7 @@ int			error_state(t_ms_data *ms);
 int			init_state(t_ms_data *ms, int argc, char *argv[], char **envp);
 int			prompt_state(t_ms_data *ms);
 int			parse_state(t_ms_data *ms);
-int			exec_state(t_ms_data *ms/*, char **envp*/);
+int			exec_state(t_ms_data *ms);
 int			clean_state(t_ms_data *ms);
 
 /*
@@ -124,6 +116,20 @@ int			get_data_from_readline(t_ms_data *ms);
 // ft_split_shell.c
 char		**ft_split_shell(char *str, char delimiter);
 
+/*
+** REDIRECTS
+*/
+// handle_redirects.c
+int			handle_redirects(t_com *cmd, int original_fds[2], t_ms_data *ms);
+int			restore_original_fds(int original_fds[2]);
+
+// heredoc.c, heredoc_utils.c
+char		*heredoc(char *target, t_ms_data *ms);
+int			write_to_heredoc(int ret_fd, char *target);
+
+// redirect_utils.c
+int			restore_input(int original_fds[2]);
+int			restore_original_fds(int original_fds[2]);
 
 /*
 ** PARSE

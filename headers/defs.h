@@ -108,7 +108,7 @@ typedef struct s_global
 
 typedef struct s_reds
 {
-	int				type; 
+	int				type;
 	char			*target;
 	struct s_reds	*next;
 }				t_reds;

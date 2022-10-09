@@ -62,7 +62,7 @@ int	exec_one_cmd(t_com *cmd, t_ms_data *ms)
 	if (ms->issue_exit)
 		return (ms->issue_exit);
 	if (cmd->is_builtin)
-		ms->exit_code = (exec_builtin(cmd, ms));
+		ms->exit_code = exec_builtin(cmd, ms);
 	else
 		ms->exit_code = exec_MVP_TESTE(cmd, ms);
 	restore_original_fds(original_fds);
