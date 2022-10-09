@@ -52,7 +52,7 @@ int			handle_redirects(t_com *cmd, int original_fds[2], t_ms_data *ms);
 int			restore_original_fds(int original_fds[2]);
 
 // heredoc.c, heredoc_utils.c
-int			heredoc(char *target, t_ms_data *ms);
+char		*heredoc(char *target, t_ms_data *ms);
 int			write_to_heredoc(int ret_fd, char *target);
 
 // get_exec_info.c

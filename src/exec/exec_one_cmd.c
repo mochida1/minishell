@@ -66,6 +66,5 @@ int	exec_one_cmd(t_com *cmd, t_ms_data *ms)
 	else
 		ms->exit_code = exec_MVP_TESTE(cmd, ms);
 	restore_original_fds(original_fds);
-	printf("%d\n\n", STDIN_FILENO);
 	return (0);
 }

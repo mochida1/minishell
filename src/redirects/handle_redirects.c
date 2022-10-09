@@ -12,6 +12,21 @@
 
 #include "../../headers/minishell.h"
 
+int	restore_input(int original_fds[2])
+{
+	if (original_fds[0] != NO_REDIRECT)
+		dup2(original_fds[0], STDIN_FILENO);
+	return (0);
+}
+
+int	restore_original_fds(int original_fds[2])
+{
+	restore_input(original_fds);
+	if (original_fds[1] != NO_REDIRECT)
+		dup2(original_fds[1], STDOUT_FILENO);
+	return (0);
+}
+
 int	redirect_input(t_reds *in)
 {
 	int	fd;
@@ -33,6 +48,7 @@ int	redirect_input(t_reds *in)
 int	handle_input(t_reds *red_in, int original_fds[2], t_ms_data *ms)
 {
 	t_reds	*in;
+	char	*heredoc_file;
 	int		fd;
 
 	in = red_in;
@@ -47,10 +63,13 @@ int	handle_input(t_reds *red_in, int original_fds[2], t_ms_data *ms)
 				return (1);
 		if (in->type == HEREDOC)
 		{
-			restore_original_fds(original_fds);
-			fd = heredoc(in->target, ms);
+			restore_input(original_fds);
+			heredoc_file = heredoc(in->target, ms);
+			fd = open(heredoc_file, O_RDONLY, FD_CLOEXEC);
 			dup2(fd, STDIN_FILENO);
 			close(fd);
+			unlink(heredoc_file);
+			free(heredoc_file);
 		}
 		in = in->next;
 	}
@@ -89,23 +108,3 @@ int	handle_redirects(t_com *cmd, int original_fds[2], t_ms_data *ms)
 	return (0);
 }
 
-int	restore_input(int original_input)
-{
-	if (original_input != NO_REDIRECT)
-	{
-		dup2(original_input, STDIN_FILENO);
-		close(original_input);
-	}
-	return (0);
-}
-
-int	restore_original_fds(int original_fds[2])
-{
-	restore_input(original_fds[0]);
-	if (original_fds[1] != NO_REDIRECT)
-	{
-		dup2(original_fds[1], STDOUT_FILENO);
-		close(original_fds[1]);
-	}
-	return (0);
-}

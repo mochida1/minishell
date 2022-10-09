@@ -57,26 +57,27 @@ void	daddy_issues(int pid)
 /*
 **	Creates a temporary file, and unlinks it.
 */
-int	heredoc(char *target, t_ms_data *ms)
+char	*heredoc(char *target, t_ms_data *ms)
 {
 	int		ret_fd;
 	int		pid;
 	char	random_name[PATH_MAX];
 
 	if (!target)
-		return (1);
+		return (0);
 	generate_a_random_name(random_name, target);
 	ret_fd = open (random_name, O_CREAT | O_TRUNC | O_DIRECTORY | O_RDWR, 0666);
-	unlink(random_name);
 	pid = fork();
 	daddy_issues(pid);
+
 	if (!pid)
 	{
 		signal(SIGINT, SIG_DFL);
 		write_to_heredoc(ret_fd, target);
 		close(ret_fd);
 		ms->issue_exit = -1;
-		return (-1);
+		return (0);
 	}
-	return (ret_fd);
+	close(ret_fd);
+	return (ft_strdup(random_name));
 }
