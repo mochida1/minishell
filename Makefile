@@ -14,7 +14,7 @@ INCLUDES = -I /headers
 BUILTIN = builtin_cd_utils.c builtin_cd.c builtin_echo.c builtin_env.c \
 			builtin_export.c builtin_pwd.c builtin_unset.c builtin_exit.c \
 			builtin_cd_utils2.c
-EXEC = exec_one_cmd.c  exec_com.c destroy_exec_info.c \
+EXEC = exec_one_cmd.c  exec_com.c exec_multi_cmd.c destroy_exec_info.c \
 			get_exec_info.c tok_args.c tok_command.c tok_input.c tok_output.c \
 			tok_envp.c tok_utils.c exec_com_utils.c
 MAIN = minishell.c

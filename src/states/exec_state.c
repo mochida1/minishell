@@ -6,7 +6,7 @@
 /*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 20:59:48 by coder             #+#    #+#             */
-/*   Updated: 2022/10/10 01:46:58 by viferrei         ###   ########.fr       */
+/*   Updated: 2022/10/10 02:23:48 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ int	exec_loop(t_com *cmd, t_ms_data *ms, int original_fds[2])
 		exec_one_cmd(cmd, ms, original_fds);
 		return (0);
 	}
-	//else if(!ms->issue_exit)
-	//	return (exec_multi(cmd, ms));
+	else if(!ms->issue_exit)
+		return (exec_multi(cmd, ms, original_fds));
 	return (1);
 }
 
