@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   handle_redirects.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/18 21:48:16 by viferrei          #+#    #+#             */
-/*   Updated: 2022/10/08 03:14:37 by viferrei         ###   ########.fr       */
+/*   Updated: 2022/10/10 02:46:42 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,8 @@ int	handle_input(t_reds *red_in, int original_fds[2], t_ms_data *ms)
 				return (1);
 		in = in->next;
 	}
+	if (cmd->sends_to_pipe)
+		pipa(cmd, original_fds)
 	return (0);
 }
 

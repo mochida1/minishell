@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 21:40:45 by viferrei          #+#    #+#             */
-/*   Updated: 2022/10/09 22:22:24 by coder            ###   ########.fr       */
+/*   Updated: 2022/10/10 02:46:43 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,11 @@ int	exec_one_cmd(t_com *cmd, t_ms_data *ms)
 {
 	int	original_fds[2];
 
-	original_fds[0] = NO_REDIRECT;
-	original_fds[1] = NO_REDIRECT;
+	original_fds[0] = NO_REDIRECT; //in original
+	original_fds[1] = NO_REDIRECT; // out original
+
+	// se receber de pipe abre a saida, dupa oringial_fd[0] para a saída do pipe, pipe[1];
+	// se mandar para pipe, abre entrada do pipe, dupa original_fd[1] para a entrada do pipe, pipe[0].
 	if (handle_redirects(cmd, original_fds, ms))
 	{
 		restore_original_fds(original_fds);
@@ -65,6 +68,8 @@ int	exec_one_cmd(t_com *cmd, t_ms_data *ms)
 		ms->exit_code = exec_builtin(cmd, ms);
 	else
 		ms->exit_code = exec_com(cmd, ms);
+	// fecha a entrada do pipe
+	// fecha a saida do pipe
 	restore_original_fds(original_fds);
 	return (0);
 }
