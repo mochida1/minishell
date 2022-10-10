@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/10 18:38:57 by coder             #+#    #+#             */
-/*   Updated: 2022/09/24 21:54:23 by coder            ###   ########.fr       */
+/*   Updated: 2022/10/09 23:36:16 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	token_is_error(t_tokens *temp)
 	if (temp->prev && temp->prev->type == OPTOKEN)
 		if (temp->type == OPTOKEN)
 			return (1);
-	if (temp->type == REDTOKEN && !temp->next)
+	if ((temp->type == REDTOKEN || temp->type == OPTOKEN) && !temp->next)
 		return (1);
 	return (0);
 }
