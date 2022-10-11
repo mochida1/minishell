@@ -6,7 +6,11 @@
 /*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/08 02:46:15 by viferrei          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2022/10/10 02:02:05 by viferrei         ###   ########.fr       */
+=======
+/*   Updated: 2022/10/10 02:11:42 by coder            ###   ########.fr       */
+>>>>>>> main
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -161,6 +165,9 @@ int			token_is_command(t_tokens *temp);
 // token_types_2.c
 int			token_is_error(t_tokens *temp);
 int			token_is_fd(t_tokens *temp);
+
+// tokens_remove_quotes.c
+void		remove_quotes_from_tokens(t_tokens *tokens);
 
 /*
 ** SIGNALS

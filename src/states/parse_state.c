@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_state.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 17:38:58 by coder             #+#    #+#             */
-/*   Updated: 2022/10/05 01:44:55 by viferrei         ###   ########.fr       */
+/*   Updated: 2022/10/10 02:04:14 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ int	parse_state(t_ms_data *ms)
 	ms->tokens = tokenize_splits(ms);
 	handle_variable_expansions(ms);
 	categorize_tokens(ms->tokens);
+	remove_quotes_from_tokens(ms->tokens);
 	ms->state = EXECSTATE;
 	return (0);
 }
