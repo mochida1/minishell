@@ -36,7 +36,7 @@ SOURCES = $(BUILTIN) $(EXEC) $(MAIN) $(PARSE) $(PROMPT) $(REDIRECTS) $(STATES) $
 OBJS = $(addprefix $(BUILDDIR)/, $(SOURCES:%.c=%.o))
 
 # Compiler
-CC = gcc
+CC = clang
 CF = -Wall -Wextra -Werror
 GDB = -ggdb
 VAL = valgrind --trace-children=no --leak-check=full --track-origins=yes \
