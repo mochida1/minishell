@@ -21,6 +21,7 @@
 # include <signal.h> // sigaction
 # include <stdio.h> // readline
 # include <sys/wait.h> // wait
+# include <sys/stat.h> // stat
 
 /*
 ** BUILTIN

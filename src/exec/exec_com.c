@@ -28,10 +28,14 @@ static pid_t	create_child(void)
 
 int	get_exec_error(char *path, t_ms_data *ms)
 {
+	struct stat sb;
+
+	if (stat(path, &sb) == 0 && S_ISDIR(sb.st_mode))
+		ms->exit_code = 126;
 	if (!path)
-		ms->exit_code = -1;
+		ms->exit_code = 1;
 	else if (access(path, X_OK))
-		ms->exit_code = -2;
+		ms->exit_code = 2;
 	return (ms->exit_code);
 }
 
@@ -72,6 +76,7 @@ int	exec_com(t_com *cmd, t_ms_data *ms)
 			ms->exit_code = 127;
 			ms->issue_exit = -1;
 		}
+		return (ms->exit_code);
 	}
-	return (0);
+	return (e_status);
 }
