@@ -45,7 +45,6 @@ int	exec_multi(t_com *cmd, t_ms_data *ms, int original_fds[2])
 		original_fds[0] = dup(STDIN_FILENO);
 	if (original_fds[1] == NO_REDIRECT)
 		original_fds[1] = dup(STDOUT_FILENO);
-
 	control = handle_pipes(cmd, original_fds[1]);
 	exec_one_cmd(cmd, ms, original_fds);
 	return (control);

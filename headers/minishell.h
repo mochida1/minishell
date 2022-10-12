@@ -44,7 +44,7 @@ int			update_pwd(t_ms_data *ms, char *path);
 int			update_oldpwd(t_ms_data *ms, char *curr_path);
 
 /*
-** EXEC
+** EXEColdpwd = ft_st
 */
 // exec_one_cmd.c
 int			has_pipe(t_tokens *tokens);
@@ -173,14 +173,5 @@ int			signal_handlers(void);
 void		sigint_handler(int signo);
 void		sig_defaults(void);
 void		ignore_signals(void);
-
-/*
-** TESTS
-*/
-void		test_expand_vars(t_ms_data *ms); // REMOVER ANTES DA ENTREGA
-// test_utils.c
-int			print_token_list(t_ms_data *ms); // REMOVER ANTES DA ENTREGA
-int			check_for_some_shady_shit(t_ms_data *ms); // REMOVER ANTES DA ENTREGA
-void		PRINT_COM(t_com *data); // REMOVER ANTES DA ENTREGA
 
 #endif

@@ -26,7 +26,7 @@ int	exec_loop(t_com *cmd, t_ms_data *ms, int original_fds[2])
 		exec_one_cmd(cmd, ms, original_fds);
 		return (0);
 	}
-	else if(!ms->issue_exit)
+	else if (!ms->issue_exit)
 		return (exec_multi(cmd, ms, original_fds));
 	return (1);
 }

@@ -25,7 +25,6 @@ static pid_t	create_child(void)
 	return (child_pid);
 }
 
-
 int	get_exec_error(char *path, t_ms_data *ms)
 {
 	if (!path)
