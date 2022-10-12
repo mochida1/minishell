@@ -42,7 +42,6 @@ int	signal_handlers(void)
 {
 	signal(SIGINT, sigint_handler);
 	signal(SIGQUIT, SIG_IGN);
-	signal(SIGQUIT, SIG_DFL);
 	return (1);
 }
 
