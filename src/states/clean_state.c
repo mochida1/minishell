@@ -28,7 +28,7 @@ int	clean_state(t_ms_data *ms)
 	}
 	if (ms->issue_exit > 0)
 	{
-		ms->state = 0;
+		ms->state = ERRSTATE;
 		return (0);
 	}
 	else
