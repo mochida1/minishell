@@ -6,7 +6,7 @@
 /*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/09 23:19:44 by viferrei          #+#    #+#             */
-/*   Updated: 2022/10/12 14:43:16 by viferrei         ###   ########.fr       */
+/*   Updated: 2022/10/13 20:33:06 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ int	handle_pipes(t_com *cmd, int original_output)
 	else
 	{
 		dup2(original_output, STDOUT_FILENO);
-		close(original_output);
 		return (0);
 	}
 	return (1);
