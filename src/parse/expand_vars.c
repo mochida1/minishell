@@ -26,8 +26,9 @@ char	*get_var_value(char *name, t_env_list *env)
 		str = env->content;
 		if (vars_match(str, name))
 		{
-			while (*(str - 1) != '=')
+			while (*str != '=')
 				str++;
+			str++;
 			while (str[len])
 				len++;
 			var_value = ft_substr(str, 0, len);
@@ -43,7 +44,9 @@ char	*update_token(t_ms_data *ms, char *var_name, char *var_head)
 	char	*value;
 	char	*part1;
 	char	*final_str;
+	void	*temp;
 
+	temp = ms->tokens->value;
 	value = get_var_value(var_name, ms->env_head);
 	if (!value)
 		part1 = ft_strdup(ms->tokens->value);
@@ -52,6 +55,7 @@ char	*update_token(t_ms_data *ms, char *var_name, char *var_head)
 	final_str = ft_strjoin(part1, var_head + 1 + ft_strlen(var_name));
 	free(value);
 	free(part1);
+	free(temp);
 	return (final_str);
 }
 
