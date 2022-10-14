@@ -6,7 +6,7 @@
 /*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 21:40:45 by viferrei          #+#    #+#             */
-/*   Updated: 2022/10/13 21:55:57 by viferrei         ###   ########.fr       */
+/*   Updated: 2022/10/14 20:15:56 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,10 @@ int	exec_one_cmd(t_com *cmd, t_ms_data *ms, int original_fds[2])
 	}
 	if (ms->issue_exit)
 		return (ms->issue_exit);
-	if (cmd->is_builtin)
+	if (cmd->is_builtin && (!cmd->receives_from_pipe && !cmd->sends_to_pipe))
 		ms->exit_code = exec_builtin(cmd, ms);
+	else if (cmd->is_builtin)
+		ms->exit_code = exec_fork_builtin(cmd, ms);
 	else
 		ms->exit_code = exec_com(cmd, ms);
 	return (0);
