@@ -6,7 +6,7 @@
 /*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/08 02:46:15 by viferrei          #+#    #+#             */
-/*   Updated: 2022/10/13 21:14:26 by viferrei         ###   ########.fr       */
+/*   Updated: 2022/10/13 22:03:49 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int			builtin_env(char **args, char **envp, t_env_list *env_list);
 int			builtin_export(char	**args, t_ms_data *ms);
 int			builtin_echo(char **args);
 int			builtin_unset(char	**args, t_ms_data *ms);
-int			builtin_exit(char **args, char **envp, t_ms_data *ms);
+int			builtin_exit(t_com *cmd, char **args, char **envp, t_ms_data *ms);
 // builtin_pwd.c
 int			builtin_pwd(char **args, char **envp, t_ms_data *ms);
 // builtin_cd.c

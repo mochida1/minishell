@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtin_exit.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
+/*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 02:05:59 by coder             #+#    #+#             */
-/*   Updated: 2022/10/06 02:23:57 by coder            ###   ########.fr       */
+/*   Updated: 2022/10/13 22:02:34 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	arg_is_number(char *arg)
 ** Sets minishell's shit to exit.
 ** also deals with bash's bullshit behaviour when using multiple commands.
 */
-int	builtin_exit(char **args, char **envp, t_ms_data *ms)
+int	builtin_exit(t_com *cmd, char **args, char **envp, t_ms_data *ms)
 {
 	int	argc;
 
@@ -51,6 +51,7 @@ int	builtin_exit(char **args, char **envp, t_ms_data *ms)
 	}
 	else if (args[1] && arg_is_number(args[1]))
 		ms->exit_code = ft_atoi(args[1]);
-	ms->issue_exit = 1;
+	if (!cmd->sends_to_pipe && !cmd->receives_from_pipe)
+		ms->issue_exit = 1;
 	return ((unsigned char) ms->exit_code);
 }
