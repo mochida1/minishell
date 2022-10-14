@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_com.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
+/*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/09 21:15:32 by coder             #+#    #+#             */
-/*   Updated: 2022/10/09 22:22:09 by coder            ###   ########.fr       */
+/*   Updated: 2022/10/13 21:36:44 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ int	exec_com(t_com *cmd, t_ms_data *ms)
 	e_status = exec_daddy_issues(pid, e_status);
 	if (!pid)
 	{
+		ms->exit_code = 0;
 		if (!get_exec_error(cmd->command, ms))
 		{
 			sig_defaults();
