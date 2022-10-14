@@ -12,6 +12,14 @@
 
 #include "../../headers/minishell.h"
 
+static void	free_mouli(void *a, void *b)
+{
+	free(a);
+	free(b);
+	a = NULL;
+	b = NULL;
+}
+
 // Returns the position of "$?"
 char	*find_exit_code(char *str)
 {
@@ -39,8 +47,9 @@ char	*update_token_exit_code(char *str, char *exit_code, char *var_head)
 // Handles "$?" expansions.
 void	expand_exit_code(t_ms_data *ms)
 {
-	char		*var_head;
+	char		*v_head;
 	char		*exit_str;
+	char		*temp;
 	t_tokens	*head;
 
 	head = ms->tokens;
@@ -51,13 +60,14 @@ void	expand_exit_code(t_ms_data *ms)
 			head = head->next;
 			continue ;
 		}
-		var_head = find_exit_code(head->value);
-		if (var_head)
+		v_head = find_exit_code(head->value);
+		if (v_head)
 		{
-			*var_head = '\0';
+			*v_head = '\0';
 			exit_str = ft_itoa(ms->exit_code);
-			head->value = update_token_exit_code(head->value, exit_str, \
-							var_head);
+			temp = head->value;
+			head->value = update_token_exit_code(head->value, exit_str, v_head);
+			free_mouli(exit_str, temp);
 		}
 		else
 			head = head->next;
