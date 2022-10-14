@@ -6,7 +6,7 @@
 /*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/17 00:12:17 by viferrei          #+#    #+#             */
-/*   Updated: 2022/10/14 19:50:41 by viferrei         ###   ########.fr       */
+/*   Updated: 2022/10/14 20:46:43 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,9 +106,8 @@ int	builtin_export(char	**args, t_ms_data *ms)
 	args++;
 	while (*args)
 	{
-		printf("%s\n", *args);
-		// if (equal_found(*args, ms))
-		// 	set_variable(*args, ms);
+		if (equal_found(*args, ms))
+			set_variable(*args, ms);
 		(args)++;
 	}
 	return (ms->exit_code);
