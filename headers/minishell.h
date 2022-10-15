@@ -6,7 +6,7 @@
 /*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/08 02:46:15 by viferrei          #+#    #+#             */
-/*   Updated: 2022/10/15 16:28:44 by viferrei         ###   ########.fr       */
+/*   Updated: 2022/10/15 18:30:28 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,8 +143,7 @@ int			is_variable(char c);
 char		*find_variable(char	*str);
 
 // expand_vars.c
-void		handle_variable_expansions(t_ms_data *ms);
-void		expand_exit_code(t_ms_data *ms);
+void		expand_exit_code(t_ms_data *ms, char **args);
 void		expand_variables(t_ms_data *ms);
 
 // parse_check_for_errors.c

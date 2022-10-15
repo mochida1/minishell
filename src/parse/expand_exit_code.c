@@ -6,7 +6,7 @@
 /*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 00:38:52 by viferrei          #+#    #+#             */
-/*   Updated: 2022/10/05 01:42:13 by viferrei         ###   ########.fr       */
+/*   Updated: 2022/10/15 18:15:38 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,31 +45,26 @@ char	*update_token_exit_code(char *str, char *exit_code, char *var_head)
 }
 
 // Handles "$?" expansions.
-void	expand_exit_code(t_ms_data *ms)
+void	expand_exit_code(t_ms_data *ms, char **args)
 {
 	char		*v_head;
 	char		*exit_str;
 	char		*temp;
-	t_tokens	*head;
 
-	head = ms->tokens;
-	while (head)
+	while (*args)
 	{
-		if (head->value[0] == '\'')
-		{
-			head = head->next;
-			continue ;
-		}
-		v_head = find_exit_code(head->value);
+		if (*args[0] == '\'')
+			args++;
+		v_head = find_exit_code(*args);
 		if (v_head)
 		{
 			*v_head = '\0';
 			exit_str = ft_itoa(ms->exit_code);
-			temp = head->value;
-			head->value = update_token_exit_code(head->value, exit_str, v_head);
+			temp = *args;
+			*args = update_token_exit_code(*args, exit_str, v_head);
 			free_mouli(exit_str, temp);
 		}
 		else
-			head = head->next;
+			args++;
 	}
 }
