@@ -6,7 +6,7 @@
 /*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/09 21:15:32 by coder             #+#    #+#             */
-/*   Updated: 2022/10/15 17:07:08 by viferrei         ###   ########.fr       */
+/*   Updated: 2022/10/15 18:34:33 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ int	exec_fork_builtin(t_com *cmd, t_ms_data *ms, int original_fds[2])
 		if (handle_redirects(cmd, original_fds, ms))
 		{
 			ms->issue_exit = -1;
-			return(restore_original_fds(original_fds));
+			return (restore_original_fds(original_fds));
 		}
 		ms->issue_exit = -1;
 		return (exec_builtin(cmd, ms, original_fds));
@@ -100,14 +100,12 @@ int	exec_com(t_com *cmd, t_ms_data *ms, int original_fds[2])
 			if (handle_redirects(cmd, original_fds, ms))
 			{
 				ms->issue_exit = -1;
-				return(restore_original_fds(original_fds));
+				return (restore_original_fds(original_fds));
 			}
 			execve(cmd->command, cmd->args, cmd->envp);
 		}
 		else
-		{
 			ms->issue_exit = -1;
-		}
 		return (ms->exit_code);
 	}
 	return (e_status >> 8);
