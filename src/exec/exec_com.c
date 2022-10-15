@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_com.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hmochida <hmochida@student.42.fr>          +#+  +:+       +#+        */
+/*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/09 21:15:32 by coder             #+#    #+#             */
-/*   Updated: 2022/10/15 06:03:29 by hmochida         ###   ########.fr       */
+/*   Updated: 2022/10/15 17:07:08 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,8 @@ int	get_exec_error(char *path, t_ms_data *ms)
 	else if (access(path, X_OK))
 	{
 		ms->exit_code = 127;
-		printf("command not found!\n");
+		ft_putstr_fd(path, STDERR_FILENO);
+		ft_putstr_fd(": command not found!\n", STDERR_FILENO);
 	}
 	return (ms->exit_code);
 }
@@ -55,7 +56,7 @@ static int	exec_daddy_issues(int pid, int e_status)
 	return (e_status);
 }
 
-int	exec_fork_builtin(t_com *cmd, t_ms_data *ms)
+int	exec_fork_builtin(t_com *cmd, t_ms_data *ms, int original_fds[2])
 {
 	int	pid;
 	int	e_status;
@@ -66,8 +67,13 @@ int	exec_fork_builtin(t_com *cmd, t_ms_data *ms)
 	if (!pid)
 	{
 		sig_defaults();
+		if (handle_redirects(cmd, original_fds, ms))
+		{
+			ms->issue_exit = -1;
+			return(restore_original_fds(original_fds));
+		}
 		ms->issue_exit = -1;
-		return (exec_builtin(cmd, ms));
+		return (exec_builtin(cmd, ms, original_fds));
 	}
 	return (e_status >> 8);
 }
@@ -77,7 +83,7 @@ int	exec_fork_builtin(t_com *cmd, t_ms_data *ms)
 ** pega o primeiro argumento da linha e usa como comando.
 ** retorna statsu de saída do filho
 */
-int	exec_com(t_com *cmd, t_ms_data *ms)
+int	exec_com(t_com *cmd, t_ms_data *ms, int original_fds[2])
 {
 	int		pid;
 	int		e_status;
@@ -91,6 +97,11 @@ int	exec_com(t_com *cmd, t_ms_data *ms)
 		if (!get_exec_error(cmd->command, ms))
 		{
 			sig_defaults();
+			if (handle_redirects(cmd, original_fds, ms))
+			{
+				ms->issue_exit = -1;
+				return(restore_original_fds(original_fds));
+			}
 			execve(cmd->command, cmd->args, cmd->envp);
 		}
 		else

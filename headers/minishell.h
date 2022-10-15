@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hmochida <hmochida@student.42.fr>          +#+  +:+       +#+        */
+/*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/08 02:46:15 by viferrei          #+#    #+#             */
-/*   Updated: 2022/10/14 20:16:05 by viferrei         ###   ########.fr       */
+/*   Updated: 2022/10/15 16:28:44 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int			update_oldpwd(t_ms_data *ms, char *curr_path);
 */
 // exec_one_cmd.c
 int			has_pipe(t_tokens *tokens);
-int			exec_builtin(t_com *cmd, t_ms_data *ms);
+int			exec_builtin(t_com *cmd, t_ms_data *ms, int original_fds[2]);
 int			exec_one_cmd(t_com *cmd, t_ms_data *ms, int original_fds[2]);
 // get_exec_info.c
 t_com		*get_exec_info(t_ms_data *ms);
@@ -69,8 +69,8 @@ char		**tok_envp(t_env_list *head);
 t_tokens	*iterate_to_tok_index(t_ms_data *ms);
 t_reds		*create_red_list(int nodes);
 // exec_com.c
-int			exec_fork_builtin(t_com *cmd, t_ms_data *ms);
-int			exec_com(t_com *cmd, t_ms_data *ms);
+int			exec_fork_builtin(t_com *cmd, t_ms_data *ms, int original_fds[2]);
+int			exec_com(t_com *cmd, t_ms_data *ms, int original_fds[2]);
 //
 int			exec_multi(t_com *cmd, t_ms_data *ms, int original_fds[2]);
 // exec_com_utils.c

@@ -6,7 +6,7 @@
 /*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/18 21:48:16 by viferrei          #+#    #+#             */
-/*   Updated: 2022/10/08 03:14:37 by viferrei         ###   ########.fr       */
+/*   Updated: 2022/10/15 16:55:31 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@ int	redirect_input(t_reds *in)
 
 	if (in->target && access(in->target, F_OK))
 	{
-		printf("%s: No such file or directory\n", in->target);
+		ft_putstr_fd(in->target, STDERR_FILENO);
+		ft_putstr_fd(": No such file or directory\n", STDERR_FILENO);
 		return (1);
 	}
 	else if (in->target)
@@ -34,8 +35,10 @@ int	redirect_heredoc(int original_fds[2], t_reds *in, t_ms_data *ms)
 {
 	char	*heredoc_file;
 	int		fd;
+	int		pipe_out;
 
-	restore_input(original_fds);
+	pipe_out = dup(STDOUT_FILENO);
+	restore_original_fds(original_fds);
 	heredoc_file = heredoc(in->target, ms);
 	if (!heredoc_file)
 		return (1);
@@ -44,6 +47,7 @@ int	redirect_heredoc(int original_fds[2], t_reds *in, t_ms_data *ms)
 	close(fd);
 	unlink(heredoc_file);
 	free(heredoc_file);
+	dup2(pipe_out, STDOUT_FILENO);
 	return (0);
 }
 
