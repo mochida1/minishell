@@ -6,7 +6,7 @@
 /*   By: hmochida <hmochida@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 20:59:48 by coder             #+#    #+#             */
-/*   Updated: 2022/10/15 06:04:00 by hmochida         ###   ########.fr       */
+/*   Updated: 2022/10/15 18:04:06 by hmochida         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,9 @@ int	exec_state(t_ms_data *ms)
 			break ;
 	}
 	restore_original_fds(original_fds);
+	while (wait(&ms->exit_code) > 0)
+		continue ;
+	signal_handlers();
 	ms->state = CLEANSTATE;
 	return (0);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   defs.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
+/*   By: hmochida <hmochida@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 23:09:13 by coder             #+#    #+#             */
-/*   Updated: 2022/10/09 21:22:04 by coder            ###   ########.fr       */
+/*   Updated: 2022/10/15 18:09:09 by hmochida         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,7 @@ typedef struct s_ms_data
 	int					tok_index;
 	char				*home_original;
 	char				*oldpwd;
+	int					pid;
 	struct s_env_list	*env_head;
 	struct s_tokens		*tokens;
 }				t_ms_data;

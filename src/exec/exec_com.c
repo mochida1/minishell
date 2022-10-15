@@ -6,7 +6,7 @@
 /*   By: hmochida <hmochida@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/09 21:15:32 by coder             #+#    #+#             */
-/*   Updated: 2022/10/15 06:03:29 by hmochida         ###   ########.fr       */
+/*   Updated: 2022/10/15 18:09:02 by hmochida         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,32 +44,17 @@ int	get_exec_error(char *path, t_ms_data *ms)
 	return (ms->exit_code);
 }
 
-static int	exec_daddy_issues(int pid, int e_status)
-{
-	if (pid)
-	{
-		ignore_signals();
-		waitpid(pid, &e_status, 0);
-		signal_handlers();
-	}
-	return (e_status);
-}
-
 int	exec_fork_builtin(t_com *cmd, t_ms_data *ms)
 {
-	int	pid;
-	int	e_status;
-
-	e_status = 0;
-	pid = create_child();
-	e_status = exec_daddy_issues(pid, e_status);
-	if (!pid)
+	ms->pid = create_child();
+	ignore_signals();
+	if (!ms->pid)
 	{
 		sig_defaults();
 		ms->issue_exit = -1;
 		return (exec_builtin(cmd, ms));
 	}
-	return (e_status >> 8);
+	return (ms->exit_code >> 8);
 }
 
 /*
@@ -79,13 +64,9 @@ int	exec_fork_builtin(t_com *cmd, t_ms_data *ms)
 */
 int	exec_com(t_com *cmd, t_ms_data *ms)
 {
-	int		pid;
-	int		e_status;
 
-	e_status = 0;
-	pid = create_child();
-	e_status = exec_daddy_issues(pid, e_status);
-	if (!pid)
+	ms->pid = create_child();
+	if (!ms->pid)
 	{
 		ms->exit_code = 0;
 		if (!get_exec_error(cmd->command, ms))
@@ -99,5 +80,5 @@ int	exec_com(t_com *cmd, t_ms_data *ms)
 		}
 		return (ms->exit_code);
 	}
-	return (e_status >> 8);
+	return (ms->exit_code >> 8);
 }
