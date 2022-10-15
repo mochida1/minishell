@@ -100,6 +100,8 @@ O readline sempre vaza `still reachable: 204,580 bytes in 215 blocks`por padrão
 ```echo test000'$var_que_nao_existe'```
 ```echo test000"$var_que_nao_existe"```
 ```echo exit```
+./a.out init' 1 2 '" 3 4 "parseme
+./a.out  a' 1 2 3 '" 4 5 6 "b
 
 ```exit```
 exits with 0;
