@@ -6,7 +6,7 @@
 /*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 02:05:59 by coder             #+#    #+#             */
-/*   Updated: 2022/10/15 17:32:06 by viferrei         ###   ########.fr       */
+/*   Updated: 2022/10/15 18:26:43 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,14 +39,16 @@ int	builtin_exit(t_com *cmd, char **args, char **envp, t_ms_data *ms)
 	if (argc > 2 && arg_is_number(args[1]))
 	{
 		ms->exit_code = 1;
-		printf("exit: too many arguments\n");
+		ft_putstr_fd("exit: too many arguments\n", STDERR_FILENO);
 		return (1);
 	}
 	if (argc == 1)
 		ms->exit_code = 0;
 	else if (args[1] && !arg_is_number(args[1]))
 	{
-		printf ("exit: %s: numeric argument required\n", args[1]);
+		ft_putstr_fd("exit: ", STDERR_FILENO);
+		ft_putstr_fd(args[1], STDERR_FILENO);
+		ft_putstr_fd(": numeric argument required\n", STDERR_FILENO);
 		ms->exit_code = 2;
 	}
 	else if (args[1] && arg_is_number(args[1]))

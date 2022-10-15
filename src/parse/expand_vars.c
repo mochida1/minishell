@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expand_vars.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
+/*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 17:40:14 by viferrei          #+#    #+#             */
-/*   Updated: 2022/10/05 00:17:44 by coder            ###   ########.fr       */
+/*   Updated: 2022/10/15 18:29:28 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,10 +93,4 @@ void	expand_variables(t_ms_data *ms)
 			ms->tokens = ms->tokens->next;
 	}
 	ms->tokens = head;
-}
-
-void	handle_variable_expansions(t_ms_data *ms)
-{
-	expand_exit_code(ms);
-	expand_variables(ms);
 }

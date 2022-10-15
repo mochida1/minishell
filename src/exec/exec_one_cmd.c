@@ -6,7 +6,7 @@
 /*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 21:40:45 by viferrei          #+#    #+#             */
-/*   Updated: 2022/10/15 16:28:27 by viferrei         ###   ########.fr       */
+/*   Updated: 2022/10/15 18:33:03 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	exec_builtin(t_com *cmd, t_ms_data *ms, int original_fds[2])
 	if (!cmd->sends_to_pipe && !cmd->receives_from_pipe)
 	{
 		if (handle_redirects(cmd, original_fds, ms))
-			return(restore_original_fds(original_fds));
+			return (restore_original_fds(original_fds));
 	}
 	if (!ft_strcmp(cmd->command, "echo"))
 		return (builtin_echo(cmd->args));
