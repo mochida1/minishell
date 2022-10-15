@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_com.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: hmochida <hmochida@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/09 21:15:32 by coder             #+#    #+#             */
-/*   Updated: 2022/10/14 20:03:49 by viferrei         ###   ########.fr       */
+/*   Updated: 2022/10/15 06:03:29 by hmochida         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,9 @@ static pid_t	create_child(void)
 	return (child_pid);
 }
 
-
 int	get_exec_error(char *path, t_ms_data *ms)
 {
-	struct stat sb;
+	struct stat	sb;
 
 	if (stat(path, &sb) == 0 && S_ISDIR(sb.st_mode))
 	{

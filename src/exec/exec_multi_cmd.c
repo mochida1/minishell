@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_multi_cmd.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: hmochida <hmochida@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/09 23:19:44 by viferrei          #+#    #+#             */
-/*   Updated: 2022/10/13 21:14:10 by viferrei         ###   ########.fr       */
+/*   Updated: 2022/10/15 06:03:43 by hmochida         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ int	exec_multi(t_com *cmd, t_ms_data *ms, int original_fds[2])
 		original_fds[0] = dup(STDIN_FILENO);
 	if (original_fds[1] == NO_REDIRECT)
 		original_fds[1] = dup(STDOUT_FILENO);
-
 	control = handle_pipes(cmd, original_fds[1]);
 	exec_one_cmd(cmd, ms, original_fds);
 	return (control);

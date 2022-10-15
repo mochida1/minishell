@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_state.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: hmochida <hmochida@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 20:59:48 by coder             #+#    #+#             */
-/*   Updated: 2022/10/13 21:14:29 by viferrei         ###   ########.fr       */
+/*   Updated: 2022/10/15 06:04:00 by hmochida         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	exec_loop(t_com *cmd, t_ms_data *ms, int original_fds[2])
 		exec_one_cmd(cmd, ms, original_fds);
 		return (0);
 	}
-	else if(!ms->issue_exit)
+	else if (!ms->issue_exit)
 		return (exec_multi(cmd, ms, original_fds));
 	return (1);
 }
