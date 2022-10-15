@@ -6,7 +6,7 @@
 /*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 02:05:59 by coder             #+#    #+#             */
-/*   Updated: 2022/10/14 20:25:17 by viferrei         ###   ########.fr       */
+/*   Updated: 2022/10/15 17:32:06 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int	builtin_exit(t_com *cmd, char **args, char **envp, t_ms_data *ms)
 		ms->exit_code = 0;
 	else if (args[1] && !arg_is_number(args[1]))
 	{
-		printf ("exit\nexit: %s: numeric argument required\n", args[1]);
+		printf ("exit: %s: numeric argument required\n", args[1]);
 		ms->exit_code = 2;
 	}
 	else if (args[1] && arg_is_number(args[1]))
