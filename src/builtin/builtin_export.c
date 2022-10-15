@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtin_export.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
+/*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/17 00:12:17 by viferrei          #+#    #+#             */
-/*   Updated: 2022/10/05 00:36:37 by coder            ###   ########.fr       */
+/*   Updated: 2022/10/14 20:46:43 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	equal_found(char *str, t_ms_data *ms)
 	return (0);
 }
 
-// Returns 1 if the variable is already in the environment list 
+// Returns 1 if the variable is already in the environment list
 int	var_exists(char *arg, t_env_list *env)
 {
 	t_env_list	*head;

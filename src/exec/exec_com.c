@@ -6,7 +6,7 @@
 /*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/09 21:15:32 by coder             #+#    #+#             */
-/*   Updated: 2022/10/13 21:36:44 by viferrei         ###   ########.fr       */
+/*   Updated: 2022/10/14 20:03:49 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,23 @@ static int	exec_daddy_issues(int pid, int e_status)
 		signal_handlers();
 	}
 	return (e_status);
+}
+
+int	exec_fork_builtin(t_com *cmd, t_ms_data *ms)
+{
+	int	pid;
+	int	e_status;
+
+	e_status = 0;
+	pid = create_child();
+	e_status = exec_daddy_issues(pid, e_status);
+	if (!pid)
+	{
+		sig_defaults();
+		ms->issue_exit = -1;
+		return (exec_builtin(cmd, ms));
+	}
+	return (e_status >> 8);
 }
 
 /*
