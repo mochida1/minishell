@@ -3,51 +3,34 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split_shell.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
+/*   By: hmochida <hmochida@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 02:38:15 by viferrei          #+#    #+#             */
-/*   Updated: 2022/08/28 22:56:23 by coder            ###   ########.fr       */
+/*   Updated: 2022/10/15 05:28:09 by hmochida         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../headers/minishell.h"
 
 /*
-** Quite literally iterates through the quotes.
+** counts how many characeters there are till the next quote of the same type
 */
-static void	iterate_through_quotes(t_split_shell *this)
+static int	count_till_quo(char *temp)
 {
-	char	first_char;
+	char	quote;
+	int		count;
 
-	first_char = this->temp[0];
-	if (first_char == '\'' || first_char == '\"')
+	count = 0;
+	quote = temp[0];
+	while (temp[count] && (temp[count] != quote || !count))
 	{
-		if (this->temp[1])
-			this->temp++;
-		while (this->temp[0] && (this->temp[0] != first_char))
-			this->temp++;
-		if (this->temp[0] == first_char)
-			this->temp++;
-		this->words++;
-		return ;
+		count++;
 	}
-	while (this->temp[0] && (this->temp[0] != this->delimiter))
-		this->temp++;
-	this->words++;
-}
-
-/*
-** Counts how many string splinters there'll be.
-*/
-static void	count_words(t_split_shell *this)
-{
-	this->temp = this->string;
-	while (this->temp[0])
+	if (temp[count] == quote)
 	{
-		while (this->temp[0] == this->delimiter)
-			this->temp++;
-		iterate_through_quotes(this);
+		count++;
 	}
+	return (count);
 }
 
 /*
@@ -56,61 +39,43 @@ static void	count_words(t_split_shell *this)
 static int	get_word_size(char *str, char delimiter)
 {
 	char	*temp;
-	char	first_char;
 	int		size;
+	int		ret;
 
 	temp = str;
 	size = 0;
-	first_char = *temp;
-	if (first_char == '\'' || first_char == '\"')
-	{
+	ret = 0;
+	while (*temp && *temp == delimiter)
 		temp++;
-		size++;
-		while (*temp && (*temp != first_char))
+	while (*temp && *temp != delimiter)
+	{
+		if (*temp == '\'' || *temp == '\"')
+		{
+			size = count_till_quo(temp);
+			temp += size;
+			ret += size;
+		}
+		else
 		{
 			temp++;
-			size++;
+			ret ++;
 		}
-		return (size + (*temp == first_char));
 	}
-	while (*temp && (*temp != delimiter))
-	{
-		temp++;
-		size++;
-	}
-	return (size);
+	return (ret);
 }
 
 /*
 ** Copies while advancing the pointer, in a manner that we don't need to track
 ** the progress back, while respecting most shell's quotation rules.
 */
-static void	copy_to_split(char *split, t_split_shell *this, int i)
+static void	copy_to_split(char *split, t_split_shell *this, int k)
 {
-	char	first_char;
-
-	first_char = this->temp[0];
-	if (first_char == '\'' || first_char == '\"')
+	while (k < this->sz)
 	{
-		split[i++] = first_char;
+		split[k] = this->temp[0];
 		this->temp++;
-		while (this->temp[0] != first_char)
-		{
-			split[i] = this->temp[0];
-			i++;
-			this->temp++;
-		}
-		this->temp++;
-		split[i] = first_char;
-		return ;
+		k++;
 	}
-	while (this->temp[0] && this->temp[0] != ' ')
-	{
-		split[i] = this->temp[0];
-		this->temp++;
-		i++;
-	}
-	split[i] = 0;
 }
 
 /*
@@ -134,8 +99,8 @@ char	**ft_split_shell(char *str, char delimiter)
 	{
 		while (this->temp[0] == this->delimiter)
 			this->temp++;
-		splits[this->i] = ft_calloc ((get_word_size
-					(this->temp, delimiter) + 1), sizeof(char));
+		this->sz = (get_word_size(this->temp, ' '));
+		splits[this->i] = ft_calloc (this->sz + 1, 1);
 		copy_to_split (splits[this->i], this, 0);
 		this->i++;
 	}

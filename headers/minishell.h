@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: hmochida <hmochida@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/08 02:46:15 by viferrei          #+#    #+#             */
 /*   Updated: 2022/10/14 20:16:05 by viferrei         ###   ########.fr       */
@@ -116,6 +116,7 @@ int			get_data_from_readline(t_ms_data *ms);
 
 // ft_split_shell.c
 char		**ft_split_shell(char *str, char delimiter);
+void		count_words(t_split_shell *this);
 
 /*
 ** REDIRECTS

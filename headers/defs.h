@@ -99,6 +99,7 @@ typedef struct s_split_shell
 	int		i;
 	int		split_number;
 	char	delimiter;
+	int		sz;
 }	t_split_shell;
 
 typedef struct s_global
