@@ -6,7 +6,7 @@
 /*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 21:40:45 by viferrei          #+#    #+#             */
-/*   Updated: 2022/10/14 20:15:56 by viferrei         ###   ########.fr       */
+/*   Updated: 2022/10/15 16:28:27 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,13 @@ int	has_pipe(t_tokens *tokens)
 }
 
 // Returns the function of the first builtin found.
-int	exec_builtin(t_com *cmd, t_ms_data *ms)
+int	exec_builtin(t_com *cmd, t_ms_data *ms, int original_fds[2])
 {
+	if (!cmd->sends_to_pipe && !cmd->receives_from_pipe)
+	{
+		if (handle_redirects(cmd, original_fds, ms))
+			return(restore_original_fds(original_fds));
+	}
 	if (!ft_strcmp(cmd->command, "echo"))
 		return (builtin_echo(cmd->args));
 	if (!ft_strcmp(cmd->command, "cd"))
@@ -50,18 +55,11 @@ int	exec_builtin(t_com *cmd, t_ms_data *ms)
 // Handles single-command input - either builtin or not.
 int	exec_one_cmd(t_com *cmd, t_ms_data *ms, int original_fds[2])
 {
-	if (handle_redirects(cmd, original_fds, ms))
-	{
-		restore_original_fds(original_fds);
-		return (1);
-	}
 	if (ms->issue_exit)
 		return (ms->issue_exit);
-	if (cmd->is_builtin && (!cmd->receives_from_pipe && !cmd->sends_to_pipe))
-		ms->exit_code = exec_builtin(cmd, ms);
-	else if (cmd->is_builtin)
-		ms->exit_code = exec_fork_builtin(cmd, ms);
+	if (cmd->is_builtin)
+		ms->exit_code = exec_builtin(cmd, ms, original_fds);
 	else
-		ms->exit_code = exec_com(cmd, ms);
+		ms->exit_code = exec_com(cmd, ms, original_fds);
 	return (0);
 }

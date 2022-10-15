@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_multi_cmd.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hmochida <hmochida@student.42.fr>          +#+  +:+       +#+        */
+/*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/09 23:19:44 by viferrei          #+#    #+#             */
-/*   Updated: 2022/10/15 06:03:43 by hmochida         ###   ########.fr       */
+/*   Updated: 2022/10/15 16:28:51 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,11 @@ int	exec_multi(t_com *cmd, t_ms_data *ms, int original_fds[2])
 	if (original_fds[1] == NO_REDIRECT)
 		original_fds[1] = dup(STDOUT_FILENO);
 	control = handle_pipes(cmd, original_fds[1]);
-	exec_one_cmd(cmd, ms, original_fds);
+	if (ms->issue_exit)
+		return (ms->issue_exit);
+	if (cmd->is_builtin)
+		ms->exit_code = exec_fork_builtin(cmd, ms, original_fds);
+	else
+		ms->exit_code = exec_com(cmd, ms, original_fds);
 	return (control);
 }
