@@ -6,7 +6,7 @@
 /*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 20:59:48 by coder             #+#    #+#             */
-/*   Updated: 2022/10/16 17:12:02 by viferrei         ###   ########.fr       */
+/*   Updated: 2022/10/16 20:15:23 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ int	exec_state(t_ms_data *ms)
 	}
 	while (wait(&ms->exit_code) > 0)
 		continue ;
-	if (ms->exit_code > 256)
+	if (ms->exit_code >= 256)
 		ms->exit_code = ms->exit_code >> 8;
 	signal_handlers();
 	restore_original_fds(original_fds);
