@@ -16,7 +16,7 @@ BUILTIN = builtin_cd_utils.c builtin_cd.c builtin_echo.c builtin_env.c \
 			builtin_cd_utils2.c
 EXEC = exec_one_cmd.c  exec_com.c exec_multi_cmd.c destroy_exec_info.c \
 			get_exec_info.c tok_args.c tok_command.c tok_input.c tok_output.c \
-			tok_envp.c tok_utils.c exec_com_utils.c
+			tok_envp.c tok_utils.c exec_com_utils.c exec_com_utils2.c
 MAIN = minishell.c
 PARSE = expand_exit_code.c expand_vars_utils.c expand_vars.c token_types.c \
 			token_types2.c tokens.c parse_check_for_errors.c \
@@ -26,9 +26,8 @@ PROMPT = add_spaces_utils.c add_spaces.c ft_split_shell.c prompt_utils.c \
 REDIRECTS = handle_redirects.c heredoc.c heredoc_utils.c redirect_utils.c
 STATES = clean_state.c error_state.c exec_state.c init_state.c parse_state.c \
 			prompt_state.c
-UTILS	= ft_strcmp.c get_env.c safe_free.c test_utils.c
+UTILS	= ft_strcmp.c get_env.c safe_free.c
 SIGNALS = signals.c
-TEST_LIST = test_expand_vars.c
 
 # Names sources
 SOURCES = $(BUILTIN) $(EXEC) $(MAIN) $(PARSE) $(PROMPT) $(REDIRECTS) $(STATES) $(UTILS) \
