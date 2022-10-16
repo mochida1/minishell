@@ -3,14 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   exec_state.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: hmochida <hmochida@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 20:59:48 by coder             #+#    #+#             */
-/*   Updated: 2022/10/16 20:15:23 by viferrei         ###   ########.fr       */
+/*   Updated: 2022/10/16 20:55:08 by hmochida         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../headers/minishell.h"
+
+void	create_redirect_files(t_com *cmd)
+{
+	t_reds	*tmp;
+
+	tmp = cmd->red_out;
+	while (tmp)
+	{
+		open(tmp->target, O_CREAT | O_RDONLY, 0777);
+		tmp = tmp->next;
+	}
+}
 
 int	exec_loop(t_com *cmd, t_ms_data *ms, int original_fds[2])
 {
@@ -21,6 +33,7 @@ int	exec_loop(t_com *cmd, t_ms_data *ms, int original_fds[2])
 		write (2, cmd->error_to_print, ft_strlen(cmd->error_to_print));
 		return (0);
 	}
+	create_redirect_files(cmd);
 	if (!cmd->receives_from_pipe && !cmd->sends_to_pipe)
 	{
 		exec_one_cmd(cmd, ms, original_fds);
@@ -43,8 +56,6 @@ int	exec_state(t_ms_data *ms)
 	control = 1;
 	original_fds[0] = NO_REDIRECT;
 	original_fds[1] = NO_REDIRECT;
-	if (check_for_some_shady_shit(ms))
-		return (-1);
 	while (control)
 	{
 		cmd = get_exec_info(ms);
