@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_state.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: hmochida <hmochida@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 20:59:48 by coder             #+#    #+#             */
-/*   Updated: 2022/10/15 18:20:06 by viferrei         ###   ########.fr       */
+/*   Updated: 2022/10/16 15:39:00 by hmochida         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,11 @@ int	exec_state(t_ms_data *ms)
 		if (ms->issue_exit)
 			break ;
 	}
+	while (wait(&ms->exit_code) > 0)
+		continue ;
+	if (ms->exit_code > 256)
+		ms->exit_code = ms->exit_code >> 8;
+	signal_handlers();
 	restore_original_fds(original_fds);
 	ms->state = CLEANSTATE;
 	return (0);

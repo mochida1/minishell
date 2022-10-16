@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_com.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: hmochida <hmochida@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/09 21:15:32 by coder             #+#    #+#             */
-/*   Updated: 2022/10/15 18:34:33 by viferrei         ###   ########.fr       */
+/*   Updated: 2022/10/16 15:20:58 by hmochida         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,25 +45,11 @@ int	get_exec_error(char *path, t_ms_data *ms)
 	return (ms->exit_code);
 }
 
-static int	exec_daddy_issues(int pid, int e_status)
-{
-	if (pid)
-	{
-		ignore_signals();
-		waitpid(pid, &e_status, 0);
-		signal_handlers();
-	}
-	return (e_status);
-}
-
 int	exec_fork_builtin(t_com *cmd, t_ms_data *ms, int original_fds[2])
 {
 	int	pid;
-	int	e_status;
 
-	e_status = 0;
 	pid = create_child();
-	e_status = exec_daddy_issues(pid, e_status);
 	if (!pid)
 	{
 		sig_defaults();
@@ -75,22 +61,17 @@ int	exec_fork_builtin(t_com *cmd, t_ms_data *ms, int original_fds[2])
 		ms->issue_exit = -1;
 		return (exec_builtin(cmd, ms, original_fds));
 	}
-	return (e_status >> 8);
+	return (ms->exit_code);
 }
 
 /*
-** execve para testes. deletar após implementar tudo direitinho
-** pega o primeiro argumento da linha e usa como comando.
-** retorna statsu de saída do filho
+** Executes a command.
 */
 int	exec_com(t_com *cmd, t_ms_data *ms, int original_fds[2])
 {
 	int		pid;
-	int		e_status;
 
-	e_status = 0;
 	pid = create_child();
-	e_status = exec_daddy_issues(pid, e_status);
 	if (!pid)
 	{
 		ms->exit_code = 0;
@@ -108,5 +89,5 @@ int	exec_com(t_com *cmd, t_ms_data *ms, int original_fds[2])
 			ms->issue_exit = -1;
 		return (ms->exit_code);
 	}
-	return (e_status >> 8);
+	return (ms->exit_code);
 }
