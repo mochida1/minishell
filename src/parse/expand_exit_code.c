@@ -6,7 +6,7 @@
 /*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 00:38:52 by viferrei          #+#    #+#             */
-/*   Updated: 2022/10/16 17:10:25 by viferrei         ###   ########.fr       */
+/*   Updated: 2022/10/16 19:28:41 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ char	*find_exit_code(char *str)
 	return (NULL);
 }
 
-// NOTE: TEST IF IT WORKS WITH $? AT THE END OF STRING.
 char	*update_token_exit_code(char *str, char *exit_code, char *var_head)
 {
 	char	*part1;

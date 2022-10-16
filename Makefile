@@ -23,7 +23,8 @@ PARSE = expand_exit_code.c expand_vars_utils.c expand_vars.c token_types.c \
 			tokens_remove_quotes.c
 PROMPT = add_spaces_utils.c add_spaces.c ft_split_shell.c prompt_utils.c \
 			ft_split_shell_utils.c
-REDIRECTS = handle_redirects.c heredoc.c heredoc_utils.c redirect_utils.c
+REDIRECTS = handle_redirects.c heredoc.c heredoc_utils.c redirect_utils.c \
+			heredoc_expansions.c
 STATES = clean_state.c error_state.c exec_state.c init_state.c parse_state.c \
 			prompt_state.c
 UTILS	= ft_strcmp.c get_env.c safe_free.c test_utils.c

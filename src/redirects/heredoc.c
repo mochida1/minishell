@@ -6,7 +6,7 @@
 /*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 05:03:57 by coder             #+#    #+#             */
-/*   Updated: 2022/10/15 16:55:52 by viferrei         ###   ########.fr       */
+/*   Updated: 2022/10/16 19:14:17 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ char	*heredoc(char *target, t_ms_data *ms)
 	if (!pid)
 	{
 		signal(SIGINT, SIG_DFL);
-		write_to_heredoc(ret_fd, target);
+		write_to_heredoc(ret_fd, target, ms);
 		close(ret_fd);
 		ms->issue_exit = -1;
 		return (0);

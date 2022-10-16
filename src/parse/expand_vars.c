@@ -6,7 +6,7 @@
 /*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 17:40:14 by viferrei          #+#    #+#             */
-/*   Updated: 2022/10/16 17:10:57 by viferrei         ###   ########.fr       */
+/*   Updated: 2022/10/16 18:56:11 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,9 +75,7 @@ void	expand_variables(t_ms_data *ms)
 {
 	char		*var_head;
 	t_tokens	*head;
-	size_t		var_len;
 
-	var_len = 0;
 	head = ms->tokens;
 	while (ms->tokens)
 	{
