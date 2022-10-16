@@ -6,7 +6,7 @@
 /*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/09 23:19:44 by viferrei          #+#    #+#             */
-/*   Updated: 2022/10/16 18:46:06 by viferrei         ###   ########.fr       */
+/*   Updated: 2022/10/16 19:46:14 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,10 @@ int	exec_multi(t_com *cmd, t_ms_data *ms, int original_fds[2])
 {
 	int	control;
 
+	if (original_fds[0] == NO_REDIRECT)
+		original_fds[0] = dup(STDIN_FILENO);
+	if (original_fds[1] == NO_REDIRECT)
+		original_fds[1] = dup(STDOUT_FILENO);
 	swap_pipes(ms);
 	control = cmd->sends_to_pipe;
 	if (ms->issue_exit)

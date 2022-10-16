@@ -6,7 +6,7 @@
 /*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/08 02:46:15 by viferrei          #+#    #+#             */
-/*   Updated: 2022/10/16 18:10:37 by viferrei         ###   ########.fr       */
+/*   Updated: 2022/10/16 19:37:57 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,6 +137,9 @@ int			restore_original_fds(int original_fds[2]);
 /*
 ** PARSE
 */
+// expand_exit_code.c
+void	expand_exit_code(t_ms_data *ms);
+
 // expand_vars_utils.c
 int			vars_match(char *env_var, char *var_name);
 char		*get_var_name(char	*var_head);
