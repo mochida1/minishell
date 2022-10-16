@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   heredoc_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
+/*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/08 02:41:10 by coder             #+#    #+#             */
-/*   Updated: 2022/10/08 07:39:13 by coder            ###   ########.fr       */
+/*   Updated: 2022/10/16 19:13:55 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static void	print_error(char *target, int line, int ret_fd)
 	close (ret_fd);
 }
 
-int	write_to_heredoc(int ret_fd, char *target)
+int	write_to_heredoc(int ret_fd, char *target, t_ms_data *ms)
 {
 	int		i;
 	char	*buffer;
@@ -41,6 +41,7 @@ int	write_to_heredoc(int ret_fd, char *target)
 			print_error(target, i, ret_fd);
 			return (1);
 		}
+		buffer = heredoc_handle_expansions(buffer, ms);
 		if (!ft_strcmp(buffer, target))
 		{
 			free(buffer);
