@@ -6,11 +6,12 @@
 /*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/16 19:13:45 by viferrei          #+#    #+#             */
-/*   Updated: 2022/10/16 19:34:41 by viferrei         ###   ########.fr       */
+/*   Updated: 2022/10/16 19:51:39 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../headers/minishell.h"
+
 static void	free_mouli(void *a, void *b)
 {
 	free(a);
@@ -54,7 +55,7 @@ char	*hd_expand_exit_code(t_ms_data *ms, char *str)
 	return (str);
 }
 
-char *hd_update_str(char *str, char *var_name, char *var_head, t_ms_data *ms)
+char	*hd_update_str(char *str, char *var_name, char *var_head, t_ms_data *ms)
 {
 	char	*value;
 	char	*part1;

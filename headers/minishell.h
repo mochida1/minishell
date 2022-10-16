@@ -6,7 +6,7 @@
 /*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/08 02:46:15 by viferrei          #+#    #+#             */
-/*   Updated: 2022/10/16 19:34:07 by viferrei         ###   ########.fr       */
+/*   Updated: 2022/10/16 19:53:45 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,7 +131,7 @@ char		*heredoc(char *target, t_ms_data *ms);
 int			write_to_heredoc(int ret_fd, char *target, t_ms_data *ms);
 
 // heredoce_handle_expansions.c
-char	*heredoc_handle_expansions(char *str, t_ms_data *ms);
+char		*heredoc_handle_expansions(char *str, t_ms_data *ms);
 
 // redirect_utils.c
 int			restore_input(int original_fds[2]);
@@ -152,8 +152,8 @@ void		handle_variable_expansions(t_ms_data *ms);
 void		expand_variables(t_ms_data *ms);
 
 // expand_exit_code.c
-char	*find_exit_code(char *str);
-void	expand_exit_code(t_ms_data *ms);
+char		*find_exit_code(char *str);
+void		expand_exit_code(t_ms_data *ms);
 
 // parse_check_for_errors.c
 int			parse_check_for_errors(t_ms_data *ms);
