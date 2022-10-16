@@ -6,7 +6,7 @@
 /*   By: hmochida <hmochida@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/08 02:46:15 by viferrei          #+#    #+#             */
-/*   Updated: 2022/10/16 19:05:05 by hmochida         ###   ########.fr       */
+/*   Updated: 2022/10/16 19:08:56 by hmochida         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,11 @@
 # include "../libft/libft.h"
 # include <readline/readline.h>
 # include <readline/history.h>
-# include <fcntl.h> // open
-# include <signal.h> // sigaction
-# include <stdio.h> // readline
-# include <sys/wait.h> // wait
-# include <sys/stat.h> // stat
+# include <fcntl.h>
+# include <signal.h>
+# include <stdio.h>
+# include <sys/wait.h>
+# include <sys/stat.h>
 
 /*
 ** BUILTIN
