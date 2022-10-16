@@ -6,7 +6,7 @@
 /*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/08 02:46:15 by viferrei          #+#    #+#             */
-/*   Updated: 2022/10/16 17:14:32 by viferrei         ###   ########.fr       */
+/*   Updated: 2022/10/16 18:10:37 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ t_reds		*create_red_list(int nodes);
 // exec_com.c
 int			exec_fork_builtin(t_com *cmd, t_ms_data *ms, int original_fds[2]);
 int			exec_com(t_com *cmd, t_ms_data *ms, int original_fds[2]);
+int			exec_com_multi(t_com *cmd, t_ms_data *ms, int original_fds[2]);
 //
 int			exec_multi(t_com *cmd, t_ms_data *ms, int original_fds[2]);
 // exec_com_utils.c

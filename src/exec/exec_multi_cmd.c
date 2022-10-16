@@ -6,50 +6,38 @@
 /*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/09 23:19:44 by viferrei          #+#    #+#             */
-/*   Updated: 2022/10/16 17:54:52 by viferrei         ###   ########.fr       */
+/*   Updated: 2022/10/16 18:46:06 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../headers/minishell.h"
 
-int	handle_pipes(t_com *cmd, int original_output)
+int	swap_pipes(t_ms_data *ms)
 {
-	static int	pipe_fds[2];
+	static int	init;
 
-	if (cmd->receives_from_pipe)
+	if (!init)
 	{
-		dup2(pipe_fds[0], STDIN_FILENO);
-		close(pipe_fds[0]);
+		pipe(ms->pipe_out);
+		init++;
 	}
-	if (cmd->sends_to_pipe)
-	{
-		if (pipe(pipe_fds) == -1)
-			ft_putstr_fd("pipe error \n", STDERR_FILENO);
-		dup2(pipe_fds[1], STDOUT_FILENO);
-		close(pipe_fds[1]);
-	}
-	else
-	{
-		dup2(original_output, STDOUT_FILENO);
-		return (0);
-	}
-	return (1);
+	ms->pipe_in[0] = ms->pipe_out[0];
+	ms->pipe_in[1] = ms->pipe_out[1];
+	pipe(ms->pipe_out);
+	return (0);
 }
 
 int	exec_multi(t_com *cmd, t_ms_data *ms, int original_fds[2])
 {
 	int	control;
 
-	if (original_fds[0] == NO_REDIRECT)
-		original_fds[0] = dup(STDIN_FILENO);
-	if (original_fds[1] == NO_REDIRECT)
-		original_fds[1] = dup(STDOUT_FILENO);
-	control = handle_pipes(cmd, original_fds[1]);
+	swap_pipes(ms);
+	control = cmd->sends_to_pipe;
 	if (ms->issue_exit)
 		return (ms->issue_exit);
 	if (cmd->is_builtin)
 		ms->exit_code = exec_fork_builtin(cmd, ms, original_fds);
 	else
-		ms->exit_code = exec_com(cmd, ms, original_fds);
+		ms->exit_code = exec_com_multi(cmd, ms, original_fds);
 	return (control);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_com.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hmochida <hmochida@student.42.fr>          +#+  +:+       +#+        */
+/*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/09 21:15:32 by coder             #+#    #+#             */
-/*   Updated: 2022/10/16 15:20:58 by hmochida         ###   ########.fr       */
+/*   Updated: 2022/10/16 18:45:48 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,21 @@ int	get_exec_error(char *path, t_ms_data *ms)
 	return (ms->exit_code);
 }
 
+int	pipe_handle(t_ms_data *ms, t_com *cmd)
+{
+	if (cmd->receives_from_pipe)
+	{
+		close(ms->pipe_in[1]);
+		dup2(ms->pipe_in[0], STDIN_FILENO);
+	}
+	if (cmd->sends_to_pipe)
+	{
+		close(ms->pipe_out[0]);
+		dup2(ms->pipe_out[1], STDOUT_FILENO);
+	}
+	return (0);
+}
+
 int	exec_fork_builtin(t_com *cmd, t_ms_data *ms, int original_fds[2])
 {
 	int	pid;
@@ -53,6 +68,7 @@ int	exec_fork_builtin(t_com *cmd, t_ms_data *ms, int original_fds[2])
 	if (!pid)
 	{
 		sig_defaults();
+		pipe_handle(ms, cmd);
 		if (handle_redirects(cmd, original_fds, ms))
 		{
 			ms->issue_exit = -1;
@@ -89,5 +105,33 @@ int	exec_com(t_com *cmd, t_ms_data *ms, int original_fds[2])
 			ms->issue_exit = -1;
 		return (ms->exit_code);
 	}
+	return (ms->exit_code);
+}
+
+int	exec_com_multi(t_com *cmd, t_ms_data *ms, int original_fds[2])
+{
+	int		pid;
+
+	pid = create_child();
+	if (!pid)
+	{
+		ms->exit_code = 0;
+		if (!get_exec_error(cmd->command, ms))
+		{
+			sig_defaults();
+			pipe_handle(ms, cmd);
+			if (handle_redirects(cmd, original_fds, ms))
+			{
+				ms->issue_exit = -1;
+				return (restore_original_fds(original_fds));
+			}
+			execve(cmd->command, cmd->args, cmd->envp);
+		}
+		else
+			ms->issue_exit = -1;
+		return (ms->exit_code);
+	}
+	close(ms->pipe_in[0]);
+	close(ms->pipe_in[1]);
 	return (ms->exit_code);
 }
