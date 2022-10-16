@@ -24,6 +24,7 @@
 ## Variable expansion
 - [x] (EXPORT) Checks if it works for variables with no parameters like `VARIABLE=`
 - [x] Checks `VAR=$VAR` expansions.
+- [ ] Heredoc variables are also expanded.
 
 ## Redirects
 - [x] Command is not executed if an infile does not exist.

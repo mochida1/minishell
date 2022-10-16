@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_state.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hmochida <hmochida@student.42.fr>          +#+  +:+       +#+        */
+/*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 20:59:48 by coder             #+#    #+#             */
-/*   Updated: 2022/10/16 15:39:00 by hmochida         ###   ########.fr       */
+/*   Updated: 2022/10/16 17:12:02 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,6 @@ int	exec_state(t_ms_data *ms)
 	while (control)
 	{
 		cmd = get_exec_info(ms);
-		expand_exit_code(ms, cmd->args);
 		control = exec_loop(cmd, ms, original_fds);
 		destroy_exec_info(cmd);
 		if (ms->issue_exit)
