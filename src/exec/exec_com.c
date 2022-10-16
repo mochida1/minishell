@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_com.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: hmochida <hmochida@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/09 21:15:32 by coder             #+#    #+#             */
-/*   Updated: 2022/10/16 18:45:48 by viferrei         ###   ########.fr       */
+/*   Updated: 2022/10/16 19:05:14 by hmochida         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,41 +23,6 @@ static pid_t	create_child(void)
 		exit(-1);
 	}
 	return (child_pid);
-}
-
-int	get_exec_error(char *path, t_ms_data *ms)
-{
-	struct stat	sb;
-
-	if (stat(path, &sb) == 0 && S_ISDIR(sb.st_mode))
-	{
-		ms->exit_code = 126;
-		printf("Is a directory!\n");
-	}
-	if (!path)
-		ms->exit_code = 1;
-	else if (access(path, X_OK))
-	{
-		ms->exit_code = 127;
-		ft_putstr_fd(path, STDERR_FILENO);
-		ft_putstr_fd(": command not found!\n", STDERR_FILENO);
-	}
-	return (ms->exit_code);
-}
-
-int	pipe_handle(t_ms_data *ms, t_com *cmd)
-{
-	if (cmd->receives_from_pipe)
-	{
-		close(ms->pipe_in[1]);
-		dup2(ms->pipe_in[0], STDIN_FILENO);
-	}
-	if (cmd->sends_to_pipe)
-	{
-		close(ms->pipe_out[0]);
-		dup2(ms->pipe_out[1], STDOUT_FILENO);
-	}
-	return (0);
 }
 
 int	exec_fork_builtin(t_com *cmd, t_ms_data *ms, int original_fds[2])
