@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_state.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hmochida <hmochida@student.42.fr>          +#+  +:+       +#+        */
+/*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 20:59:48 by coder             #+#    #+#             */
-/*   Updated: 2022/10/16 20:55:08 by hmochida         ###   ########.fr       */
+/*   Updated: 2022/10/16 21:01:16 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ int	exec_state(t_ms_data *ms)
 	control = 1;
 	original_fds[0] = NO_REDIRECT;
 	original_fds[1] = NO_REDIRECT;
+	ignore_signals();
 	while (control)
 	{
 		cmd = get_exec_info(ms);
