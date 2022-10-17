@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: hmochida <hmochida@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/08 02:46:15 by viferrei          #+#    #+#             */
-/*   Updated: 2022/10/16 19:57:21 by viferrei         ###   ########.fr       */
+/*   Updated: 2022/10/16 21:13:02 by hmochida         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,9 @@ int			exec_multi(t_com *cmd, t_ms_data *ms, int original_fds[2]);
 // exec_com_utils.c
 int			get_exec_error(char *path, t_ms_data *ms);
 char		*get_path(char *cmd_arg, char **envp);
+// exec_com_utils2.c
+int			get_exec_error(char *path, t_ms_data *ms);
+int			pipe_handle(t_ms_data *ms, t_com *cmd);
 
 // STATES
 int			error_state(t_ms_data *ms);
@@ -141,7 +144,7 @@ int			restore_original_fds(int original_fds[2]);
 ** PARSE
 */
 // expand_exit_code.c
-void	expand_exit_code(t_ms_data *ms);
+void		expand_exit_code(t_ms_data *ms);
 
 // expand_vars_utils.c
 int			vars_match(char *env_var, char *var_name);
@@ -188,14 +191,5 @@ int			signal_handlers(void);
 void		sigint_handler(int signo);
 void		sig_defaults(void);
 void		ignore_signals(void);
-
-/*
-** TESTS
-*/
-void		test_expand_vars(t_ms_data *ms); // REMOVER ANTES DA ENTREGA
-// test_utils.c
-int			print_token_list(t_ms_data *ms); // REMOVER ANTES DA ENTREGA
-int			check_for_some_shady_shit(t_ms_data *ms); // REMOVER ANTES DA ENTREGA
-void		PRINT_COM(t_com *data); // REMOVER ANTES DA ENTREGA
 
 #endif
